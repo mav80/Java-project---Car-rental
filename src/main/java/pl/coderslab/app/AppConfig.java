@@ -1,9 +1,12 @@
 package pl.coderslab.app;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 import javax.persistence.EntityManagerFactory;
 
+import org.hibernate.engine.config.spi.ConfigurationService.Converter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -52,11 +55,11 @@ public class AppConfig  implements WebMvcConfigurer {
 	JpaTransactionManager tm = new JpaTransactionManager(emf);
 	return tm; }
 	
-//	//@Override //tutaj dodajemy nasze konwertery
-//	public void addFormatters(FormatterRegistry registry) {
-//	registry.addConverter(getPublisherConverter());
+	//@Override //tutaj dodajemy nasze konwertery
+	public void addFormatters(FormatterRegistry registry) {
+	registry.addConverter(dateTimeConverter());
 //	registry.addConverter(getBookAuthorConverter());
-//	}
+	}
 //	
 //	@Bean
 //	public PublisherConverter getPublisherConverter() {
@@ -67,6 +70,11 @@ public class AppConfig  implements WebMvcConfigurer {
 //	public	BookAuthorConverter	getBookAuthorConverter()	{
 //					return	new	BookAuthorConverter();
 //	}
+	
+	@Bean
+	public DateTimeConverter dateTimeConverter() {
+		return new DateTimeConverter();
+	}
 	
 	
 	//beany do dzien 3 walidacja

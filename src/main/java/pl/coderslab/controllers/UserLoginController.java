@@ -30,13 +30,13 @@ public class UserLoginController {
 		User user = userRepository.findFirstByEmail(email);
 		if(user!=null && BCrypt.checkpw(password,  user.getPassword())) {
 			
-			model.addAttribute("info", "Zalogowano");
-				//System.out.println("It matches.");
-				session.setAttribute("loggedUser", user);
+			//model.addAttribute("info", "Zalogowano");
+			//System.out.println("It matches.");
+			session.setAttribute("loggedUser", user);
 			
 		} else {
 			session.setAttribute("loggedUser", null);
-			model.addAttribute("info", "Błędny login lub hasło");
+			//model.addAttribute("info", "Błędny login lub hasło");
 			//System.out.println("It doesn't match.");
 		}
 		

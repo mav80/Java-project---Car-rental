@@ -52,12 +52,28 @@
 	<header class="container">
 	<div class="row">
 		<h1 class="col-sm-4">Movis - rent a car</h1>
-		<nav class="col-sm-8 text-right"> <c:if test="${not empty info}">
+		<nav class="col-sm-8 text-right"> 
+		<c:if test="${not empty info}">
 			<p>${info}</p>
 			<p>
 				<a href="logout">wyloguj się</a>
 			</p>
-		</c:if> <c:if test="${empty info}">
+		</c:if> 
+		
+		<c:if test="${loggedUser.isAdmin == true}">
+			<p>
+				<a href="panelAdmin">panel administracyjny</a>
+			</p>
+		</c:if>
+		
+		
+		<c:if test="${loggedUser.isAdmin == false}">
+			<p>
+				<a href="panelUser">panel użytkownika</a>
+			</p>
+		</c:if>
+		
+		<c:if test="${empty info}">
 			<p>
 				<a href="login">zaloguj się</a>
 			</p>
@@ -82,28 +98,62 @@
 	<section class="container">
 	<div class="row">
 		<figure class="col-sm-6">
-		<p>Wybierz samochód</p>
+		<p><b>Zarezerwuj swój samochód:</b></p>
+		
+		
+		
+		
+		
+		
+		<form:form modelAttribute="order" method="post">
 		<p>Miejsce odbioru i zwrotu:</p>
-
-
+		<form:select path="address.id" items="${addresses}" itemLabel="name" itemValue="id"/>
+		<form:errors path="address.id"/><br>
+		
+		<br>
 
 		<p>Data i godzina wypożyczenia:</p>
-		<input type="text" id="date-format-begin"	class="form-control floating-label" placeholder="Data wypożyczenia">
+		<form:input path="pickupDate" id="date-format-begin" class="form-control floating-label" placeholder="Data wypożyczenia"/>
+		<!-- <form:errors path="pickupDate"/><br> -->
+		<b>${dateError}</b>
 			
 		<p>Data i godzina zwrotu:</p>
-		<input type="text" id="date-format-end"	class="form-control floating-label" placeholder="Data zwrotu">
-
-		<p>Klasa auta:</p>
+		<form:input path="returnDate" id="date-format-end" class="form-control floating-label" placeholder="Data zwrotu"/>
+		<!-- <form:errors path="returnDate"/><br> -->
+		<b>${dateError}</b>
 		
-		<input type="submit" value="Wypożycz">
+		<p>Klasa auta:</p>
+		<form:select path="carClass.id" items="${cars}" itemLabel="carClassDescription" itemValue="id" />
+		<form:errors path="carClass.id"/><br>
+		
+		
+		<br><br>
+		
+		<c:if test="${not empty info}">
+			<p>
+				<input type="submit" value="Wypożycz">
+			</p>
+		</c:if>
+		
+		<c:if test="${empty info}">
+			<p>
+				<a href="login">zaloguj się aby przejść dalej</a>
+			</p>
+
+		</c:if>
+		</form:form>
+		
+		
+		
+		
 		</figure>
 		<figure class="col-sm-6">
-		<p>woodwork</p>
+		<p>galeria</p>
 		<img
-			src="https://s3.amazonaws.com/codecademy-content/projects/make-a-website/lesson-4/woodwork.jpg">
+			src="static/images/MustangCaliforniaSpecial.jpg">
 		</figure>
 	</div>
-	<div class="row">
+	<!--   <div class="row">
 		<figure class="col-sm-6">
 		<p>gifts</p>
 		<img
@@ -114,7 +164,7 @@
 		<img
 			src="https://s3.amazonaws.com/codecademy-content/projects/make-a-website/lesson-4/antique.jpg">
 		</figure>
-	</div>
+	</div> -->
 	</section>
 	<footer class="container">
 	<div class="row">
@@ -132,9 +182,5 @@
 		</ul>
 	</div>
 	</footer>
-
-	<!-- gryzie się z date pickerem: <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
-	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script> -->
 </body>
 </html>

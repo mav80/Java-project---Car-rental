@@ -1,21 +1,25 @@
 package pl.coderslab.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.Range;
 
 @Entity
+@Table(name = "users")
 public class User {
 	
 	@Id
@@ -44,15 +48,37 @@ public class User {
 	@Column(nullable = false)
 	private String password;
 	
-	@NotNull
-	@Column(nullable = false)
-	private boolean enabled; //może służyć do np. wyłączania użytkownikowi dostępu (banowania) - użytkownik może być niewidoczny, ale nie musimy kasować wszystkich związanych z nim rekordów w bazie
 	
 	@NotBlank
 	@NotNull
 	@Email
 	@Column(nullable = false, unique = true)
 	private String email;
+	
+	@NotNull
+	@Column(nullable = false)
+	private boolean enabled; //może służyć do np. wyłączania użytkownikowi dostępu (banowania) - użytkownik może być niewidoczny, ale nie musimy kasować wszystkich związanych z nim rekordów w bazie
+	
+	@NotNull
+	@Column(nullable = false)
+	private boolean isAdmin; //admin może mieć specjalne uprawnienia
+	
+	
+	
+	@OneToMany(mappedBy = "user", fetch=FetchType.EAGER)
+	private List<Order> orders = new ArrayList<>();
+	
+	
+	
+	
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
 
 	public long getId() {
 		return id;
@@ -109,6 +135,22 @@ public class User {
 	public void setPhone(int phone) {
 		this.phone = phone;
 	}
+
+	public boolean isisAdmin() { //pierwsze is trzeba dopisać ręcznie, bez tego nie działa
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", age=" + age + ", phone=" + phone + ", password="
+				+ password + ", enabled=" + enabled +  ", isAdmin=" + isAdmin +", email=" + email + "]";
+	}
+
+	
 	
 	
 	

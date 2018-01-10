@@ -1,27 +1,87 @@
 package pl.coderslab.controllers;
 
-import javax.servlet.http.HttpSession;
+import java.util.List;
 
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import pl.coderslab.entities.Address;
+import pl.coderslab.entities.CarClass;
+import pl.coderslab.entities.Order;
 import pl.coderslab.entities.User;
+import pl.coderslab.repositories.AddressRepository;
+import pl.coderslab.repositories.CarClassRepository;
+import pl.coderslab.repositories.OrderRepository;
+import pl.coderslab.repositories.UserRepository;
 
 @Controller
 public class HomeController {
-	@GetMapping("")
+	@Autowired
+	AddressRepository addressRepository;
+	@Autowired
+	CarClassRepository carClassRepository;
+	@Autowired
+	OrderRepository orderRepository;
+	@Autowired
+	UserRepository userRepository;
 	
+	@GetMapping("")	
 	public String home(Model model, HttpSession session) {
 		
 		if(session.getAttribute("loggedUser") != null ) {
-			
 			User user = (User)session.getAttribute("loggedUser"); //w sesji zapisujemy obiekty więc musimy zrobić rzutowanie na usera
-			
 			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
-			
 		}
+		model.addAttribute("order", new Order()); //przekazujemy order do zbindowania z formularzem
 		return "index";
+	}
+	
+	
+	
+	@PostMapping("")
+	//@ResponseBody
+	public String home(@Valid Order order, BindingResult result, HttpSession session, Model model) {
+		
+		User user = (User) session.getAttribute("loggedUser");
+		
+		if(session.getAttribute("loggedUser") != null ) {
+			user = (User)session.getAttribute("loggedUser"); //w sesji zapisujemy obiekty więc musimy zrobić rzutowanie na usera
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+		}
+		
+		if(result.hasErrors()){
+			model.addAttribute("dateError", "Wybierz poprawną datę!");
+			return "index";
+		}
+		
+		 if(user == null) {
+			 return "redirect:/";
+		 }
+		
+		order.setUser(user);
+		orderRepository.save(order);
+
+		return "success";
+	}
+	
+	
+	@ModelAttribute("addresses")
+	public List<Address> getAddresses() {
+		return addressRepository.findAll();
+	}
+	
+	@ModelAttribute("cars")
+	public List<CarClass> getCars() {
+		return carClassRepository.findAll();
 	}
 
 }

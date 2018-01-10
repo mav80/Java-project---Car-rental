@@ -10,5 +10,7 @@
 
 <h3>Operacja przebiegła pomyślnie.</h3>
 
+<a href="">powrót do strony głównej</a>
+
 </body>
 </html>
