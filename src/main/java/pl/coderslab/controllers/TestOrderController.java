@@ -58,8 +58,8 @@ public class TestOrderController {
 		
 		
 		Order order = new Order();
-		order.setPickupDate(pickupDate);
-		order.setReturnDate(returnDate);
+//		order.setPickupDate(pickupDate);     //nie działa bo zmieniłem typ z DateTime na Timestamp
+//		order.setReturnDate(returnDate);
 		order.setAddress(address);
 		order.setCarClass(carClass);
 		order.setUser(user);

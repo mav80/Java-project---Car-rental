@@ -10,7 +10,7 @@
 
 <h3>Operacja przebiegła pomyślnie.</h3>
 
-<a href="">powrót do strony głównej</a>
+<a href="http://localhost:8080/EndProject-CarRental/">powrót do strony głównej</a>
 
 </body>
 </html>

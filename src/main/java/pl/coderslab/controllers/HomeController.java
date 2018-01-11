@@ -70,7 +70,7 @@ public class HomeController {
 		order.setUser(user);
 		orderRepository.save(order);
 
-		return "success";
+		return "summary";
 	}
 	
 	

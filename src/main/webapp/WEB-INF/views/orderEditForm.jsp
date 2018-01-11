@@ -7,7 +7,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Panel użytkownika</title>
+<title>Edycja rezerwacji</title>
+
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -44,90 +45,131 @@
 
 		$('#date-format-begin').bootstrapMaterialDatePicker({
 			weekStart : 1,
-			format : 'YYYY-MM-DD', time: false
+			format : 'YYYY-MM-DD HH:mm:ss',
+			minDate : new Date()
 		});
 
+		var tomorrow = new Date();
+		tomorrow.setDate(tomorrow.getDate() + 1);
 
 		$('#date-format-end').bootstrapMaterialDatePicker({
 			weekStart : 1,
-			format : 'YYYY-MM-DD', time: false
+			format : 'YYYY-MM-DD HH:mm:ss',
+			minDate : tomorrow
 		});
 
 		$.material.init()
 	});
 </script>
+
+
+<!-- Carousel Plugin -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+	width: 65%;
+	margin: auto;
+}
+</style>
+
+<script>
+	$(document).ready(function() {
+		// Activate Carousel
+		$("#myCarousel").carousel();
+
+		// Enable Carousel Indicators
+		$(".item1").click(function() {
+			$("#myCarousel").carousel(0);
+		});
+		$(".item2").click(function() {
+			$("#myCarousel").carousel(1);
+		});
+		$(".item3").click(function() {
+			$("#myCarousel").carousel(2);
+		});
+		$(".item4").click(function() {
+			$("#myCarousel").carousel(3);
+		});
+
+		// Enable Carousel Controls
+		$(".left").click(function() {
+			$("#myCarousel").carousel("prev");
+		});
+		$(".right").click(function() {
+			$("#myCarousel").carousel("next");
+		});
+	});
+</script>
 </head>
 <body>
-	<h3>To jest widok panelUser.jsp</h3>
+	<h3>To jest widok orderEditForm</h3>
 
 	<c:if test="${empty loggedUser}">
 		<p>Musisz się najpierw zalogować</p>
-		<a href="http://localhost:8080/EndProject-CarRental/login">strona
-			logowania</a>
-		<br>
-		<br>
+
+		<a href="http://localhost:8080/EndProject-CarRental/">powrót do
+			strony głównej</a>
+	</c:if>
+
+	<c:if test="${empty order}">
+		<p>Musisz się najpierw zalogować</p>
 
 		<a href="http://localhost:8080/EndProject-CarRental/">powrót do
 			strony głównej</a>
 	</c:if>
 
 
-	<c:if test="${not empty loggedUser}">
-	
-	Oto wszystkie twoje rezerwacje:<br><br>
 
-		<c:forEach items="${orders}" var="order">
-		<div class="row">
-			<list>
-			<ul>
-		<figure class="col-sm-1">
-		</figure>
-		
-			<figure class="col-sm-3">
-				<li>Data stworzenia rezerwacji: ${order.created}
-				<li>Miejsce odbioru auta: ${order.address.name},
-					${order.address.street}, ${order.address.zipCode},
-					${order.address.city}</li>
-			</figure>
-				<figure class="col-sm-2">
-				<li>Data odbioru auta: ${order.pickupDate}</li>
-				<li>Data zwrotu auta: ${order.returnDate}</li>
-			</figure>
-			<figure class="col-sm-4">
-				<li>Klasa zarezerwowanego auta: ${order.carClass.carClassDescription}</li>
-			</figure>
-			
-		<figure class="col-sm-1">
-						<a href="http://localhost:8080/EndProject-CarRental/editOrder/${order.id}">edytuj rezerwację</a><br>
-				<a href="http://localhost:8080/EndProject-CarRental/deleteOrderUser/${order.id}">usuń rezerwację</a>
-		</figure>
 
-	
-			</ul>
-			</list>
-			</div>
+	<c:if test="${loggedUser.id != order.user.id}">
+		<p>Nie masz odpowiednich uprawnień do edycji tego zamówienia</p>
+
+		<a href="http://localhost:8080/EndProject-CarRental/">powrót do
+			strony głównej</a>
+	</c:if>
+
+	<c:if test="${loggedUser.id == order.user.id}">
+
+
+
+
+		<form:form modelAttribute="order" method="post">
+
+			<p>Miejsce odbioru i zwrotu:</p>
+			<form:select path="address.id" items="${addresses}" itemLabel="name"
+				itemValue="id" />
+			<form:errors path="address.id" />
 			<br>
 
+			<br>
 
-		</c:forEach>
+			<p>Data i godzina wypożyczenia:</p>
+			<form:input path="pickupDate" id="date-format-begin"
+				class="form-control floating-label" placeholder="Data wypożyczenia" />
+			<!-- <form:errors path="pickupDate"/><br> -->
+			<b>${dateError}</b>
 
+			<p>Data i godzina zwrotu:</p>
+			<form:input path="returnDate" id="date-format-end"
+				class="form-control floating-label" placeholder="Data zwrotu" />
+			<!-- <form:errors path="returnDate"/><br> -->
+			<b>${dateError}</b>
 
-		<br>
-		<br>
+			<p>Klasa auta:</p>
+			<form:select path="carClass.id" items="${cars}"
+				itemLabel="carClassDescription" itemValue="id" />
+			<form:errors path="carClass.id" />
+			<br>
+			<form:hidden path="user.id" />
 
-		<figure class="col-sm-2">
-		<a href="http://localhost:8080/EndProject-CarRental/">   powrót do
-			strony głównej</a>
-			</figure>
+			<br>
+			<br>
+			<input type="submit" value="Zmień rezerwację">
+		</form:form>
 
 	</c:if>
-	
-	<br> <br>
-	<figure class="col-sm-2">
-	<a href="http://localhost:8080/EndProject-CarRental/userEditProfile/${user.id}">   edytuj swoje dane osobowe</a>
-	</figure>
-
-
 
 </body>
 </html>

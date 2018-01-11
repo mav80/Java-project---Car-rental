@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ page isELIgnored="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Panel użytkownika</title>
+<title>Summary</title>
+
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -44,90 +42,68 @@
 
 		$('#date-format-begin').bootstrapMaterialDatePicker({
 			weekStart : 1,
-			format : 'YYYY-MM-DD', time: false
+			format : 'YYYY-MM-DD HH:mm:ss',
+			minDate : new Date()
 		});
 
+		var tomorrow = new Date();
+		tomorrow.setDate(tomorrow.getDate() + 1);
 
 		$('#date-format-end').bootstrapMaterialDatePicker({
 			weekStart : 1,
-			format : 'YYYY-MM-DD', time: false
+			format : 'YYYY-MM-DD HH:mm:ss',
+			minDate : tomorrow
 		});
 
 		$.material.init()
 	});
 </script>
+
+
+<!-- Carousel Plugin -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+	width: 65%;
+	margin: auto;
+}
+</style>
+
+<script>
+	$(document).ready(function() {
+		// Activate Carousel
+		$("#myCarousel").carousel();
+
+		// Enable Carousel Indicators
+		$(".item1").click(function() {
+			$("#myCarousel").carousel(0);
+		});
+		$(".item2").click(function() {
+			$("#myCarousel").carousel(1);
+		});
+		$(".item3").click(function() {
+			$("#myCarousel").carousel(2);
+		});
+		$(".item4").click(function() {
+			$("#myCarousel").carousel(3);
+		});
+
+		// Enable Carousel Controls
+		$(".left").click(function() {
+			$("#myCarousel").carousel("prev");
+		});
+		$(".right").click(function() {
+			$("#myCarousel").carousel("next");
+		});
+	});
+</script>
 </head>
 <body>
-	<h3>To jest widok panelUser.jsp</h3>
-
-	<c:if test="${empty loggedUser}">
-		<p>Musisz się najpierw zalogować</p>
-		<a href="http://localhost:8080/EndProject-CarRental/login">strona
-			logowania</a>
-		<br>
-		<br>
-
-		<a href="http://localhost:8080/EndProject-CarRental/">powrót do
-			strony głównej</a>
-	</c:if>
-
-
-	<c:if test="${not empty loggedUser}">
-	
-	Oto wszystkie twoje rezerwacje:<br><br>
-
-		<c:forEach items="${orders}" var="order">
-		<div class="row">
-			<list>
-			<ul>
-		<figure class="col-sm-1">
-		</figure>
-		
-			<figure class="col-sm-3">
-				<li>Data stworzenia rezerwacji: ${order.created}
-				<li>Miejsce odbioru auta: ${order.address.name},
-					${order.address.street}, ${order.address.zipCode},
-					${order.address.city}</li>
-			</figure>
-				<figure class="col-sm-2">
-				<li>Data odbioru auta: ${order.pickupDate}</li>
-				<li>Data zwrotu auta: ${order.returnDate}</li>
-			</figure>
-			<figure class="col-sm-4">
-				<li>Klasa zarezerwowanego auta: ${order.carClass.carClassDescription}</li>
-			</figure>
-			
-		<figure class="col-sm-1">
-						<a href="http://localhost:8080/EndProject-CarRental/editOrder/${order.id}">edytuj rezerwację</a><br>
-				<a href="http://localhost:8080/EndProject-CarRental/deleteOrderUser/${order.id}">usuń rezerwację</a>
-		</figure>
-
-	
-			</ul>
-			</list>
-			</div>
-			<br>
-
-
-		</c:forEach>
-
-
-		<br>
-		<br>
-
-		<figure class="col-sm-2">
-		<a href="http://localhost:8080/EndProject-CarRental/">   powrót do
-			strony głównej</a>
-			</figure>
-
-	</c:if>
-	
-	<br> <br>
-	<figure class="col-sm-2">
-	<a href="http://localhost:8080/EndProject-CarRental/userEditProfile/${user.id}">   edytuj swoje dane osobowe</a>
-	</figure>
-
-
+<h1>To jest widok summary.jsp</h1>
+<h3>Rezerwację dodano do bazy.</h3>
+<h3>Tutaj będzie można wybrać do swojej rezerwacji opcje dodatkowe takie jak np. nawigacja, fotelik dla dziecka czy bagażnik dachowy, a także zobaczyć cenę końcową do zapłaty przy odbiorze auta.</h3>
 
 </body>
 </html>

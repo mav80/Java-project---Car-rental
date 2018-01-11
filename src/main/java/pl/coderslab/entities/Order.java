@@ -25,18 +25,18 @@ public class Order {
 	private long id;
 	
 	@CreationTimestamp
-	@Column(nullable = false)
+	@Column(updatable=false)
 	private Timestamp created;
 	
 	//@NotBlank
 	@NotNull
 	@Column(nullable = false)
-	private LocalDateTime pickupDate;
+	private Timestamp pickupDate;
 	
 	//@NotBlank
 	@NotNull
 	@Column(nullable = false)
-	private LocalDateTime returnDate;
+	private Timestamp returnDate;
 	
 	@ManyToOne
 	@JoinColumn(name = "users_id")
@@ -66,19 +66,20 @@ public class Order {
 		this.created = created;
 	}
 
-	public LocalDateTime getPickupDate() {
+
+	public Timestamp getPickupDate() {
 		return pickupDate;
 	}
 
-	public void setPickupDate(LocalDateTime pickupDate) {
+	public void setPickupDate(Timestamp pickupDate) {
 		this.pickupDate = pickupDate;
 	}
 
-	public LocalDateTime getReturnDate() {
+	public Timestamp getReturnDate() {
 		return returnDate;
 	}
 
-	public void setReturnDate(LocalDateTime returnDate) {
+	public void setReturnDate(Timestamp returnDate) {
 		this.returnDate = returnDate;
 	}
 
@@ -108,8 +109,18 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate+"]";
+		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate
+				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass + "]";
 	}
+
+//	@Override
+//	public String toString() {
+//		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate+"]";
+//	}
+	
+	
+	
+	
 	
 	
 

@@ -12,7 +12,7 @@
 <link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/bootstrap-material-design.min.css" />
 <link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/ripples.min.css" />
 <link rel="stylesheet"	href="static/css/bootstrap-material-datetimepicker.css" />
-
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet"  href="static/css/style.css">
 
 <script src="https://code.jquery.com/jquery-1.12.3.min.js"	integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="	crossorigin="anonymous"></script>
@@ -23,21 +23,70 @@
 <script type="text/javascript"	src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
 <script type="text/javascript"	src="static/js/bootstrap-material-datetimepicker.js"></script>
 
+<!-- datepicker -->
+
 <script type="text/javascript">
 	$(document).ready(function() {
 
 		$('#date-format-begin').bootstrapMaterialDatePicker({
-			format : 'YYYY-MM-DD HH:mm:ss'
+			weekStart : 1, format : 'YYYY-MM-DD HH:mm:ss', minDate : new Date()
 		});
 		
+		var tomorrow = new Date();
+		tomorrow.setDate(tomorrow.getDate() + 1);
+		
 		$('#date-format-end').bootstrapMaterialDatePicker({
-			format : 'YYYY-MM-DD HH:mm:ss'
+			weekStart : 1, format : 'YYYY-MM-DD HH:mm:ss', minDate : tomorrow
 		});
 
 
 		$.material.init()
 	});
 </script>
+
+
+<!-- Carousel Plugin -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+  <style>
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 60%;
+      margin: auto;
+  }
+  </style>
+
+<script>
+$(document).ready(function(){
+    // Activate Carousel
+    $("#myCarousel").carousel();
+    
+    // Enable Carousel Indicators
+    $(".item1").click(function(){
+        $("#myCarousel").carousel(0);
+    });
+    $(".item2").click(function(){
+        $("#myCarousel").carousel(1);
+    });
+    $(".item3").click(function(){
+        $("#myCarousel").carousel(2);
+    });
+    $(".item4").click(function(){
+        $("#myCarousel").carousel(3);
+    });
+    
+    // Enable Carousel Controls
+    $(".left").click(function(){
+        $("#myCarousel").carousel("prev");
+    });
+    $(".right").click(function(){
+        $("#myCarousel").carousel("next");
+    });
+});
+</script>
+
+
 
 </head>
 
@@ -54,7 +103,7 @@
 		<h1 class="col-sm-4">Movis - rent a car</h1>
 		<nav class="col-sm-8 text-right"> 
 		<c:if test="${not empty info}">
-			<p>${info}</p>
+			<p><b>${info}</b></p>
 			<p>
 				<a href="logout">wyloguj się</a>
 			</p>
@@ -75,10 +124,10 @@
 		
 		<c:if test="${empty info}">
 			<p>
-				<a href="login">zaloguj się</a>
+				<a href="login">logowanie</a>
 			</p>
 			<p>
-				<a href="register">zarejestruj się</a>
+				<a href="register">rejestracja</a>
 			</p>
 		</c:if>
 		<p>nasze auta</p>
@@ -86,6 +135,10 @@
 		</nav>
 	</div>
 	</header>
+	
+	
+	
+	
 	<section class="jumbotron">
 	<div class="container">
 		<div class="row text-center">
@@ -95,13 +148,15 @@
 		</div>
 	</div>
 	</section>
-	<section class="container">
+	
+	
+	
+	<section class="containerr">
 	<div class="row">
-		<figure class="col-sm-6">
+	<figure class="col-sm-1">
+	</figure>
+		<figure class="col-sm-4">
 		<p><b>Zarezerwuj swój samochód:</b></p>
-		
-		
-		
 		
 		
 		
@@ -131,7 +186,7 @@
 		
 		<c:if test="${not empty info}">
 			<p>
-				<input type="submit" value="Wypożycz">
+				<input type="submit" value="Rezerwuj">
 			</p>
 		</c:if>
 		
@@ -144,31 +199,61 @@
 		</form:form>
 		
 		
+		</figure>
 		
 		
+		
+		<figure class="col-sm-4">
+		<!-- <p>galeria</p>  -->
+			
+			<div class="container">
+  <div id="myCarousel" class="carousel slide">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li class="item1 active"></li>
+      <li class="item2"></li>
+      <li class="item3"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+
+      <div class="item active">
+        <img src="static/images/MustangCaliforniaSpecial.jpg" alt="Mustang" width="400" height="345">
+        <div class="carousel-caption">
+          <h3>Do każdego auta darmowe ubezpieczenie</h3>
+          <p>od zgniecenia przez fortepian</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="static/images/audir8.jpg" alt="Audi" width="400" height="345">
+        <div class="carousel-caption">
+          <h3>Oferujemy piąte koło</h3>
+          <p>do każdego z naszych wozów</p>
+        </div>
+      </div>
+    
+      <div class="item">
+        <img src="static/images/lambo.jpg" alt="Lambo" width="400" height="345">
+        <div class="carousel-caption">
+          <h3>Promocja na limuzyny</h3>
+          <p>przy wynajmie na 365 dni 366. dzień gratis!</p>
+        </div>
+      </div>
+
+  
+    </div>
 		</figure>
-		<figure class="col-sm-6">
-		<p>galeria</p>
-		<img
-			src="static/images/MustangCaliforniaSpecial.jpg">
-		</figure>
+		
+			<figure class="col-sm-1">
+	</figure>
 	</div>
-	<!--   <div class="row">
-		<figure class="col-sm-6">
-		<p>gifts</p>
-		<img
-			src="https://s3.amazonaws.com/codecademy-content/projects/make-a-website/lesson-4/gifts.jpg">
-		</figure>
-		<figure class="col-sm-6">
-		<p>antiques</p>
-		<img
-			src="https://s3.amazonaws.com/codecademy-content/projects/make-a-website/lesson-4/antique.jpg">
-		</figure>
-	</div> -->
+
 	</section>
 	<footer class="container">
 	<div class="row">
-		<p class="col-sm-4">&copy; 2016 Skillfair</p>
+		<p class="col-sm-4">&copy; 2017 Mav</p>
 		<ul class="col-sm-8">
 			<li class="col-sm-1">...</li>
 			<li class="col-sm-1"><img
