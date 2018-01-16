@@ -3,8 +3,10 @@ package pl.coderslab.controllers;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.entities.Address;
 import pl.coderslab.entities.CarClass;
 import pl.coderslab.entities.Order;
+import pl.coderslab.entities.User;
 import pl.coderslab.repositories.AddressRepository;
 import pl.coderslab.repositories.CarClassRepository;
 import pl.coderslab.repositories.OrderRepository;
@@ -78,6 +81,7 @@ public class AdminController {
 	
 	
 	
+	
 	@GetMapping("/adminEditOrder/{id}")
 	public String editId(Model model, @PathVariable Long id)
 	{
@@ -111,6 +115,56 @@ public class AdminController {
 		}
 		return "redirect:/panelAdmin";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@GetMapping("/adminEditUser/{id}")
+	public String adminEditUserProfile(Model model, @PathVariable Long id, HttpSession session)
+	{
+		User loggedUser = (User) session.getAttribute("loggedUser");
+		User user = userRepository.findFirstById(id);
+		
+		if(user == null || !loggedUser.isisAdmin()) {
+			return "redirect:http://localhost:8080/EndProject-CarRental/";
+		}
+		model.addAttribute("user", user);
+		return "adminUserEditForm";
+	}
+	
+	
+	@PostMapping("/adminEditUser/{id}")
+	public String adminEditUserProfile(@Valid User user, BindingResult result, @PathVariable Long id, Model model, HttpSession session)
+	{
+		User loggedUser = (User) session.getAttribute("loggedUser");
+		
+		if(user == null || !loggedUser.isisAdmin()) {
+			return "redirect:http://localhost:8080/EndProject-CarRental/";
+		}
+		
+		if (result.hasErrors())
+		{
+			return "adminUserEditForm";
+		}
+		
+		userRepository.save(user);
+		//model.addAttribute("userProfileChangedSuccessfully", "Dane użytkownika zmieniono pomyślnie.");
+		
+		return "redirect:http://localhost:8080/EndProject-CarRental/panelAdmin";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@ModelAttribute("addresses")
 	public List<Address> getAddresses() {

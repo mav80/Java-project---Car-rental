@@ -28,7 +28,7 @@ public class UserLoginController {
 	public String login(@RequestParam String email, @RequestParam String password, HttpSession session, Model model) {
 				
 		User user = userRepository.findFirstByEmail(email);
-		if(user!=null && BCrypt.checkpw(password,  user.getPassword())) {
+		if(user!=null && BCrypt.checkpw(password,  user.getPassword()) && user.isEnabled()) {
 			
 			//model.addAttribute("info", "Zalogowano");
 			//System.out.println("It matches.");

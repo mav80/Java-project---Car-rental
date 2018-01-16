@@ -79,6 +79,8 @@
 	<c:if test="${loggedUser.isAdmin == true}">
 		<p>Masz odpowiednie uprawnienia</p>
 		
+			<b>${userProfileChangedSuccessfully}</b><br><br>
+		
 		<div class="row">
 		
 		<figure class="col-sm-1">
@@ -144,6 +146,7 @@
 		${searchResultMessage}<br><br>
 
 		<c:forEach items="${orders}" var="order">
+		<table>
 			<list>
 			<ul>
 		<figure class="col-sm-1">
@@ -171,10 +174,12 @@
 
 			</ul>
 			</list>
+			</table>
 				<a		href="http://localhost:8080/EndProject-CarRental/adminEditOrder/${order.id}">edytuj	rezerwację</a>
 				<br>
 				<a	href="http://localhost:8080/EndProject-CarRental/deleteOrderAdmin/${order.id}">usuń	rezerwację</a>
 				<br>
+				<a		href="http://localhost:8080/EndProject-CarRental/adminEditUser/${order.user.id}">edytuj	użytkownika</a>
 				<br>
 				<br>
 				<br>

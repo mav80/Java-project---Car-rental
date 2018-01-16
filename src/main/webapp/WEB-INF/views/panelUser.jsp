@@ -57,8 +57,11 @@
 	});
 </script>
 </head>
+
+
 <body>
 	<h3>To jest widok panelUser.jsp</h3>
+	
 
 	<c:if test="${empty loggedUser}">
 		<p>Musisz się najpierw zalogować</p>
@@ -73,6 +76,8 @@
 
 
 	<c:if test="${not empty loggedUser}">
+	
+	<b>${userProfileChangedSuccessfully}</b><br><br>
 	
 	Oto wszystkie twoje rezerwacje:<br><br>
 
@@ -97,7 +102,7 @@
 				<li>Klasa zarezerwowanego auta: ${order.carClass.carClassDescription}</li>
 			</figure>
 			
-		<figure class="col-sm-1">
+		<figure class="col-sm-2">
 						<a href="http://localhost:8080/EndProject-CarRental/editOrder/${order.id}">edytuj rezerwację</a><br>
 				<a href="http://localhost:8080/EndProject-CarRental/deleteOrderUser/${order.id}">usuń rezerwację</a>
 		</figure>
@@ -114,18 +119,26 @@
 
 		<br>
 		<br>
-
+		
+			<br> <br>
+			<div class="row">
+					<figure class="col-sm-1">
+		</figure>
+	<figure class="col-sm-2">
+	<a href="http://localhost:8080/EndProject-CarRental/userEditProfile/${loggedUser.id}">edytuj swoje dane osobowe</a>
+	</figure>
+	</div>
+<div class="row">
+		<figure class="col-sm-1">
+		</figure>
 		<figure class="col-sm-2">
 		<a href="http://localhost:8080/EndProject-CarRental/">   powrót do
 			strony głównej</a>
 			</figure>
-
+</div>
 	</c:if>
 	
-	<br> <br>
-	<figure class="col-sm-2">
-	<a href="http://localhost:8080/EndProject-CarRental/userEditProfile/${user.id}">   edytuj swoje dane osobowe</a>
-	</figure>
+
 
 
 

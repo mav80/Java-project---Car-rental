@@ -64,7 +64,7 @@ public class HomeController {
 		}
 		
 		 if(user == null) {
-			 return "redirect:/";
+			 return "redirect:http://localhost:8080/EndProject-CarRental/";
 		 }
 		
 		order.setUser(user);

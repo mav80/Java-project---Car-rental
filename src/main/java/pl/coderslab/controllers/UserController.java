@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -84,6 +85,51 @@ public class UserController {
 		}
 		return "redirect:/panelUser";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	@GetMapping("/userEditProfile/{id}")
+	public String editUserProfile(Model model, @PathVariable Long id)
+	{
+		User user = userRepository.findFirstById(id);
+		
+		if(user == null) {
+			return "redirect:http://localhost:8080/EndProject-CarRental/";
+		}
+		model.addAttribute("user", user);
+		return "userRegistrationForm";
+	}
+	
+	
+	@PostMapping("/userEditProfile/{id}")
+	public String editUserProfile(@Valid User user, BindingResult result, @PathVariable Long id, Model model)
+	{
+		if (result.hasErrors())
+		{
+			return "userRegistrationForm";
+		}
+		
+		user.setPassword(BCrypt.hashpw(user.getPassword(),  BCrypt.gensalt()));
+		user.setEnabled(true);
+		userRepository.save(user);
+		
+		model.addAttribute("userProfileChangedSuccessfully", "Dane użytkownika zmieniono pomyślnie.");
+		
+		return "/panelUser";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
