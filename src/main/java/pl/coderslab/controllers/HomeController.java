@@ -2,6 +2,7 @@ package pl.coderslab.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -12,8 +13,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import pl.coderslab.app.Cookies;
 import pl.coderslab.entities.Address;
 import pl.coderslab.entities.CarClass;
 import pl.coderslab.entities.Order;
@@ -35,13 +36,15 @@ public class HomeController {
 	UserRepository userRepository;
 	
 	@GetMapping("")	
-	public String home(Model model, HttpSession session) {
+	public String home(Model model, HttpSession session, HttpServletRequest request) {
+		
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
 		
 		if(session.getAttribute("loggedUser") != null ) {
 			User user = (User)session.getAttribute("loggedUser"); //w sesji zapisujemy obiekty więc musimy zrobić rzutowanie na usera
 			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
 		}
-		model.addAttribute("order", new Order()); //przekazujemy order do zbindowania z formularzem
+		model.addAttribute("order", new Order()); //przekazujemy order do zbindowania z formularzem znajdującym się na stronie głównej
 		return "index";
 	}
 	

@@ -1,7 +1,10 @@
 package pl.coderslab.controllers;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -16,7 +19,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.WebUtils;
 
+import pl.coderslab.app.Cookies;
 import pl.coderslab.entities.Address;
 import pl.coderslab.entities.CarClass;
 import pl.coderslab.entities.Order;
@@ -40,7 +45,9 @@ public class AdminController {
 	@GetMapping("/panelAdmin")
 	public String panelAdmin(Model model, @RequestParam(defaultValue="-1") long userId, @RequestParam(defaultValue="") String name, 
 			@RequestParam(defaultValue="") String email, @RequestParam(defaultValue="") String startDate, @RequestParam(defaultValue="") String endDate, 
-			@RequestParam(defaultValue="") String showAll) {
+			@RequestParam(defaultValue="") String showAll, HttpServletRequest request, HttpSession session) {
+
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
 		
 		System.out.println("Param userId: " + userId);
 		System.out.println("Param name: " + name);

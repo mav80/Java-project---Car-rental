@@ -2,6 +2,7 @@ package pl.coderslab.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import pl.coderslab.app.Cookies;
 import pl.coderslab.entities.Address;
 import pl.coderslab.entities.CarClass;
 import pl.coderslab.entities.Order;
@@ -36,7 +38,10 @@ public class UserController {
 	UserRepository userRepository;
 	
 	@GetMapping("/panelUser")
-	public String login(Model model, HttpSession session) {
+	public String login(Model model, HttpSession session, HttpServletRequest request) {
+
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
+		
 		User user = (User) session.getAttribute("loggedUser");
 		
 		if(user != null) {
@@ -44,7 +49,6 @@ public class UserController {
 			model.addAttribute("orders", orderRepository.findByUserId(user.getId()));
 			//model.addAttribute("orders", orderRepository.findAllById(1));
 			//model.addAttribute("orders", orderRepository.findAll());
-			
 		}
 
 		return "panelUser";
