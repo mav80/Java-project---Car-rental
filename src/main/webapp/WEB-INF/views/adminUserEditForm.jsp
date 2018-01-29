@@ -10,9 +10,9 @@
 <link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/bootstrap-material-design.min.css" />
 <link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/ripples.min.css" />
-<link rel="stylesheet"	href="http://localhost:8080/EndProject-CarRental/static/css/bootstrap-material-datetimepicker.css" />
+<link rel="stylesheet"	href="<%out.print(request.getContextPath());%>/static/css/bootstrap-material-datetimepicker.css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"	rel="stylesheet">
-<link rel="stylesheet"	href="http://localhost:8080/EndProject-CarRental/static/css/style.css">
+<link rel="stylesheet"	href="<%out.print(request.getContextPath());%>/static/css/style.css">
 
 <script src="https://code.jquery.com/jquery-1.12.3.min.js"	integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="	crossorigin="anonymous"></script>
 <script type="text/javascript"	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -20,7 +20,7 @@
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/js/material.min.js"></script>
 <script type="text/javascript"	src="https://rawgit.com/FezVrasta/bootstrap-material-design/master/dist/js/material.min.js"></script>
 <script type="text/javascript"	src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
-<script type="text/javascript"	src="http://localhost:8080/EndProject-CarRental/static/js/bootstrap-material-datetimepicker.js"></script>
+<script type="text/javascript"	src="<%out.print(request.getContextPath());%>/static/js/bootstrap-material-datetimepicker.js"></script>
 
 <!-- datepicker -->
 
@@ -49,12 +49,12 @@
 
 	<c:if test="${empty loggedUser}">
 		<p>Musisz się najpierw zalogować</p>
-		<a href="http://localhost:8080/EndProject-CarRental/login">strona
+		<a href="<%out.print(request.getContextPath());%>/login">strona
 			logowania</a>
 		<br>
 		<br>
 
-		<a href="http://localhost:8080/EndProject-CarRental/">powrót do
+		<a href="<%out.print(request.getContextPath());%>/">powrót do
 			strony głównej</a>
 	</c:if>
 	
@@ -62,7 +62,7 @@
 <c:if test="${loggedUser.isAdmin == false}">
 		<p>Nie masz odpowiednich uprawnień</p>
 
-		<a href="http://localhost:8080/EndProject-CarRental/">powrót do
+		<a href="<%out.print(request.getContextPath());%>/">powrót do
 			strony głównej</a>
 </c:if>
 
@@ -108,7 +108,7 @@ Czy użytkownik jest aktywny (brak ptaszka = zbanowany)? <form:checkbox path="en
 		
 		
 
-		<a href="http://localhost:8080/EndProject-CarRental/">powrót do
+		<a href="<%out.print(request.getContextPath());%>/">powrót do
 			strony głównej</a>
 </c:if>
 	

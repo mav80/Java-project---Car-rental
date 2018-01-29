@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=8859_2"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
 <title>Movis Car rental</title>
 
 <link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -105,7 +105,7 @@ $(document).ready(function(){
 		<c:if test="${not empty info}">
 			<p><b>${info}</b></p>
 			<p>
-				<a href="logout">wyloguj siÄ™</a>
+				<a href="logout">wyloguj siê</a>
 			</p>
 		</c:if> 
 		
@@ -118,7 +118,7 @@ $(document).ready(function(){
 		
 		<c:if test="${loggedUser.isAdmin == false}">
 			<p>
-				<a href="panelUser">panel uÅ¼ytkownika</a>
+				<a href="panelUser">panel u¿ytkownika</a>
 			</p>
 		</c:if>
 		
@@ -142,8 +142,8 @@ $(document).ready(function(){
 	<section class="jumbotron">
 	<div class="container">
 		<div class="row text-center">
-			<h2>WypoÅ¼yczalnia aut</h2>
-			<h3>najlepsza na Å›wiecie</h3>
+			<h2>Wypo¿yczalnia aut</h2>
+			<h3>najlepsza na ¶wiecie</h3>
 			<!--  <a class="btn btn-primary" href="#" role="button">See all</a> -->
 		</div>
 	</div>
@@ -156,7 +156,7 @@ $(document).ready(function(){
 	<figure class="col-sm-1">
 	</figure>
 		<figure class="col-sm-4">
-		<p><b>Zarezerwuj swÃ³j samochÃ³d:</b></p>
+		<p><b>Zarezerwuj swój samochód:</b></p>
 		
 		
 		
@@ -167,8 +167,8 @@ $(document).ready(function(){
 		
 		<br>
 
-		<p>Data i godzina wypoÅ¼yczenia:</p>
-		<form:input path="pickupDate" id="date-format-begin" class="form-control floating-label" placeholder="Data wypoÅ¼yczenia"/>
+		<p>Data i godzina wypo¿yczenia:</p>
+		<form:input path="pickupDate" id="date-format-begin" class="form-control floating-label" placeholder="Data wypo¿yczenia"/>
 		<!-- <form:errors path="pickupDate"/><br> -->
 		<b>${dateError}</b>
 			
@@ -192,7 +192,7 @@ $(document).ready(function(){
 		
 		<c:if test="${empty info}">
 			<p>
-				<a href="login">zaloguj siÄ™ aby przejÅ›Ä‡ dalej</a>
+				<a href="login">zaloguj siê aby przej¶æ dalej</a>
 			</p>
 
 		</c:if>
@@ -221,7 +221,7 @@ $(document).ready(function(){
       <div class="item active">
         <img src="static/images/MustangCaliforniaSpecial.jpg" alt="Mustang" width="400" height="345">
         <div class="carousel-caption">
-          <h3>Do kaÅ¼dego auta darmowe ubezpieczenie</h3>
+          <h3>Do ka¿dego auta darmowe ubezpieczenie</h3>
           <p>od zgniecenia przez fortepian</p>
         </div>
       </div>
@@ -229,8 +229,8 @@ $(document).ready(function(){
       <div class="item">
         <img src="static/images/audir8.jpg" alt="Audi" width="400" height="345">
         <div class="carousel-caption">
-          <h3>Oferujemy piÄ…te koÅ‚o</h3>
-          <p>do kaÅ¼dego z naszych wozÃ³w</p>
+          <h3>Oferujemy pi±te ko³o</h3>
+          <p>do ka¿dego z naszych wozów</p>
         </div>
       </div>
     
@@ -238,7 +238,7 @@ $(document).ready(function(){
         <img src="static/images/lambo.jpg" alt="Lambo" width="400" height="345">
         <div class="carousel-caption">
           <h3>Promocja na limuzyny</h3>
-          <p>przy wynajmie na 365 dni 366. dzieÅ„ gratis!</p>
+          <p>przy wynajmie na 365 dni 366. dzieñ gratis!</p>
         </div>
       </div>
 

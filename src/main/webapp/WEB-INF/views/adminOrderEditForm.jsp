@@ -15,11 +15,11 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/ripples.min.css" />
 <link rel="stylesheet"
-	href="http://localhost:8080/EndProject-CarRental/static/css/bootstrap-material-datetimepicker.css" />
+	href="<%out.print(request.getContextPath());%>/static/css/bootstrap-material-datetimepicker.css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="http://localhost:8080/EndProject-CarRental/static/css/style.css">
+	href="<%out.print(request.getContextPath());%>/static/css/style.css">
 
 <script src="https://code.jquery.com/jquery-1.12.3.min.js"
 	integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
@@ -35,7 +35,7 @@
 <script type="text/javascript"
 	src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
 <script type="text/javascript"
-	src="http://localhost:8080/EndProject-CarRental/static/js/bootstrap-material-datetimepicker.js"></script>
+	src="<%out.print(request.getContextPath());%>/static/js/bootstrap-material-datetimepicker.js"></script>
 
 <!-- datepicker -->
 
@@ -108,14 +108,14 @@
 	<c:if test="${empty loggedUser}">
 		<p>Musisz się najpierw zalogować</p>
 
-		<a href="http://localhost:8080/EndProject-CarRental/">powrót do
+		<a href="<%out.print(request.getContextPath());%>/">powrót do
 			strony głównej</a>
 	</c:if>
 
 	<c:if test="${empty order}">
 		<p>Musisz się najpierw zalogować</p>
 
-		<a href="http://localhost:8080/EndProject-CarRental/">powrót do
+		<a href="<%out.print(request.getContextPath());%>/">powrót do
 			strony głównej</a>
 	</c:if>
 
@@ -125,7 +125,7 @@
 	<c:if test="${loggedUser.isAdmin == false}">
 		<p>Nie masz odpowiednich uprawnień do edycji tego zamówienia</p>
 
-		<a href="http://localhost:8080/EndProject-CarRental/">powrót do
+		<a href="<%out.print(request.getContextPath());%>/">powrót do
 			strony głównej</a>
 	</c:if>
 

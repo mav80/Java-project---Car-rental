@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -15,11 +14,11 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/ripples.min.css" />
 <link rel="stylesheet"
-	href="http://localhost:8080/EndProject-CarRental/static/css/bootstrap-material-datetimepicker.css" />
+	href="<%out.print(request.getContextPath());%>/static/css/bootstrap-material-datetimepicker.css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="http://localhost:8080/EndProject-CarRental/static/css/style.css">
+	href="<%out.print(request.getContextPath());%>/static/css/style.css">
 
 <script src="https://code.jquery.com/jquery-1.12.3.min.js"
 	integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
@@ -35,7 +34,7 @@
 <script type="text/javascript"
 	src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
 <script type="text/javascript"
-	src="http://localhost:8080/EndProject-CarRental/static/js/bootstrap-material-datetimepicker.js"></script>
+	src="<%out.print(request.getContextPath());%>/static/js/bootstrap-material-datetimepicker.js"></script>
 
 <!-- datepicker -->
 
@@ -89,7 +88,7 @@ Hasło<br>
 	<div class="row">
 		<figure class="col-sm-1"> </figure>
 		<figure class="col-sm-2"> <a
-			href="http://localhost:8080/EndProject-CarRental/"> powrót do
+			href="<%out.print(request.getContextPath());%>/"> powrót do
 			strony głównej</a> </figure>
 	</div>
 

@@ -1,5 +1,9 @@
 package pl.coderslab.controllers;
 
+import java.io.UnsupportedEncodingException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -25,15 +29,21 @@ public class UserRegistrationController {
 	}
 	
 	@PostMapping("/register")
-	public String register(@Valid User user, BindingResult result) {
+	public String register(@Valid User user, BindingResult result, HttpServletRequest request, HttpServletResponse response) {
+		
+		//System.out.println("Odebrane z formy imię: " + user.getUsername());
 		
 		if(result.hasErrors()) {
 			return "userRegistrationForm";
 		}
 		
-		//zaszygrować i zapisać hasło
+		//szyfrujemy i zapisujemy hasło
 		user.setPassword(BCrypt.hashpw(user.getPassword(),  BCrypt.gensalt()));
+		
+		
 		user.setEnabled(true);
+		
+		
 		userRepository.save(user);
 		
 		return "success";
