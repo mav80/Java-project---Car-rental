@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -69,6 +70,25 @@ public class HomeController {
 		 if(user == null) {
 			 return "redirect:/login";
 		 }
+		 
+		 DateTime startDate = new DateTime(order.getPickupDate());
+		 DateTime endDate = new DateTime(order.getReturnDate());
+		 DateTime nowDate = new DateTime();
+		 
+		if(startDate.isBefore(nowDate.plusMinutes(55))){
+			model.addAttribute("dateError", "Data odbioru nie może być wcześniejsza niż teraz + 1 godzina!");
+			return "index";
+		}
+		 
+		if(startDate.isAfter(endDate)){
+			model.addAttribute("dateError", "Data zwrotu nie może być wcześniejsza niż data wynajęcia!");
+			return "index";
+		}
+		
+		if(endDate.isBefore(startDate.plusHours(1))){
+			model.addAttribute("dateError", "Nie możesz wynająć auta na mniej niż 1 dzień!");
+			return "index";
+		}
 		
 		order.setUser(user);
 		orderRepository.save(order);
