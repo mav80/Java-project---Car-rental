@@ -70,10 +70,10 @@ Adres email (potrzebne do logowania)<br>
 		<form:input path="email" placeholder="adres email"/> <form:errors path="email" style="font-weight: bold; font-style: italic; color: red"/><br> <br>	 
 
 Wiek (minimum 18 lat)<br>	
-		<form:input path="age"/> <form:errors path="age"  style="font-weight: bold; font-style: italic; color: red"/><br><br>
+		<form:input path="age" type="number"/> <form:errors path="age"  style="font-weight: bold; font-style: italic; color: red"/><br><br>
 		
 Numer telefonu komórkowego (9 cyfr)<br>
-		<form:input path="phone"/> <form:errors path="phone"  style="font-weight: bold; font-style: italic; color: red"/><br><br>
+		<form:input path="phone" type="number"/> <form:errors path="phone"  style="font-weight: bold; font-style: italic; color: red"/><br><br>
 		
 Hasło<br>		
 		<form:password path="password" placeholder="hasło"/> <form:errors path="password"  style="font-weight: bold; font-style: italic; color: red"/><br><br>

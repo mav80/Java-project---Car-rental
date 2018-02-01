@@ -2,6 +2,10 @@ package pl.coderslab.controllers;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -9,6 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,12 +56,12 @@ public class AdminController {
 
 		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
 		
-		System.out.println("Param userId: " + userId);
-		System.out.println("Param name: " + name);
-		System.out.println("Param email: " + email);
+//		System.out.println("Param userId: " + userId);
+//		System.out.println("Param name: " + name);
+//		System.out.println("Param email: " + email);
 		System.out.println("Param startDate: " + startDate);
 		System.out.println("Param endDate: " + endDate);
-		System.out.println("Param showAll: " + showAll);
+//		System.out.println("Param showAll: " + showAll);
 		
 		
 		if(userId > 0) {
@@ -73,14 +80,44 @@ public class AdminController {
 		}
 		
 		if(!startDate.isEmpty() && !endDate.isEmpty() ) {
+			
+			DateTime jodaEndtDate = new DateTime(endDate);
+			DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
+			endDate = fmt.print(jodaEndtDate.plusDays(1));
 			model.addAttribute("orders", orderRepository.customFindOrdersCreatedBetweenGivenDates(startDate, endDate));
 			model.addAttribute("searchResultMessage", "Oto wyniki wyszukiwania:");
 		}
+		
+		
+		
+		if(!startDate.isEmpty() && endDate.isEmpty() ) { //szukamy od dnia wskazanego do dzisiejszego
+			DateTime jodaStartDate = new DateTime(startDate);
+			DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
+			//String tomorrowDate = fmt.print(jodaStartDate.plusDays(1));
+			endDate = fmt.print(new DateTime().plusDays(1)); //data dzisiejsza + 1
+
+			model.addAttribute("orders", orderRepository.customFindOrdersCreatedBetweenGivenDatesAscending(startDate, endDate));
+			model.addAttribute("searchResultMessage", "Oto wyniki wyszukiwania od wybranego dnia początkowego:");
+		}
+		
+		if(startDate.isEmpty() && !endDate.isEmpty() ) { //szukamy początku do  dnia dzisiejszego
+			startDate = "2000-01-01";
+			DateTime jodaEndDate = new DateTime(endDate);
+			DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
+			endDate = fmt.print(jodaEndDate.plusDays(1));
+			System.out.println(endDate);
+			model.addAttribute("orders", orderRepository.customFindOrdersCreatedBetweenGivenDates(startDate, endDate));
+			model.addAttribute("searchResultMessage", "Oto wyniki wyszukiwania do wybranego dnia końcowego:");
+		}
+		
+		
 		
 		if(showAll.equals("true") ) {
 			model.addAttribute("orders", orderRepository.findAll());
 			model.addAttribute("searchResultMessage", "Oto wyniki wyszukiwania:");
 		}
+		
+		//System.out.println(new Date().);
 		
 		return "panelAdmin";
 	}
