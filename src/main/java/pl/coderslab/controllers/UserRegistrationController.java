@@ -39,14 +39,12 @@ public class UserRegistrationController {
 		
 		//szyfrujemy i zapisujemy hasło
 		user.setPassword(BCrypt.hashpw(user.getPassword(),  BCrypt.gensalt()));
-		
-		
 		user.setEnabled(true);
-		
-		
 		userRepository.save(user);
 		
-		return "success";
+		//return "success";
+		
+		return "redirect:http://localhost:8080/EndProject-CarRental/login";
 		
 	}
 	

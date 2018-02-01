@@ -62,12 +62,12 @@ public class HomeController {
 		}
 		
 		if(result.hasErrors()){
-			model.addAttribute("dateError", "Wybierz poprawną datę!");
+			model.addAttribute("dateError", "Żadna z dat nie może być pusta!");
 			return "index";
 		}
 		
 		 if(user == null) {
-			 return "redirect:http://localhost:8080/EndProject-CarRental/";
+			 return "redirect:/login";
 		 }
 		
 		order.setUser(user);

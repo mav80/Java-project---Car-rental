@@ -59,7 +59,7 @@
 
 
 <body>
-	<h3>To jest widok panelAdmin.jsp</h3>
+	<h3>Panel administracyjny</h3>
 	
 	<c:if test="${empty loggedUser}">
 		<p>Nie masz odpowiednich uprawnień</p>

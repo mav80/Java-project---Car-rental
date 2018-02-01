@@ -58,7 +58,7 @@
 </script>
 </head>
 <body>
-	<h3>loginForm.jsp</h3>
+	<h3>Zaloguj się:</h3>
 	
 	${info}
 	<form method="post">

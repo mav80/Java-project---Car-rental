@@ -58,27 +58,26 @@
 </head>
 <body>
 	<h1>To jest widok userRegistrationForm.jsp</h1>
+	
+	<h3>Wszystkie pola są konieczne. Do późniejszego logowania użyte będą email oraz hasło.</h3>
 
 	<form:form method="post" modelAttribute="user">
 
 Imię i nazwisko<br>
-		<form:input path="username" placeholder="imię i nazwisko"/><br>
-		<form:errors path="username"/><br>
-
-Adres email<br>		
-		<form:input path="email" placeholder="adres email"/><br>
-		<form:errors path="email"/><br>
+		<form:input path="username" placeholder="imię i nazwisko"/> <form:errors path="username"  style="font-weight: bold; font-style: italic; color: red"/><br><br>
+		
+Adres email (potrzebne do logowania)<br>		
+		<form:input path="email" placeholder="adres email"/> <form:errors path="email" style="font-weight: bold; font-style: italic; color: red"/><br> <br>	 
 
 Wiek (minimum 18 lat)<br>	
-		<form:input path="age"/><br>
-		<form:errors path="age"/><br>
-
+		<form:input path="age"/> <form:errors path="age"  style="font-weight: bold; font-style: italic; color: red"/><br><br>
+		
 Numer telefonu komórkowego (9 cyfr)<br>
-		<form:input path="phone"/><br>
-		<form:errors path="phone"/><br>
+		<form:input path="phone"/> <form:errors path="phone"  style="font-weight: bold; font-style: italic; color: red"/><br><br>
+		
 Hasło<br>		
-		<form:password path="password" placeholder="hasło"/><br>
-		<form:errors path="password"/><br>
+		<form:password path="password" placeholder="hasło"/> <form:errors path="password"  style="font-weight: bold; font-style: italic; color: red"/><br><br>
+		
 		
 		<input type="submit" value="zarejestruj">
 

@@ -35,13 +35,13 @@ public class User {
 	@NotNull
 	@Min(18)
 	@Column(nullable = false)
-	private int age;
+	private java.lang.Integer age; // używamy java.lang.Integer zamiast int aby w formularzu rejestracji nie pokazywało się domyślnie 0 tylko puste pole. To samo trzeba ustawić w setterze i getterze! 
 	
 	//@NotBlank - powoduje bład 500 przy wysłaniu pustego formularza rejestracji
 	@NotNull
 	@DecimalMin(value = "100000000")
 	@Column(nullable = false)
-	private int phone;
+	private java.lang.Integer phone; // używamy java.lang.Integer zamiast int aby w formularzu rejestracji nie pokazywało się domyślnie 0 tylko puste pole. To samo trzeba ustawić w setterze i getterze! 
 	
 	@NotBlank
 	@NotNull
@@ -120,19 +120,19 @@ public class User {
 		this.email = email;
 	}
 
-	public int getAge() {
+	public java.lang.Integer getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(java.lang.Integer age) {
 		this.age = age;
 	}
 
-	public int getPhone() {
+	public java.lang.Integer getPhone() { 
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(java.lang.Integer phone) {
 		this.phone = phone;
 	}
 
