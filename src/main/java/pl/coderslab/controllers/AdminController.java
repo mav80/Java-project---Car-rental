@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.WebUtils;
 
 import pl.coderslab.app.Cookies;
@@ -52,7 +54,10 @@ public class AdminController {
 	@GetMapping("/panelAdmin")
 	public String panelAdmin(Model model, @RequestParam(defaultValue="-1") long userId, @RequestParam(defaultValue="") String name, 
 			@RequestParam(defaultValue="") String email, @RequestParam(defaultValue="") String startDate, @RequestParam(defaultValue="") String endDate, 
-			@RequestParam(defaultValue="") String showAll, HttpServletRequest request, HttpSession session) {
+			@RequestParam(defaultValue="") String showAll, 
+			
+			@RequestParam(defaultValue="-1") long userUserId, @RequestParam(defaultValue="-1") int userUserUserAge, @RequestParam(defaultValue="-1") int userUserPhone, @RequestParam(defaultValue="") String userShowBannedUsers, @RequestParam(defaultValue="") String userShowAllUsers,
+			HttpServletRequest request, HttpSession session) {
 
 		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
 		
@@ -62,6 +67,9 @@ public class AdminController {
 		System.out.println("Param startDate: " + startDate);
 		System.out.println("Param endDate: " + endDate);
 //		System.out.println("Param showAll: " + showAll);
+		
+		
+		//orders
 		
 		
 		if(userId > 0) {
@@ -119,6 +127,51 @@ public class AdminController {
 		
 		//System.out.println(new Date().);
 		
+		
+		
+		
+		
+		
+		//users
+		
+		
+		
+		
+		
+		
+		
+		
+		if(userUserId > 0 ) {
+			model.addAttribute("users", userRepository.findAllById(userUserId));
+			model.addAttribute("searchResultMessage", "Oto wyniki wyszukiwania użytkowników:");
+		}
+		
+		if(userUserUserAge > 0 ) {
+			model.addAttribute("users", userRepository.findAllByAge(userUserUserAge));
+			model.addAttribute("searchResultMessage", "Oto wyniki wyszukiwania użytkowników:");
+		}
+		
+		if(userUserPhone > 0 ) {
+			model.addAttribute("users", userRepository.customFindAllByPhone(userUserPhone));
+			model.addAttribute("searchResultMessage", "Oto wyniki wyszukiwania użytkowników:");
+		}
+		
+		if(userShowBannedUsers.equals("true") ) {
+			model.addAttribute("users", userRepository.findAllByEnabled(false));
+			model.addAttribute("searchResultMessage", "Oto wyniki wyszukiwania użytkowników:");
+		}
+		
+		
+		if(userShowAllUsers.equals("true") ) {
+			model.addAttribute("users", userRepository.findAll());
+			model.addAttribute("searchResultMessage", "Oto wyniki wyszukiwania użytkowników:");
+		}
+		
+		
+		
+		
+		
+		
 		return "panelAdmin";
 	}
 	
@@ -139,19 +192,23 @@ public class AdminController {
 	}
 	
 	@PostMapping("/adminEditOrder/{id}")
-	public String editId(@Valid Order order, BindingResult result, @PathVariable Long id)
+	public String editId(@Valid Order order, BindingResult result, @PathVariable Long id, Model model)
 	{
 		if (result.hasErrors())
 		{
 			return "adminOrderEditForm";
 		}
+		model.addAttribute("searchResultMessage", "Dane rezerwacji zmieniono pomyślnie.");
 		orderRepository.save(order);
 		return "redirect:/panelAdmin";
 	}
 	
 	
+	
+	
+	
 	@GetMapping("/deleteOrderAdmin/{id}")
-	public String deleteId(@PathVariable Long id)
+	public String deleteOrderId(@PathVariable Long id)
 	{
 		Order order = orderRepository.findFirstById(id);
 		if(order != null) {
@@ -159,6 +216,10 @@ public class AdminController {
 		}
 		return "redirect:/panelAdmin";
 	}
+	
+	
+	
+
 	
 	
 	
@@ -197,9 +258,23 @@ public class AdminController {
 		}
 		
 		userRepository.save(user);
-		//model.addAttribute("userProfileChangedSuccessfully", "Dane użytkownika zmieniono pomyślnie.");
+		model.addAttribute("searchResultMessage", "Dane użytkownika zmieniono pomyślnie.");
 		
-		return "redirect:http://localhost:8080/EndProject-CarRental/panelAdmin";
+		return  "redirect:http://localhost:8080/EndProject-CarRental/panelAdmin";
+	}
+	
+	
+
+	
+	
+	@GetMapping("/deleteUserAdmin/{id}")
+	public String deleteUserId(@PathVariable Long id)
+	{
+		User user = userRepository.findFirstById(id);
+		if(user != null) {
+			userRepository.delete(user);
+		}
+		return "redirect:/panelAdmin";
 	}
 	
 	
@@ -219,5 +294,18 @@ public class AdminController {
 	public List<CarClass> getCars() {
 		return carClassRepository.findAll();
 	}
+	
+	
+	
+	
+//	@ModelAttribute("users")
+//	public List<User> getUsers() {
+//		return userRepository.findAll();
+//	}
+//	
+//	@ModelAttribute("orders")
+//	public List<Order> getOrders() {
+//		return orderRepository.findAll();
+//	}
 
 }

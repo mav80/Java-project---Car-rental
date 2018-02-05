@@ -149,13 +149,12 @@
 			<form:input path="pickupDate" id="date-format-begin"
 				class="form-control floating-label" placeholder="Data wypożyczenia" />
 			<!-- <form:errors path="pickupDate"/><br> -->
-			<b>${dateError}</b>
 
 			<p>Data i godzina zwrotu:</p>
 			<form:input path="returnDate" id="date-format-end"
 				class="form-control floating-label" placeholder="Data zwrotu" />
 			<!-- <form:errors path="returnDate"/><br> -->
-			<b>${dateError}</b>
+			<b style="color: red">${dateError}</b>
 
 			<p>Klasa auta:</p>
 			<form:select path="carClass.id" items="${cars}"

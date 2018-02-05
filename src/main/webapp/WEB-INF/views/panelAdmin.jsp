@@ -87,7 +87,11 @@
 		<figure class="col-sm-1">
 		</figure>
 		
-			<figure class="col-sm-3">
+		<table style="color: blue">
+		<tr style="background-color: #e9e9e9">
+		
+		<td>
+
 
 			<form>
 			Podaj id użytkownika którego rezerwacje chcesz odnaleźć:<br> 
@@ -102,11 +106,16 @@
 			<input type="submit" value="Pokaż"><br>
 			</form>
 			
-
-			</figure>
-
+	
 			
-			<figure class="col-sm-4">
+			</td>
+			
+			
+			
+			<td>
+			
+	
+			
 			<form>
 			Podaj email użytkownika którego rezerwacje chcesz odnaleźć:<br>
 			<input type="text" name="email" placeholder="Podaj email"><br>
@@ -122,28 +131,139 @@
 			<br> 
 			</form>
 			
-			</figure>
+		
 			
-			<figure class="col-sm-3">
+			</td>
+			
+			
+			
+			<td>
+			
+			
+			
 			<form>
 			Wyszukaj rezerwacje utworzone pomiędzy określonymi datami:<br>
 			<input type="text" name="startDate" id="date-format-begin" class="form-control floating-label" placeholder="Data początkowa" />
 			<input type="text" name="endDate" id="date-format-end" class="form-control floating-label" placeholder="Data końcowa" />
 			<input type="submit" value="Wyszukaj"><br>
 			</form>
-			</figure>
+			
+			
+			</tr>
+			
+			</td>
+			
+			</table>
+			
 			
 			<figure class="col-sm-1">
 			</figure>
 			
 			</div>
 			
+			
+			
+			
+			
+			
 
-<p><b>Zarządzanie użytkownikami</b></p>
+<br><p><b>Zarządzanie użytkownikami</b></p>
+
+
+
+		<div class="row">
+		
+		<figure class="col-sm-1">
+		</figure>
+		
+		<table style="color: blue">
+		<tr style="background-color: #e9e9e9">
+		<td>
+			<figure class="col-bg-4">
+
+			<form>
+			Znajdź użytkownika po ID<br> 
+			<input type="number" name="userUserId" min="1" placeholder="Podaj id"><br>
+			<input type="submit" value="Wyszukaj"> <br>
+			<br> 
+			</form>
+			
+			<form>
+			<br>Znajdź użytkownika po wieku<br>
+			<input type="number" name="userUserUserAge" min="1" placeholder="Podaj wiek"><br>
+			<input type="submit" value="Pokaż"><br>
+			</form>
+			
+			</figure>
+			</td>
+
+			<td>
+			<figure class="col-bg-4">
+			
+			<form>
+			Znajdź użytkownika po numerze telefonu<br>
+			<input type="number" name="userUserPhone" placeholder="Podaj numer"><br>
+			<input type="submit" value="Wyszukaj"> <br>
+			<br> 
+			</form>
+			
+			</figure>
+			</td>
+			
+			
+			<td>
+			<figure class="col-bg-4">
+			
+			<form>
+			Pokaż użytkowników zbanowanych<br>
+			<input type="hidden" name="userShowBannedUsers" value="true">
+			<input type="submit" value="Wyszukaj"> <br> <br>
+			</form>
+			
+			<form>
+			Pokaż wszystkich użytkowników<br>
+			<input type="hidden" name="userShowAllUsers" value="true">
+			<input type="submit" value="Wyszukaj"> <br> 
+
+			</form>
+			</figure>
+			</td>
+			
+			</tr>
+			</table>
+			
+			
+			<figure class="col-sm-1">
+			</figure>
+			
+			</div>
+			
+			
+			
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		
 
-		<!-- <p>Oto rezerwacje które wyszukałeś:</p>  -->
-		<br>${searchResultMessage}<br><br>
+		<!-- REZERWACJE  -->
+		<br><p  style="color: red"><b>${searchResultMessage}</b></p><p style="color: magenta"><b>${param.searchResultMessage}</b></p>
 
 	<table>
 
@@ -193,9 +313,9 @@
 							<li>Klasa zarezerwowanego auta:
 								${order.carClass.carClassDescription}</li>
 
-				</td>
 						</ul>
 					</list>
+				</td>
 
 			
 
@@ -204,11 +324,11 @@
 				<list>
 					<ul>
 
-						<li><a	href="<%out.print(request.getContextPath());%>/adminEditOrder/${order.id}">edytuj	rezerwację</a></li>
+						<li><a	href="<%out.print(request.getContextPath());%>/adminEditOrder/${order.id}">edytuj</a></li>
 
-						<li><a	href="<%out.print(request.getContextPath());%>/deleteOrderAdmin/${order.id}">usuń	rezerwację</a></li>
+						<li><a	href="<%out.print(request.getContextPath());%>/deleteOrderAdmin/${order.id}">usuń</a></li>
 
-						<li><a	href="<%out.print(request.getContextPath());%>/adminEditUser/${order.user.id}">edytuj	użytkownika</a></li>
+						<li><a	href="<%out.print(request.getContextPath());%>/adminEditUser/${order.user.id}">edytuj użytkownika</a></li>
 			
 					</ul>
 				</list>
@@ -222,6 +342,106 @@
 		
 		
 		</table>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!-- UŻYTKOWNICY  -->
+		
+		<table>
+
+
+		<c:forEach items="${users}" var="user">
+		
+
+		
+	<div class="row">
+				
+		
+		<tr>
+
+				<td>
+				
+					<list>
+						<ul>
+							<li>ID: ${user.id}</li>
+							<li>Imię: ${user.username}</li>
+							<li>Wiek: ${user.age}</li>
+						</ul>
+					</list>
+				
+
+				</td>
+				
+
+				
+				<td>
+					<list>
+						<ul>
+
+							<li>Email: ${user.email}</li>
+							<li>Telefon: ${user.phone}</li>
+							<li>Czy aktywny: ${user.enabled}</li>
+
+						</ul>
+					</list>
+				</td>
+
+			
+
+			
+			<td>
+				<list>
+					<ul>
+						<li><a	href="<%out.print(request.getContextPath());%>/panelAdmin?userId=${user.id}">pokaż wszystkie rezerwacje tego użytkownika</a></li>
+						<li><a	href="<%out.print(request.getContextPath());%>/adminEditUser/${user.id}">edytuj użytkownika</a></li>
+						<li><a	href="<%out.print(request.getContextPath());%>/deleteUserAdmin/${user.id}">usuń użytkownika i wszystkie jego rezerwacje</a></li>
+					</ul>
+				</list>
+			</td>
+		
+		</tr>
+
+	</div> <!--  koniec div "row" -->
+
+		</c:forEach>
+		
+		
+		</table>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 		<br>
 		<br>

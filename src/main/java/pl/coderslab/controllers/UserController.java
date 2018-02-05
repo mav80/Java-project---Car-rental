@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import pl.coderslab.app.Cookies;
+import pl.coderslab.app.OrderChecker;
 import pl.coderslab.entities.Address;
 import pl.coderslab.entities.CarClass;
 import pl.coderslab.entities.Order;
@@ -69,12 +70,18 @@ public class UserController {
 	
 	
 	@PostMapping("/editOrder/{id}")
-	public String editId(@Valid Order order, BindingResult result, @PathVariable Long id)
+	public String editId(@Valid Order order, BindingResult result, @PathVariable Long id, Model model)
 	{
 		if (result.hasErrors())
 		{
 			return "orderEditForm";
 		}
+		
+		 if(OrderChecker.checkOrderDates(order, result) != "ok") { 
+			 model.addAttribute("dateError", OrderChecker.checkOrderDates(order, result));
+			 return "orderEditForm"; 
+		 }
+		 
 		orderRepository.save(order);
 		return "redirect:/panelUser";
 	}

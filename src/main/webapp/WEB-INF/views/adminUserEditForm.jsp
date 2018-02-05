@@ -84,11 +84,11 @@ Adres email<br>
 		<form:errors path="email"/><br>
 
 Wiek (minimum 18 lat)<br>	
-		<form:input path="age"/><br>
+		<form:input type="number" path="age"/><br>
 		<form:errors path="age"/><br>
 
 Numer telefonu komórkowego (9 cyfr)<br>
-		<form:input path="phone"/><br>
+		<form:input type="number" path="phone"/><br>
 		<form:errors path="phone"/><br>
 Hasło<br>		
 		<form:input path="password" placeholder="hasło"/><br>
