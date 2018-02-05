@@ -76,7 +76,7 @@ public class HomeController {
 		 DateTime nowDate = new DateTime();
 		 
 		if(startDate.isBefore(nowDate.plusMinutes(55))){
-			model.addAttribute("dateError", "Data odbioru nie może być wcześniejsza niż teraz + 1 godzina!");
+			model.addAttribute("dateError", "Data wypożyczenia nie może być wcześniejsza niż teraz + 1 godzina!");
 			return "index";
 		}
 		 

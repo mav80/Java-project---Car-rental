@@ -98,3 +98,18 @@ footer li img {
   width: 32px;
   height: 32px;
 }
+
+table {
+  border-collapse: collapse;
+}
+th, td {
+  border: 1px solid black;
+  padding: 10px 15px;
+}
+th {
+  font-weight: bold;
+}
+
+table > tbody > tr:nth-of-type(odd) {
+  background-color: #c9c9c9;
+  }

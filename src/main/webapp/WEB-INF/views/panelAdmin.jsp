@@ -78,7 +78,9 @@
 	<c:if test="${loggedUser.isAdmin == true}">
 		<p>Masz odpowiednie uprawnienia</p>
 		
-			<b>${userProfileChangedSuccessfully}</b><br><br>
+			<b>${userProfileChangedSuccessfully}</b><br>
+			
+			<p><b>Zarządzanie zamówieniami</b></p>
 		
 		<div class="row">
 		
@@ -137,58 +139,92 @@
 			</div>
 			
 
-
+<p><b>Zarządzanie użytkownikami</b></p>
 		
 
 		<!-- <p>Oto rezerwacje które wyszukałeś:</p>  -->
-		<br>
-		${searchResultMessage}<br><br>
+		<br>${searchResultMessage}<br><br>
+
+	<table>
+
 
 		<c:forEach items="${orders}" var="order">
-		<table>
-			<list>
-			<ul>
-		<figure class="col-sm-1">
-		</figure>
-			<figure class="col-sm-3">
-				<li>ID rezerwacji: ${order.id}</li>
-				<li>ID użytkownika: ${order.user.id}</li>
-				<li>Imię użytkownika: ${order.user.username}</li>
-				</figure>
-				<figure class="col-sm-3">
-				<li>Email użytkownika: ${order.user.email}</li>
-				<li>Data stworzenia rezerwacji: ${order.created}
-				<li>Miejsce odbioru auta: ${order.address.name},
-					${order.address.street}, ${order.address.zipCode},
-					${order.address.city}</li>
-				</figure>
-				<figure class="col-sm-4">
-				<li>Data odbioru auta: ${order.pickupDate}</li>
-				<li>Data zwrotu auta: ${order.returnDate}</li>
-				<li>Klasa zarezerwowanego auta:
-					${order.carClass.carClassDescription}</li>
-				</figure>
-		<figure class="col-sm-1">
-		</figure>
+		
 
-			</ul>
-			</list>
-			</table>
-				<a		href="<%out.print(request.getContextPath());%>/adminEditOrder/${order.id}">edytuj	rezerwację</a>
-				<br>
-				<a	href="<%out.print(request.getContextPath());%>/deleteOrderAdmin/${order.id}">usuń	rezerwację</a>
-				<br>
-				<a		href="<%out.print(request.getContextPath());%>/adminEditUser/${order.user.id}">edytuj	użytkownika</a>
-				<br>
-				<br>
-				<br>
+		
+	<div class="row">
+				
+		
+		<tr>
+
+				<td>
+				
+					<list>
+						<ul>
+							<li>ID rezerwacji: ${order.id}</li>
+							<li>ID użytkownika: ${order.user.id}</li>
+							<li>Imię użytkownika: ${order.user.username}</li>
+						</ul>
+					</list>
+				
+
+				</td>
+				
+				<td>
+				
+					<list>
+						<ul>
+							<li>Email użytkownika: ${order.user.email}</li>
+							<li>Data stworzenia rezerwacji: ${order.created}
+							<li>Miejsce odbioru auta: ${order.address.name},
+								${order.address.street}, ${order.address.zipCode},
+								${order.address.city}</li>
+						</ul>
+					</list>
+
+				</td>
+				
+				<td>
+					<list>
+						<ul>
+
+							<li>Data odbioru auta: ${order.pickupDate}</li>
+							<li>Data zwrotu auta: ${order.returnDate}</li>
+							<li>Klasa zarezerwowanego auta:
+								${order.carClass.carClassDescription}</li>
+
+				</td>
+						</ul>
+					</list>
+
+			
+
+			
+			<td>
+				<list>
+					<ul>
+
+						<li><a	href="<%out.print(request.getContextPath());%>/adminEditOrder/${order.id}">edytuj	rezerwację</a></li>
+
+						<li><a	href="<%out.print(request.getContextPath());%>/deleteOrderAdmin/${order.id}">usuń	rezerwację</a></li>
+
+						<li><a	href="<%out.print(request.getContextPath());%>/adminEditUser/${order.user.id}">edytuj	użytkownika</a></li>
+			
+					</ul>
+				</list>
+			</td>
+		
+		</tr>
+
+	</div> <!--  koniec div "row" -->
 
 		</c:forEach>
+		
+		
+		</table>
 
 		<br>
 		<br>
-
-
 
 
 		<a href="<%out.print(request.getContextPath());%>/">powrót do
@@ -197,5 +233,5 @@
 
 
 
-</body>
+	</body>
 </html>
