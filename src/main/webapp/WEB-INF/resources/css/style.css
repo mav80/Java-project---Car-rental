@@ -99,17 +99,17 @@ footer li img {
   height: 32px;
 }
 
-table {
+.mytable table {
   border-collapse: collapse;
 }
-th, td {
+.mytable th, td {
   border: 1px solid black;
   padding: 10px 15px;
 }
-th {
+.mytable th {
   font-weight: bold;
 }
 
-table > tbody > tr:nth-of-type(odd) {
+.mytable table > tbody > tr:nth-of-type(odd) {
   background-color: #c9c9c9;
   }

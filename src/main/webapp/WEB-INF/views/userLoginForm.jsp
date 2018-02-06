@@ -4,59 +4,13 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ include file="fragments/header.jsp"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Login form</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/bootstrap-material-design.min.css" />
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/ripples.min.css" />
-<link rel="stylesheet"
-	href="<%out.print(request.getContextPath());%>/static/css/bootstrap-material-datetimepicker.css" />
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="<%out.print(request.getContextPath());%>/static/css/style.css">
-
-<script src="https://code.jquery.com/jquery-1.12.3.min.js"
-	integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
-	crossorigin="anonymous"></script>
-<script type="text/javascript"
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/js/ripples.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/js/material.min.js"></script>
-<script type="text/javascript"
-	src="https://rawgit.com/FezVrasta/bootstrap-material-design/master/dist/js/material.min.js"></script>
-<script type="text/javascript"
-	src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
-<script type="text/javascript"
-	src="<%out.print(request.getContextPath());%>/static/js/bootstrap-material-datetimepicker.js"></script>
-
-<!-- datepicker -->
-
-<script type="text/javascript">
-	$(document).ready(function() {
-
-		$('#date-format-begin').bootstrapMaterialDatePicker({
-			weekStart : 1,
-			format : 'YYYY-MM-DD', time: false
-		});
-
-
-		$('#date-format-end').bootstrapMaterialDatePicker({
-			weekStart : 1,
-			format : 'YYYY-MM-DD', time: false
-		});
-
-		$.material.init()
-	});
-</script>
+<title>Logowanie</title>
 </head>
+
 <body>
 	<h3>Zaloguj się:</h3>
 	

@@ -83,6 +83,8 @@ public class UserController {
 		 }
 		 
 		orderRepository.save(order);
+		
+		model.addAttribute("message", "Dane rezerwacji zmieniono pomyślnie.");
 		return "redirect:/panelUser";
 	}
 	
@@ -129,9 +131,9 @@ public class UserController {
 		user.setEnabled(true);
 		userRepository.save(user);
 		
-		model.addAttribute("userProfileChangedSuccessfully", "Dane użytkownika zmieniono pomyślnie.");
+		model.addAttribute("message", "Dane użytkownika zmieniono pomyślnie.");
 		
-		return "/panelUser";
+		return "redirect:/panelUser";
 	}
 	
 	
