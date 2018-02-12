@@ -15,6 +15,11 @@
 		takie jak np. nawigacja, fotelik dla dziecka czy bagażnik dachowy, a
 		także zobaczyć cenę końcową do zapłaty przy odbiorze auta.</h3>
 		<br>
+		
+		<h3>Długość wynajmu w dniach: ${rentLengthInDays}</h3><br>
+		<h3>Długość wynajmu w godzinach: ${rentLengthInHours}</h3><br>
+		<h3>Całkowity koszt wynajmu: ${rentCost}</h3>
+		<br><br>
 	<div class="row">
 		<figure class="col-sm-1"> </figure>
 		<figure class="col-sm-2"> <a

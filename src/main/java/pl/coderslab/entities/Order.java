@@ -49,6 +49,21 @@ public class Order {
 	@ManyToOne
 	@JoinColumn(name = "carClasses_id")
 	private CarClass carClass;
+	
+	
+	
+	
+
+//	@Column(nullable = false)
+//	private int rentLengthInDays;
+//	
+//	@Column(nullable = false)
+//	private int orderPrice;
+//	
+	
+	
+	
+	
 
 	public long getId() {
 		return id;

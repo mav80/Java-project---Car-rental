@@ -33,9 +33,27 @@ public class CarClass {
 	@Column(nullable = false)
 	private String carClassDescription;
 	
+	
+	@NotNull
+	@Column(nullable = false)
+	private int pricePerDay;
+	
+	
+	
+	
 	@OneToMany(mappedBy = "carClass")
 	private List<Order> orders = new ArrayList<>();
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public long getId() {
 		return id;
 	}
@@ -68,12 +86,33 @@ public class CarClass {
 	public void setCarClassDescription(String carClassDescription) {
 		this.carClassDescription = carClassDescription;
 	}
+	
+	
+
+	public int getPricePerDay() {
+		return pricePerDay;
+	}
+
+	public void setPricePerDay(int pricePerDay) {
+		this.pricePerDay = pricePerDay;
+	}
+
+
+	
+
+//	@Override
+//	public String toString() {
+//		return "CarClass [id=" + id + ", carClass=" + carClass + ", carClassDescription=" + carClassDescription
+//				+ "]";
+//	}
 
 	@Override
 	public String toString() {
 		return "CarClass [id=" + id + ", carClass=" + carClass + ", carClassDescription=" + carClassDescription
-				+ "]";
+				+ ", pricePerDay=" + pricePerDay + "]";
 	}
+	
+	
 	
 	
 	
