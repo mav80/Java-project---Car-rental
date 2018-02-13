@@ -1,6 +1,7 @@
 package pl.coderslab.app;
 
 import org.joda.time.DateTime;
+import org.joda.time.Hours;
 import org.springframework.validation.BindingResult;
 
 import pl.coderslab.entities.Order;
@@ -15,12 +16,12 @@ public class OrderChecker {
 		
 		if(result.hasErrors()){
 			return "Żadna z dat nie może być pusta!";
-		}else if(startDate.isBefore(nowDate.plusMinutes(55))){
+		}else if(Hours.hoursBetween(nowDate, startDate).getHours() < 1){
 			return "Data wypożyczenia nie może być wcześniejsza niż teraz + 1 godzina!";
-		}else if(startDate.isAfter(endDate)){
+		}else if(Hours.hoursBetween(startDate, endDate).getHours() < 0){
 			return "Data zwrotu nie może być wcześniejsza niż data wynajęcia!";
-		}else if(endDate.isBefore(startDate.plusHours(1))){
-			return "Nie możesz wynająć auta na mniej niż 1 dzień!";
+		}else if(Hours.hoursBetween(startDate, endDate).getHours() < 2){
+			return "Nie możesz wynająć auta na mniej niż 2 godziny!";
 		} else {
 			return "ok";
 		}
@@ -28,3 +29,4 @@ public class OrderChecker {
 	}
 
 }
+
