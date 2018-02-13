@@ -2,9 +2,11 @@ package pl.coderslab.controllers;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -72,6 +74,25 @@ public class TestOrderController {
 		//address = addressRepository.
 		
 		return "Wykonano próbę dodania orderu do bazy";
+		
+	}
+	
+	
+	//w poniższym adresie poprawnie wyliczamy ponownie liczbę dni i cenę dla każdeo znajdującego się w bazie zamówienia
+	
+	@GetMapping("/fixOrdersLengthAndPrice")
+	String fixOrdersInDatabase(Model model) {
+
+		
+		List<Order> orders = orderRepository.findAll();
+		for(Order order : orders) {
+			order.calculateAndSetNumberOfDaysAndPrice(order, carClassRepository);
+			orderRepository.save(order);
+		}
+		
+		
+		model.addAttribute("poprawka", "Wykonano poprawianie wpisów w bazie");
+		return "redirect:/";
 		
 	}
 
