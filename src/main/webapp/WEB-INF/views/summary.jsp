@@ -11,15 +11,19 @@
 <body>
 	<h1>To jest widok summary.jsp</h1>
 	<h3>Rezerwację dodano do bazy.</h3>
+	
+			
+		<h3>Długość wynajmu w dniach: ${rentLengthInDays}</h3>
+		<!--  <h3>Długość wynajmu w godzinach: ${rentLengthInHours}</h3> -->
+		<h3 style="display:inline">Całkowity koszt wynajmu: </h3> <h3 style="display:inline"><b style="color: red">${rentCost} złotych</b></h3>
+		<br><br>
+		
+		
 	<h3>Tutaj będzie można wybrać do swojej rezerwacji opcje dodatkowe
 		takie jak np. nawigacja, fotelik dla dziecka czy bagażnik dachowy, a
 		także zobaczyć cenę końcową do zapłaty przy odbiorze auta.</h3>
 		<br>
-		
-		<h3>Długość wynajmu w dniach: ${rentLengthInDays}</h3><br>
-		<h3>Długość wynajmu w godzinach: ${rentLengthInHours}</h3><br>
-		<h3>Całkowity koszt wynajmu: ${rentCost}</h3>
-		<br><br>
+
 	<div class="row">
 		<figure class="col-sm-1"> </figure>
 		<figure class="col-sm-2"> <a

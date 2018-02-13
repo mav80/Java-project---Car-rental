@@ -82,6 +82,7 @@ public class UserController {
 			 return "orderEditForm"; 
 		 }
 		 
+		order.calculateAndSetNumberOfDaysAndPrice(order, carClassRepository);
 		orderRepository.save(order);
 		
 		model.addAttribute("message", "Dane rezerwacji zmieniono pomyślnie.");

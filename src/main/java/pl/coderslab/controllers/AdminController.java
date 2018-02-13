@@ -187,6 +187,7 @@ public class AdminController {
 		if(order == null) {
 			return "redirect:http://localhost:8080/EndProject-CarRental/";
 		}
+		
 		model.addAttribute("order", order);
 		return "adminOrderEditForm";
 	}
@@ -198,6 +199,8 @@ public class AdminController {
 		{
 			return "adminOrderEditForm";
 		}
+		
+		order.calculateAndSetNumberOfDaysAndPrice(order, carClassRepository);
 		model.addAttribute("searchResultMessage", "Dane rezerwacji zmieniono pomyślnie.");
 		orderRepository.save(order);
 		return "redirect:/panelAdmin";

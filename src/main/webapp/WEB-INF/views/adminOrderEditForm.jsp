@@ -3,7 +3,7 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ include file="fragments/headerAdmin.jsp"%>
+<%@ include file="fragments/header.jsp"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,7 +11,7 @@
 </head>
 
 <body>
-	<h3>To jest widok AdminOrderEditForm</h3>
+	<h3>WAŻNE! Jako admin masz możliwość dowolnego ustawienia dat w zamówieniu, np. data początkowa może być późniejsza niż końcowa - uważaj aby nie narobić błędów!</h3>
 
 	<c:if test="${empty loggedUser}">
 		<p>Musisz się najpierw zalogować</p>
@@ -79,4 +79,5 @@
 	</c:if>
 
 </body>
+<%@ include file="fragments/footer.jsp"%>
 </html>

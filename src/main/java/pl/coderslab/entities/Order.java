@@ -16,6 +16,11 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.NotBlank;
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.Hours;
+
+import pl.coderslab.repositories.CarClassRepository;
 
 @Entity
 @Table(name = "orders")
@@ -54,12 +59,12 @@ public class Order {
 	
 	
 
-//	@Column(nullable = false)
-//	private int rentLengthInDays;
-//	
-//	@Column(nullable = false)
-//	private int orderPrice;
-//	
+	@Column(nullable = false)
+	private int rentLengthInDays;
+	
+	@Column(nullable = false)
+	private int orderPrice;
+	
 	
 	
 	
@@ -121,17 +126,57 @@ public class Order {
 	public void setCarClass(CarClass carClass) {
 		this.carClass = carClass;
 	}
-
-	@Override
-	public String toString() {
-		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate
-				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass + "]";
+	
+	public int getRentLengthInDays() {
+		return rentLengthInDays;
 	}
 
+	public void setRentLengthInDays(int rentLengthInDays) {
+		this.rentLengthInDays = rentLengthInDays;
+	}
+
+	public int getOrderPrice() {
+		return orderPrice;
+	}
+
+	public void setOrderPrice(int orderPrice) {
+		this.orderPrice = orderPrice;
+	}
+	
+	public void calculateAndSetNumberOfDaysAndPrice(Order order, CarClassRepository carClassRepository) {
+		DateTime startDate = new DateTime(order.getPickupDate());
+		DateTime endDate = new DateTime(order.getReturnDate());
+		
+		int rentLengthInDays = Days.daysBetween(startDate, endDate).getDays();
+		if(Hours.hoursBetween(startDate, endDate).getHours() % 24 != 0) { 		// jeśli zostają jakieś luźne godziny to znaczy że zaczęty jest następny dzień i liczymy go jako dodatkowy pełny dzień wynajmu
+			rentLengthInDays++;
+		}
+		int orderPrice = rentLengthInDays * carClassRepository.findFirstById( order.getCarClass().getId() ).getPricePerDay(); //cenę musimy pobrać z załadowanej z bazy klasy samochodu ponieważ klasa samochodu noto utworzonego zamówienia posiada tylko id, pozostałe pola są null
+		order.setRentLengthInDays(rentLengthInDays);
+		order.setOrderPrice(orderPrice);
+	}
+	
 //	@Override
 //	public String toString() {
 //		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate+"]";
 //	}
+	
+	
+
+//	@Override
+//	public String toString() {
+//		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate
+//				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass + "]";
+//	}
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate
+				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass + ", rentLengthInDays="
+				+ rentLengthInDays + ", orderPrice=" + orderPrice + "]";
+	}
+
+
 	
 	
 	

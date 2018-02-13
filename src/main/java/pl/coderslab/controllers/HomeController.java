@@ -75,40 +75,12 @@ public class HomeController {
 			 return "index"; 
 		 }
 		 
-		 
-		 
-		 
-		 
-		DateTime startDate = new DateTime(order.getPickupDate());
-		DateTime endDate = new DateTime(order.getReturnDate());
-		//DateTime nowDate = new DateTime();
-		 
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		System.out.println("Długość wynajmu w dniach: " + Days.daysBetween(startDate, endDate).getDays());
-		System.out.println("Długość wynajmu w godzinach: " + Hours.hoursBetween(startDate, endDate).getHours());
+		order.calculateAndSetNumberOfDaysAndPrice(order, carClassRepository);
+			
+		model.addAttribute("rentLengthInDays", order.getRentLengthInDays());
+		//model.addAttribute("rentLengthInHours", Hours.hoursBetween(startDate, endDate).getHours());
+		model.addAttribute("rentCost", order.getOrderPrice());
 		
-		int rentLengthInDays = Days.daysBetween(startDate, endDate).getDays();
-		if(Hours.hoursBetween(startDate, endDate).getHours() % 24 != 0) { 		// jeśli zostają jakieś luźne godziny to znaczy że zaczęty jest następny dzień i liczymy go jako dodatkowy pełny dzień wynajmu
-			rentLengthInDays++;
-		}
-		
-		System.out.println("Długość wynajmu w dniach po doliczeniu niepełnych dni: " + rentLengthInDays);
-		
-		int orderCost = rentLengthInDays * carClassRepository.findFirstById(order.getCarClass().getId()).getPricePerDay(); //cenę musimy pobrać z załadowanej z bazy klasy samochodu ponieważ klasa samochodu noto utworzonego zamówienia posiada tylko id, pozostałe pola są null
-		System.out.println(carClassRepository.findFirstById(order.getCarClass().getId()));
-		System.out.println("Całkowity koszt wynajmu (liczba dni * koszt klasy za dzień): " + rentLengthInDays + " * " + carClassRepository.findFirstById(order.getCarClass().getId()).getPricePerDay() + " = " + orderCost);
-		
-		
-//		CarClass orderCarClass = carClassRepository.findFirstById(order.getCarClass().getId());
-//		System.out.println(orderCarClass);
-//		
-//		orderCost = rentLengthInDays * orderCarClass.getPricePerDay();
-//		System.out.println("Całkowity koszt wynajmu poprawione (klasa auta wczytana osobno) (liczba dni * koszt klasy za dzień): " + rentLengthInDays + " * " + orderCarClass.getPricePerDay() + " = " + orderCost);
-		
-		model.addAttribute("rentLengthInDays", rentLengthInDays);
-		model.addAttribute("rentLengthInHours", Hours.hoursBetween(startDate, endDate).getHours());
-		model.addAttribute("rentCost", orderCost);
-		 
 		order.setUser(user);
 		orderRepository.save(order);
 

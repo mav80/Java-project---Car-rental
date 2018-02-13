@@ -56,6 +56,7 @@
 					<figure class="col-sm-4">
 					<li>Klasa zarezerwowanego auta:
 						${order.carClass.carClassDescription}</li>
+						<li>Dni wynajmu: ${order.rentLengthInDays}, <b style="color: red">Cena: ${order.orderPrice}</b></li>
 					</figure>
 
 					<figure class="col-sm-2"> <a

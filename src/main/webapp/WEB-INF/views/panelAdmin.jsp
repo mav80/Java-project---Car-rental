@@ -227,6 +227,7 @@
 								<li>ID rezerwacji: ${order.id}</li>
 								<li>ID użytkownika: ${order.user.id}</li>
 								<li>Imię użytkownika: ${order.user.username}</li>
+								<li>Dni wynajmu: ${order.rentLengthInDays}, <b style="color: red">Cena: ${order.orderPrice}</b></li>
 							</ul>
 							</list></td>
 
