@@ -54,7 +54,7 @@ public class AdminController {
 	@GetMapping("/panelAdmin")
 	public String panelAdmin(Model model, @RequestParam(defaultValue="-1") long userId, @RequestParam(defaultValue="") String name, 
 			@RequestParam(defaultValue="") String email, @RequestParam(defaultValue="") String startDate, @RequestParam(defaultValue="") String endDate, 
-			@RequestParam(defaultValue="") String showAll, 
+			@RequestParam(defaultValue="") String showAll, @RequestParam(defaultValue="") String referenceNumber,
 			
 			@RequestParam(defaultValue="-1") long userUserId, @RequestParam(defaultValue="-1") int userUserUserAge, @RequestParam(defaultValue="-1") int userUserPhone, @RequestParam(defaultValue="") String userShowBannedUsers, @RequestParam(defaultValue="") String userShowAllUsers,
 			HttpServletRequest request, HttpSession session) {
@@ -122,6 +122,11 @@ public class AdminController {
 		
 		if(showAll.equals("true") ) {
 			model.addAttribute("orders", orderRepository.findAll());
+			model.addAttribute("searchResultMessage", "Oto wyniki wyszukiwania:");
+		}
+		
+		if(!referenceNumber.isEmpty()) {
+			model.addAttribute("orders", orderRepository.findAllByReferenceNumber(referenceNumber));
 			model.addAttribute("searchResultMessage", "Oto wyniki wyszukiwania:");
 		}
 		

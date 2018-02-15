@@ -54,12 +54,20 @@
 							<input type="number" name="userId" min="1" placeholder="Podaj id"><br>
 							<input type="submit" value="Wyszukaj"> <br> <br>
 						</form>
+						
+						<form>
+							Podaj numer referencyjny rezerwacji którą chcesz odnaleźć:<br>
+							<input type="text" name="referenceNumber" placeholder="Podaj kod rezerwacji"><br>
+							<input type="submit" value="Wyszukaj"> <br>
+						</form>
 
 						<form>
 							<br>Pokaż wszystkie rezerwacje znajdujące się w bazie<br>
 							<input type="hidden" name="showAll" value="true"> <input
-								type="submit" value="Pokaż"><br>
+								type="submit" value="Pokaż"><br><br>
 						</form>
+						
+
 
 					</td>
 
@@ -79,6 +87,7 @@
 							<input type="text" name="name" placeholder="Podaj imię"><br>
 							<input type="submit" value="Wyszukaj"> <br> <br>
 						</form>
+						
 
 					</td>
 
