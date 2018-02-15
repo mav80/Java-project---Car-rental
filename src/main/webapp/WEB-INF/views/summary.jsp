@@ -15,8 +15,10 @@
 			
 		<h3>Długość wynajmu w dniach: ${rentLengthInDays}</h3>
 		<!--  <h3>Długość wynajmu w godzinach: ${rentLengthInHours}</h3> -->
+		<h3 style="display:inline">Numer referencyjny rezerwacji:  </h3> <h3 style="display:inline"><b style="color: blue">${rentReferenceNumber}</b></h3><br>
 		<h3 style="display:inline">Całkowity koszt wynajmu: </h3> <h3 style="display:inline"><b style="color: red">${rentCost} złotych</b></h3>
-		<br><br>
+		<br>
+		<br>
 		
 		
 	<h3>Tutaj będzie można wybrać do swojej rezerwacji opcje dodatkowe

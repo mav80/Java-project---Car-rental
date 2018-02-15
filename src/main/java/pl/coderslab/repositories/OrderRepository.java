@@ -13,6 +13,7 @@ public interface OrderRepository extends JpaRepository<Order, Long>{
 	List<Order> findAllByIdOrderByCreated(long id);
 	List<Order> findAllById(long id);
 	List<Order> findByUserId(long id);
+	List<Order> findAllByReferenceNumber(String refrenceNumber);
 	Order findOneById(long id);
 	
 	@Query(value = "SELECT * FROM orders JOIN users ON users_id=users.id WHERE users.username LIKE %?1% ORDER BY created DESC", nativeQuery = true)

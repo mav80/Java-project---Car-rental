@@ -76,10 +76,12 @@ public class HomeController {
 		 }
 		 
 		order.calculateAndSetNumberOfDaysAndPrice(order, carClassRepository);
+		order.generateAndSetUniqueReferenceNumber(orderRepository);
 			
 		model.addAttribute("rentLengthInDays", order.getRentLengthInDays());
 		//model.addAttribute("rentLengthInHours", Hours.hoursBetween(startDate, endDate).getHours());
 		model.addAttribute("rentCost", order.getOrderPrice());
+		model.addAttribute("rentReferenceNumber", order.getReferenceNumber());
 		
 		order.setUser(user);
 		orderRepository.save(order);

@@ -2,6 +2,9 @@ package pl.coderslab.entities;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,6 +24,7 @@ import org.joda.time.Days;
 import org.joda.time.Hours;
 
 import pl.coderslab.repositories.CarClassRepository;
+import pl.coderslab.repositories.OrderRepository;
 
 @Entity
 @Table(name = "orders")
@@ -64,6 +68,12 @@ public class Order {
 	
 	@Column(nullable = false)
 	private int orderPrice;
+	
+	@NotBlank
+	@NotNull
+	@Column(nullable = false)
+	private String referenceNumber;
+	
 	
 	
 	
@@ -143,6 +153,56 @@ public class Order {
 		this.orderPrice = orderPrice;
 	}
 	
+	
+	
+	
+	
+	public String getReferenceNumber() {
+		return referenceNumber;
+	}
+
+	public void setReferenceNumber(String referenceNumber) {
+		this.referenceNumber = referenceNumber;
+	}
+	
+	public void generateAndSetUniqueReferenceNumber(OrderRepository orderRepository) {
+		
+		String newGeneratedReferenceNumber = generateReferenceNumber();
+		List<Order> orders = orderRepository.findAllByReferenceNumber(newGeneratedReferenceNumber);
+		
+		
+		//sprawdzamy czy taki numer już istnieje w bazie - jeśli tak to generujemy nowy
+		while(!orders.isEmpty()) {
+			newGeneratedReferenceNumber = generateReferenceNumber();
+			orders = orderRepository.findAllByReferenceNumber(newGeneratedReferenceNumber);
+		}
+		
+		this.referenceNumber = newGeneratedReferenceNumber;
+	}
+	
+	
+	
+	private static String generateReferenceNumber() {
+		
+		String allowedCharacters = "ABCDEFGHJKLMNPQRSTUWXYZ23456789";
+		int referenceNumberLength = 6;
+		String referenceNumber = "";
+		
+		Random r = new Random();
+		int low = 0;
+		int high = allowedCharacters.length();
+		
+		for(int i = 0 ; i < referenceNumberLength ; i++) {
+			int result = r.nextInt(high-low) + low;
+			referenceNumber = referenceNumber + allowedCharacters.charAt(result);
+		}
+		
+		return referenceNumber;
+		
+	}
+	
+	
+
 	public void calculateAndSetNumberOfDaysAndPrice(Order order, CarClassRepository carClassRepository) {
 		DateTime startDate = new DateTime(order.getPickupDate());
 		DateTime endDate = new DateTime(order.getReturnDate());
@@ -155,6 +215,9 @@ public class Order {
 		order.setRentLengthInDays(rentLengthInDays);
 		order.setOrderPrice(orderPrice);
 	}
+	
+	
+	
 	
 //	@Override
 //	public String toString() {

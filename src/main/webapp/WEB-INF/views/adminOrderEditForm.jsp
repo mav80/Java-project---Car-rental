@@ -68,7 +68,10 @@
 			<form:select path="carClass.id" items="${cars}"
 				itemLabel="carClassDescription" itemValue="id" />
 			<form:errors path="carClass.id" />
-			<br>
+			<br><br>
+			
+			<p>Kod referencyjny:</p>
+			<form:input path="referenceNumber" />	<form:errors path="referenceNumber" style="font-weight: bold; font-style: italic; color: red"/>
 			<form:hidden path="user.id" />
 
 			<br>

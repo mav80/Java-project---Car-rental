@@ -101,6 +101,9 @@
 		<form:select path="carClass.id" items="${cars}" itemLabel="carClassDescription" itemValue="id" />
 		<form:errors path="carClass.id"/><br>
 		
+		<form:hidden path="referenceNumber" value="new"/>
+		<form:errors path="referenceNumber"/>
+		
 		
 		<br><br>
 		

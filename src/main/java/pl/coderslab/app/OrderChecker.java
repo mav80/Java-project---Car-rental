@@ -15,6 +15,7 @@ public class OrderChecker {
 		DateTime nowDate = new DateTime();
 		
 		if(result.hasErrors()){
+			System.out.println(result.getAllErrors());
 			return "Żadna z dat nie może być pusta!";
 		}else if(Hours.hoursBetween(nowDate, startDate).getHours() < 1){
 			return "Data wypożyczenia nie może być wcześniejsza niż teraz + 1 godzina!";

@@ -90,6 +90,18 @@ public class TestOrderController {
 			orderRepository.save(order);
 		}
 		
+		//a tutaj jeszcze generujemy numery referencyjne:
+		
+		orders = orderRepository.findAll();
+		for(Order order : orders) {
+			order.generateAndSetUniqueReferenceNumber(orderRepository);
+			orderRepository.save(order);
+		}
+		
+//		Order order = orderRepository.findFirstById(5);
+//		order.generateAndSetUniqueReferenceNumber(orderRepository);
+//		orderRepository.save(order);
+		
 		
 		model.addAttribute("poprawka", "Wykonano poprawianie wpisów w bazie");
 		return "redirect:/";

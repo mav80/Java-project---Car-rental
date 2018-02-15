@@ -228,6 +228,7 @@
 								<li>ID użytkownika: ${order.user.id}</li>
 								<li>Imię użytkownika: ${order.user.username}</li>
 								<li>Dni wynajmu: ${order.rentLengthInDays}, <b style="color: red">Cena: ${order.orderPrice}</b></li>
+								<li>Numer referencyjny: <b style="color: blue">${order.referenceNumber}</b></li>
 							</ul>
 							</list></td>
 

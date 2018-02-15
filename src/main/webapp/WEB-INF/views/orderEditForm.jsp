@@ -70,6 +70,7 @@
 			<form:errors path="carClass.id" />
 			<br>
 			<form:hidden path="user.id" />
+			<form:hidden path="referenceNumber" />
 
 			<br>
 			<br>
