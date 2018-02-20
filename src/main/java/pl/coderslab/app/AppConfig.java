@@ -58,6 +58,9 @@ public class AppConfig  implements WebMvcConfigurer {
 	//@Override //tutaj dodajemy nasze konwertery
 	public void addFormatters(FormatterRegistry registry) {
 	registry.addConverter(dateTimeConverter());
+	registry.addConverter(userConverter());
+	registry.addConverter(addressConverter());
+	registry.addConverter(carClassConverter());
 //	registry.addConverter(getBookAuthorConverter());
 	}
 //	
@@ -74,6 +77,21 @@ public class AppConfig  implements WebMvcConfigurer {
 	@Bean
 	public DateTimeConverter dateTimeConverter() {
 		return new DateTimeConverter();
+	}
+	
+	@Bean
+	public UserConverter userConverter() {
+		return new UserConverter();
+	}
+	
+	@Bean
+	public AddressConverter addressConverter() {
+		return new AddressConverter();
+	}
+	
+	@Bean
+	public CarClassConverter carClassConverter() {
+		return new CarClassConverter();
 	}
 	
 	

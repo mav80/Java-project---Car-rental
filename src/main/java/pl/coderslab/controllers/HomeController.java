@@ -1,5 +1,6 @@
 package pl.coderslab.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,10 +22,12 @@ import pl.coderslab.app.Cookies;
 import pl.coderslab.app.OrderChecker;
 import pl.coderslab.entities.Address;
 import pl.coderslab.entities.CarClass;
+import pl.coderslab.entities.Extras;
 import pl.coderslab.entities.Order;
 import pl.coderslab.entities.User;
 import pl.coderslab.repositories.AddressRepository;
 import pl.coderslab.repositories.CarClassRepository;
+import pl.coderslab.repositories.ExtrasRepository;
 import pl.coderslab.repositories.OrderRepository;
 import pl.coderslab.repositories.UserRepository;
 
@@ -38,6 +41,8 @@ public class HomeController {
 	OrderRepository orderRepository;
 	@Autowired
 	UserRepository userRepository;
+	@Autowired
+	ExtrasRepository extrasRepository;
 	
 	@GetMapping("")	
 	public String home(Model model, HttpSession session, HttpServletRequest request) {
@@ -85,9 +90,46 @@ public class HomeController {
 		
 		order.setUser(user);
 		orderRepository.save(order);
+		
+		model.addAttribute("order", order);
 
 		return "summary";
 	}
+	
+	
+	
+	@GetMapping("/summary2")	
+	public String summary(Model model, HttpSession session, HttpServletRequest request) {
+		
+		
+		return "summary2";
+	}
+	
+	
+	
+	
+	
+	@PostMapping("/summary2")
+	//@ResponseBody
+	public String summary(@Valid Order order, BindingResult result, HttpSession session, Model model) {
+		
+//		if(result.hasErrors()) {
+//			return "summary"; 
+//		}
+		List<Extras> extras = extrasRepository.findAll();
+		
+		order.setExtras(extras);
+		orderRepository.save(order);
+		
+
+
+		return "summary2";
+	}
+	
+	
+	
+	
+	
 	
 	
 	@ModelAttribute("addresses")
@@ -100,7 +142,10 @@ public class HomeController {
 		return carClassRepository.findAll();
 	}
 	
-	
+	@ModelAttribute("extras")
+	public List<Extras> getExtras() {
+		return extrasRepository.findAll();
+	}
 	
 	
 
