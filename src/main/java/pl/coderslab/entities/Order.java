@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -58,6 +59,9 @@ public class Order {
 	@ManyToOne
 	@JoinColumn(name = "carClasses_id")
 	private CarClass carClass;
+	
+	@ManyToMany
+	private List<Extras> extras = new ArrayList<>();
 	
 	
 	
@@ -218,6 +222,18 @@ public class Order {
 	
 	
 	
+	public List<Extras> getExtras() {
+		return extras;
+	}
+
+	public void setExtras(List<Extras> extras) {
+		this.extras = extras;
+	}
+
+	
+	
+	
+	
 	
 //	@Override
 //	public String toString() {
@@ -231,6 +247,9 @@ public class Order {
 //		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate
 //				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass + "]";
 //	}
+
+
+
 
 	@Override
 	public String toString() {

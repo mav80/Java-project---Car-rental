@@ -9,15 +9,15 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-@Table(name = "addresses")
-public class Address {
+@Table(name = "extras")
+public class Extras {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,24 +28,23 @@ public class Address {
 	@Column(nullable = false)
 	private String name;
 	
-	@NotBlank
-	@NotNull
-	@Column(nullable = false)
-	private String street;
 	
 	@NotBlank
 	@NotNull
 	@Column(nullable = false)
-	private String city;
+	private String description;
 	
-	@NotBlank
 	@NotNull
 	@Column(nullable = false)
-	private String zipCode;
+	private int pricePerDay;
 	
-	@OneToMany(mappedBy = "address",fetch=FetchType.EAGER)
-	private List<Order> orders = new ArrayList<>();
+	@NotNull
+	@Column(nullable = false)
+	private boolean active;    // możemy włączyć lub wyłączyć pokazywanie danego dodatku
 	
+	
+	@ManyToMany(mappedBy = "extras", fetch=FetchType.EAGER)
+	List<Order> orders = new ArrayList<>();
 	
 	
 
@@ -65,28 +64,28 @@ public class Address {
 		this.name = name;
 	}
 
-	public String getStreet() {
-		return street;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setStreet(String street) {
-		this.street = street;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public String getCity() {
-		return city;
+	public int getPricePerDay() {
+		return pricePerDay;
 	}
 
-	public void setCity(String city) {
-		this.city = city;
+	public void setPricePerDay(int pricePerDay) {
+		this.pricePerDay = pricePerDay;
 	}
 
-	public String getZipCode() {
-		return zipCode;
+	public boolean isActive() {
+		return active;
 	}
 
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	public List<Order> getOrders() {
@@ -99,9 +98,13 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", name=" + name + ", street=" + street + ", city=" + city + ", zipCode=" + zipCode
-				+ "]";
+		return "OrderExtras [id=" + id + ", name=" + name + ", description=" + description + ", pricePerDay="
+				+ pricePerDay + ", active=" + active + "]";
 	}
+	
+	
+	
+	
 	
 	
 	
