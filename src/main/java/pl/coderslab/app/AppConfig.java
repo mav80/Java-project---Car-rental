@@ -61,6 +61,7 @@ public class AppConfig  implements WebMvcConfigurer {
 	registry.addConverter(userConverter());
 	registry.addConverter(addressConverter());
 	registry.addConverter(carClassConverter());
+	registry.addConverter(extrasConverter());
 //	registry.addConverter(getBookAuthorConverter());
 	}
 //	
@@ -92,6 +93,11 @@ public class AppConfig  implements WebMvcConfigurer {
 	@Bean
 	public CarClassConverter carClassConverter() {
 		return new CarClassConverter();
+	}
+	
+	@Bean
+	public ExtrasConverter extrasConverter() {
+		return new ExtrasConverter();
 	}
 	
 	

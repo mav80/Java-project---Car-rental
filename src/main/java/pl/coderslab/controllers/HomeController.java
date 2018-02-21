@@ -1,15 +1,13 @@
 package pl.coderslab.controllers;
 
-import java.util.ArrayList;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.joda.time.DateTime;
-import org.joda.time.Days;
-import org.joda.time.Hours;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -89,21 +87,21 @@ public class HomeController {
 		model.addAttribute("rentReferenceNumber", order.getReferenceNumber());
 		
 		order.setUser(user);
-		orderRepository.save(order);
 		
-		model.addAttribute("order", order);
+		//musimy jeszcze dodać brakujące pole created którego nie ma w zamówieniu wysłanym ze strony. Przy dodaniu do bazy i tak zostanie do niego pobrany czas z chwili dodania zamówienia do bazy
+		order.setCreated(new Timestamp(new Date().getTime()));
 
 		return "summary";
 	}
 	
 	
-	
-	@GetMapping("/summary2")	
-	public String summary(Model model, HttpSession session, HttpServletRequest request) {
-		
-		
-		return "summary2";
-	}
+//	
+//	@GetMapping("/summary2")	
+//	public String summary(Model model, HttpSession session, HttpServletRequest request) {
+//		
+//		
+//		return "summary2";
+//	}
 	
 	
 	
@@ -113,16 +111,12 @@ public class HomeController {
 	//@ResponseBody
 	public String summary(@Valid Order order, BindingResult result, HttpSession session, Model model) {
 		
-//		if(result.hasErrors()) {
-//			return "summary"; 
-//		}
-		List<Extras> extras = extrasRepository.findAll();
-		
-		order.setExtras(extras);
+		if(result.hasErrors()) {
+			model.addAttribute("errors", result.getAllErrors());
+			return "summary"; 
+		}
+	
 		orderRepository.save(order);
-		
-
-
 		return "summary2";
 	}
 	

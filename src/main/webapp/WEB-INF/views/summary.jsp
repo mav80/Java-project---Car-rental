@@ -32,9 +32,9 @@
 		Wybierz dodatki które chcesz dodać do swojej rezerwacji:
 		
 		
-		<form:form modelAttribute="order" method="post">
+		<form:form action="summary2" modelAttribute="order" method="post">
 		
-			<form:hidden path="created" value="${order.created}"/>
+			<form:hidden path="created" value="${order.created}"/> Created: ${order.created}
 			<form:errors path="created"/><br>
 			<form:hidden path="pickupDate" value="${order.pickupDate}"/>
 			<form:errors path="pickupDate"/><br>
@@ -89,6 +89,12 @@
 		</form:form> <br>
 		
 		
+		Błędy:<br>
+		
+			<c:forEach items="${errors}" var="error">
+			${error}<br>
+			</c:forEach>
+		
 		
 		
 		
@@ -113,9 +119,8 @@
 
 	<div class="row">
 		<figure class="col-sm-1"> </figure>
-		<figure class="col-sm-2"> <a
-			href="<%out.print(request.getContextPath());%>/"> powrót do
-			strony głównej</a> </figure>
+		<figure class="col-sm-2"> 
+	<%@ include file="fragments/footer.jsp"%> </figure>
 	</div>
 </body>
 </html>
