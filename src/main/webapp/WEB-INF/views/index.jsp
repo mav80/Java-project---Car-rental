@@ -109,7 +109,7 @@
 		
 		<c:if test="${not empty info}">
 			<p>
-				<input type="submit" value="Rezerwuj">
+				<input type="submit" value="Przejdź dalej">
 			</p>
 		</c:if>
 		

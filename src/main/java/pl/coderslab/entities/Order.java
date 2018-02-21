@@ -232,6 +232,18 @@ public class Order {
 
 	
 	
+	public void updatePriceWithSelectedExtras(Order order, List<Extras> extras) {
+		
+		int extrasPrice = 0;
+		
+		for(Extras extra : extras) {
+			extrasPrice += extra.getPricePerDay() * order.getRentLengthInDays();
+		}
+		
+		order.setOrderPrice(order.getOrderPrice() + extrasPrice);
+	}
+	
+	
 	
 	
 	
@@ -257,6 +269,8 @@ public class Order {
 				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass + ", rentLengthInDays="
 				+ rentLengthInDays + ", orderPrice=" + orderPrice + "]";
 	}
+
+
 
 
 	

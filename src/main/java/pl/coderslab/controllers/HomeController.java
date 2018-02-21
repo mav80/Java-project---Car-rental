@@ -115,8 +115,15 @@ public class HomeController {
 			model.addAttribute("errors", result.getAllErrors());
 			return "summary"; 
 		}
-	
+		
+		//wyliczamy jeszcze raz na wypadek gdyby użytkownik coś pozmieniał w ukrytych polach formularza
+		order.calculateAndSetNumberOfDaysAndPrice(order, carClassRepository);
+		order.updatePriceWithSelectedExtras(order, order.getExtras());
+		
+		order.generateAndSetUniqueReferenceNumber(orderRepository);
 		orderRepository.save(order);
+		
+		model.addAttribute("rentReferenceNumber", order.getReferenceNumber());
 		return "summary2";
 	}
 	

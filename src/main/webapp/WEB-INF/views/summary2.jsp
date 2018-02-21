@@ -8,7 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <h1>Zamówienie pomyślnie dodano do bazy</h1>
+
+<h3 style="display:inline">Numer referencyjny Twojej rezerwacji:  </h3> <h3 style="display:inline"><b style="color: blue">${rentReferenceNumber}</b></h3><br>
 </body>
 <%@ include file="fragments/footer.jsp"%>
 </html>
