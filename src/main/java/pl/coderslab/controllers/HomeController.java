@@ -145,7 +145,8 @@ public class HomeController {
 	
 	@ModelAttribute("extras")
 	public List<Extras> getExtras() {
-		return extrasRepository.findAll();
+		//return extrasRepository.findAll();
+		return extrasRepository.findAllByActive(true);
 	}
 	
 	
