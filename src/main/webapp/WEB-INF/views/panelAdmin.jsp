@@ -7,6 +7,7 @@
 <%@ include file="fragments/headerAdmin.jsp"%>
 <html>
 <head>
+<script src="<%out.print(request.getContextPath());%>/static/js/panelAdmin.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Panel administracyjny</title>
 </head>
@@ -41,8 +42,8 @@
 
 		<div class="row">
 
-			<figure class="col-sm-1"> </figure>
-
+			<figure class="col-sm-1"><input id="ordersButton" type="submit" value="Pokaż/ukryj"> </figure>
+	<div id="ordersDiv" style="display: none">
 			<table style="color: blue">
 				<tr style="background-color: #e9e9e9">
 
@@ -111,6 +112,8 @@
 
 
 			</table>
+			
+	</div>
 
 
 			<figure class="col-sm-1"> </figure>
@@ -130,8 +133,8 @@
 
 		<div class="row">
 
-			<figure class="col-sm-1"> </figure>
-
+			<figure class="col-sm-1"><input id="usersButton" type="submit" value="Pokaż/ukryj"> </figure>
+	<div id="usersDiv"  style="display: none">
 			<table style="color: blue">
 				<tr style="background-color: #e9e9e9">
 					<td><figure class="col-bg-4">
@@ -180,6 +183,8 @@
 
 				</tr>
 			</table>
+			
+	</div>
 
 
 			<figure class="col-sm-1"> </figure>
