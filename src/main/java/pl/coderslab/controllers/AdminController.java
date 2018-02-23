@@ -121,7 +121,7 @@ public class AdminController {
 		
 		
 		if(showAll.equals("true") ) {
-			model.addAttribute("orders", orderRepository.findAll());
+			model.addAttribute("orders", orderRepository.findAllOrderByCreatedDesc());
 			model.addAttribute("searchResultMessage", "Oto wyniki wyszukiwania:");
 		}
 		
@@ -216,11 +216,12 @@ public class AdminController {
 	
 	
 	@GetMapping("/deleteOrderAdmin/{id}")
-	public String deleteOrderId(@PathVariable Long id)
+	public String deleteOrderId(@PathVariable Long id, Model model)
 	{
 		Order order = orderRepository.findFirstById(id);
 		if(order != null) {
 			orderRepository.delete(order);
+			model.addAttribute("searchResultMessage", "Zamówienie usunięto.");
 		}
 		return "redirect:/panelAdmin";
 	}

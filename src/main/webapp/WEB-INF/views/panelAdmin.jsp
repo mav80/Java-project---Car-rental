@@ -248,6 +248,17 @@
 								<li>Miejsce odbioru auta: ${order.address.name},
 									${order.address.street}, ${order.address.zipCode},
 									${order.address.city}</li>
+								<c:if test="${not empty order.extras}">
+					
+									<li><b>Wybrane dodatki:</b>
+									
+										<c:forEach items="${order.extras}" var="extra">
+											${extra.description},
+										</c:forEach>
+						
+									</li>
+
+								</c:if>
 							</ul>
 							</list></td>
 

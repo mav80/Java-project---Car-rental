@@ -47,7 +47,8 @@ public class UserController {
 		
 		if(user != null) {
 			//model.addAttribute("orders", orderRepository.findAllByIdOrderByCreated(user.getId()));
-			model.addAttribute("orders", orderRepository.findByUserId(user.getId()));
+			//model.addAttribute("orders", orderRepository.findByUserId(user.getId())); // tego używałem poprzednio
+			model.addAttribute("orders", orderRepository.findByUserIdOrderByCreatedDesc(user.getId()));
 			//model.addAttribute("orders", orderRepository.findAllById(1));
 			//model.addAttribute("orders", orderRepository.findAll());
 		}
@@ -95,7 +96,9 @@ public class UserController {
 	{
 		Order order = orderRepository.findFirstById(id);
 		if(order != null) {
+			System.out.println("\n\n\n\n\n\n\n\n\n\n\nOrder do skasowania:  " + order + "\n\n\n\n\n\n\n\n\n");
 			orderRepository.delete(order);
+			System.out.println("\n\n\n\n\n\n\npo skasowaniu\n\n\n\n\n\n\n\n\n");
 		}
 		return "redirect:/panelUser";
 	}

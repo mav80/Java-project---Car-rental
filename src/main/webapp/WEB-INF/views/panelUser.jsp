@@ -54,9 +54,22 @@
 					<li>Data zwrotu auta: ${order.returnDate}</li>
 					</figure>
 					<figure class="col-sm-4">
-					<li>Klasa zarezerwowanego auta:
-						${order.carClass.carClassDescription}</li>
-						<li>Dni wynajmu: ${order.rentLengthInDays}, Numer referencyjny: <b style="color: blue">${order.referenceNumber}</b>, <b style="color: red">Cena: ${order.orderPrice}</b></li>
+					<li>Klasa zarezerwowanego auta: ${order.carClass.carClassDescription}</li>
+					
+					<c:if test="${not empty order.extras}">
+					
+						<li><b>Wybrane dodatki:</b>
+								
+							<c:forEach items="${order.extras}" var="extra">
+								${extra.description},
+							</c:forEach>
+					
+						</li>
+
+					</c:if>
+					
+
+					<li>Dni wynajmu: ${order.rentLengthInDays}, Numer referencyjny: <b style="color: blue">${order.referenceNumber}</b>, <b style="color: red">Cena: ${order.orderPrice}</b></li>
 					</figure>
 
 					<figure class="col-sm-2"> <a

@@ -107,5 +107,25 @@ public class TestOrderController {
 		return "redirect:/";
 		
 	}
+	
+	
+	
+	
+	
+	@GetMapping("/deleteOrder")
+	@ResponseBody
+	String deleteOrder(Model model) {
+		
+		Order order = orderRepository.findFirstById(28);
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nZnaleziony order: " + order + "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		//orderRepository.delete(order);
+		orderRepository.deleteById((long) 28);
+		System.out.println("Wykonano próbę kasowania.");
+
+		
+
+		return "Skasowano";
+		
+	}
 
 }

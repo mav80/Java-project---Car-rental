@@ -60,7 +60,7 @@ public class Order {
 	@JoinColumn(name = "carClasses_id")
 	private CarClass carClass;
 	
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	private List<Extras> extras = new ArrayList<>();
 	
 	
