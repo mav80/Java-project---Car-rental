@@ -65,8 +65,8 @@ public class User {
 	private boolean isAdmin; //admin może mieć specjalne uprawnienia
 	
 	
-	
-	@OneToMany(mappedBy = "user", fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	//@OneToMany(mappedBy = "user", fetch=FetchType.EAGER, cascade = CascadeType.ALL) //oryginalna linia - kaskadę trzeba określić jak poniżej, określenie jej jako .ALL powoduje że zamówienia nie usuwają się
+	@OneToMany(mappedBy = "user", fetch=FetchType.EAGER, cascade =  {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
 	private List<Order> orders = new ArrayList<>();
 	
 	

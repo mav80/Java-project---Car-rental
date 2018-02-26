@@ -96,9 +96,7 @@ public class UserController {
 	{
 		Order order = orderRepository.findFirstById(id);
 		if(order != null) {
-			System.out.println("\n\n\n\n\n\n\n\n\n\n\nOrder do skasowania:  " + order + "\n\n\n\n\n\n\n\n\n");
 			orderRepository.delete(order);
-			System.out.println("\n\n\n\n\n\n\npo skasowaniu\n\n\n\n\n\n\n\n\n");
 		}
 		return "redirect:/panelUser";
 	}
