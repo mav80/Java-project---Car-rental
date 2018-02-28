@@ -19,15 +19,13 @@
 	<c:if test="${empty loggedUser}">
 		<p>Nie masz odpowiednich uprawnień</p>
 
-		<a href="<%out.print(request.getContextPath());%>/">powrót do
-			strony głównej</a>
+		<a href="<%out.print(request.getContextPath());%>/">powrót do strony głównej</a>
 	</c:if>
 
 	<c:if test="${loggedUser.isAdmin == false}">
 		<p>Nie masz odpowiednich uprawnień</p>
 
-		<a href="<%out.print(request.getContextPath());%>/">powrót do
-			strony głównej</a>
+		<a href="<%out.print(request.getContextPath());%>/">powrót do strony głównej</a>
 	</c:if>
 
 	<c:if test="${loggedUser.isAdmin == true}">
@@ -398,6 +396,7 @@
 
 
 
+Liczba zamówień w bazie: ${howManyOrdersInDatabase}
 
 
 
@@ -409,8 +408,7 @@
 		<br>
 
 
-		<a href="<%out.print(request.getContextPath());%>/">powrót do
-			strony głównej</a>
+		<a href="<%out.print(request.getContextPath());%>/">powrót do strony głównej</a>
 	</c:if>
 
 

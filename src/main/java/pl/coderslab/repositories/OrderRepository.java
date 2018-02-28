@@ -17,6 +17,7 @@ public interface OrderRepository extends JpaRepository<Order, Long>{
 	List<Order> findAllByReferenceNumber(String referenceNumber);
 	Order findOneById(long id);
 	
+	
 	@Query(value = "SELECT * FROM orders JOIN users ON users_id=users.id WHERE users.username LIKE %?1% ORDER BY created DESC", nativeQuery = true)
 	List<Order> customFindOrdersByUserName(String name);
 	
@@ -34,5 +35,8 @@ public interface OrderRepository extends JpaRepository<Order, Long>{
 	
 	@Query(value = "SELECT * FROM `EndProject-CarRental`.orders ORDER BY created DESC", nativeQuery = true)
 	List<Order> findAllOrderByCreatedDesc();
+	
+	@Query(value = "SELECT * FROM `EndProject-CarRental`.orders ORDER BY created DESC LIMIT 5;", nativeQuery = true)
+	List<Order> show5LatestOrders();
 
 }
