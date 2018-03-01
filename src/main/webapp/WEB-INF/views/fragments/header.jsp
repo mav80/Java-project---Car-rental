@@ -26,14 +26,14 @@
          $(document).ready(function() {
          
          	$('#date-format-begin').bootstrapMaterialDatePicker({
-         		weekStart : 1, format : 'YYYY-MM-DD HH:mm:ss', minDate : new Date()
+         		weekStart : 1, lang : 'pl', cancelText : 'Anuluj', format : 'YYYY-MM-DD HH:mm:ss', minDate : new Date()
          	});
          	
          	var tomorrow = new Date();
          	tomorrow.setDate(tomorrow.getDate() + 1);
          	
          	$('#date-format-end').bootstrapMaterialDatePicker({
-         		weekStart : 1, format : 'YYYY-MM-DD HH:mm:ss', minDate : tomorrow
+         		weekStart : 1, lang : 'pl', cancelText : 'Anuluj', format : 'YYYY-MM-DD HH:mm:ss', minDate : tomorrow
          	});
          
          
