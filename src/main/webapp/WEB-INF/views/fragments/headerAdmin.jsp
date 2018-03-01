@@ -26,13 +26,13 @@
 			$(document).ready(function() {
 		
 				$('#date-format-begin').bootstrapMaterialDatePicker({
-					weekStart : 1,
+					weekStart : 1, lang : 'pl', cancelText : 'Anuluj',
 					format : 'YYYY-MM-DD', time: false
 				});
 		
 		
 				$('#date-format-end').bootstrapMaterialDatePicker({
-					weekStart : 1,
+					weekStart : 1, lang : 'pl', cancelText : 'Anuluj',
 					format : 'YYYY-MM-DD', time: false
 				});
 		
