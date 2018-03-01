@@ -33,8 +33,18 @@
          	tomorrow.setDate(tomorrow.getDate() + 1);
          	
          	$('#date-format-end').bootstrapMaterialDatePicker({
-         		weekStart : 1, lang : 'pl', cancelText : 'Anuluj', format : 'YYYY-MM-DD HH:mm:ss', minDate : tomorrow
+         		weekStart : 1, lang : 'pl', cancelText : 'Anuluj', format : 'YYYY-MM-DD HH:mm:ss'
          	});
+         	
+         	$('#date-format-begin').on('change', function(e, date)
+         			{
+         		$('#date-format-end').bootstrapMaterialDatePicker('setMinDate', date);
+         		});
+         	
+         	$('#date-format-end').on('change', function(e, date)
+         			{
+         		$('#date-format-begin').bootstrapMaterialDatePicker('setMaxDate', date);
+         		});
          
          
          	$.material.init()
