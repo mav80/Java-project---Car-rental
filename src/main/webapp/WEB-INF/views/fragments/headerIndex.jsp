@@ -23,23 +23,45 @@
       
       <!-- datepicker -->
       <script type="text/javascript">
+      //alert("${minStartDate}");
          $(document).ready(function() {
          
          	$('#date-format-begin').bootstrapMaterialDatePicker({
-         		weekStart : 1, format : 'YYYY-MM-DD HH:mm:ss', minDate : new Date()
+         		weekStart : 1, lang : 'pl', cancelText : 'Anuluj', format : 'YYYY-MM-DD HH:mm:ss', minDate : "${minStartDate}",  currentDate : "${minStartDate}"
          	});
-         	
-         	var tomorrow = new Date();
-         	tomorrow.setDate(tomorrow.getDate() + 1);
          	
          	$('#date-format-end').bootstrapMaterialDatePicker({
-         		weekStart : 1, format : 'YYYY-MM-DD HH:mm:ss', minDate : tomorrow
+         		weekStart : 1, lang : 'pl', cancelText : 'Anuluj', format : 'YYYY-MM-DD HH:mm:ss', minDate : "${minEndDate}",  currentDate : "${minEndDate}"
          	});
+         	
+         	
+         	
+         	
+         	$('#date-format-begin').on('change', function(e, date)
+         			{
+         		$('#date-format-end').bootstrapMaterialDatePicker('setMinDate', date);
+         		});
+         	
+         	$('#date-format-end').on('change', function(e, date)
+         			{
+         		$('#date-format-begin').bootstrapMaterialDatePicker('setMaxDate', date);
+         		});
          
          
          	$.material.init()
          });
       </script>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
       <!-- Carousel Plugin -->
       <meta name="viewport" content="width=device-width, initial-scale=1">

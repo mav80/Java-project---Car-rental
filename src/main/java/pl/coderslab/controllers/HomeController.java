@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,6 +47,15 @@ public class HomeController {
 	
 	@GetMapping("")	
 	public String home(Model model, HttpSession session, HttpServletRequest request) {
+		
+		DateTime minStartDate = new DateTime().plusMinutes(70);
+		DateTime minEndDate = minStartDate.plusMinutes(120);
+		DateTimeFormatter fmt = DateTimeFormat.forPattern("YYYY-MM-dd HH:mm:ss");
+		String minStartDateString = minStartDate.toString(fmt);
+		String minEndDateString = minEndDate.toString(fmt);
+		
+		model.addAttribute("minStartDate", minStartDateString);
+		model.addAttribute("minEndDate", minEndDateString);
 		
 		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
 		
