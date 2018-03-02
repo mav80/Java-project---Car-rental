@@ -11,7 +11,7 @@
 <title>Edycja rezerwacji</title>
 </head>
 
-<body>
+<body class="margin">
 	<h3>To jest widok orderEditForm</h3>
 
 	<c:if test="${empty loggedUser}">

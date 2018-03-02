@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body class="margin">
 <h3>To jest widok testAddresses</h3>
 
 <c:forEach items="${addresses}" var="address">

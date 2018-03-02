@@ -11,7 +11,7 @@
 <title>Logowanie</title>
 </head>
 
-<body>
+<body class="margin">
 	<h3>Zaloguj się:</h3>
 	
 	${info}
@@ -27,13 +27,9 @@
 
 	</form>
 	
-			<br>
-	<div class="row">
-		<figure class="col-sm-1"> </figure>
-		<figure class="col-sm-2"> <a
-			href="<%out.print(request.getContextPath());%>/"> powrót do
-			strony głównej</a> </figure>
-	</div>
+	<br>
+ 	<a href="<%out.print(request.getContextPath());%>/"> powrót do strony głównej</a> </figure>
+
 
 </body>
 </html>

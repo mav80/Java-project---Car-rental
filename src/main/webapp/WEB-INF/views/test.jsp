@@ -38,7 +38,7 @@
 
 
 	</head>
-	<body>
+	<body class="margin">
 
 					<div class="form-control-wrapper">
 						<input type="text" id="date-format" class="form-control floating-label" placeholder="Begin Date Time">

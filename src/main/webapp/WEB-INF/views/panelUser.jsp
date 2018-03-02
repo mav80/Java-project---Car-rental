@@ -9,11 +9,12 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Panel użytkownika</title>
+		<link rel="stylesheet" href="<%out.print(request.getContextPath());%>/static/css/style.css">
 	</head>
 	
 	
-	<body>
-		<h3>To jest widok panelUser.jsp</h3>
+	<body class="margin">
+		<h3>Panel użytkownika</h3>
 	
 		<c:if test="${empty loggedUser}">
 			<p>Musisz się najpierw zalogować</p>
@@ -29,69 +30,77 @@
 			</p>
 		
 			Oto wszystkie twoje rezerwacje:<br><br>
-	
-			<c:forEach items="${orders}" var="order">
-				<div class="row">
-					<list>
-						<ul>
-							<figure class="col-sm-1"> </figure>
-		
-							<figure class="col-sm-3">
-								<li>Data stworzenia rezerwacji: ${order.created}
-								<li>Miejsce odbioru auta: ${order.address.name}, ${order.address.street}, ${order.address.zipCode}, ${order.address.city}</li>
-							</figure>
+			
+			
+			<section class="mytable">
+				<table>
+					<c:forEach items="${orders}" var="order">
+						
+						<div class="row">
+						
+							<tr>
 							
-							<figure class="col-sm-2">
-								<li>Data odbioru auta: ${order.pickupDate}</li>
-								<li>Data zwrotu auta: ${order.returnDate}</li>
-							</figure>
+								<td>
+									<list>
+										<ul>
+											<li>Data stworzenia rezerwacji: ${order.created}
+											<li>Miejsce odbioru auta: ${order.address.name}, ${order.address.street}, ${order.address.zipCode}, ${order.address.city}</li>
+										</ul>
+									</list>
+								</td>
+								
+								<td>
+									<list>
+										<ul>
+											<li>Data odbioru auta: ${order.pickupDate}</li>
+											<li>Data zwrotu auta: ${order.returnDate}</li>
+										</ul>
+									</list>
+								</td>
+								
+								<td>
+									<list>
+										<ul>
+											<li>Klasa zarezerwowanego auta: ${order.carClass.carClassDescription}</li>
+										
+											<c:if test="${not empty order.extras}">
+												<li><b>Wybrane dodatki:</b>	
+													<c:forEach items="${order.extras}" var="extra">
+														${extra.description},
+													</c:forEach>
+												</li>
+											</c:if>
+					
+											<li>Dni wynajmu: ${order.rentLengthInDays}, Numer referencyjny: <b style="color: blue">${order.referenceNumber}</b>, <b style="color: red">Cena: ${order.orderPrice}</b></li>
+										</ul>
+									</list>
+								</td>
+								
+								
+								<td>
+									<list>
+										<ul>				
+											<li><a href="<%out.print(request.getContextPath());%>/editOrder/${order.id}">edytuj rezerwację</a></li>
+											<li><a href="<%out.print(request.getContextPath());%>/deleteOrderUser/${order.id}">usuń rezerwację</a></li>
+										</ul>
+									</list>
+								</td>
 							
-							<figure class="col-sm-4">
-								<li>Klasa zarezerwowanego auta: ${order.carClass.carClassDescription}</li>
-								
-								<c:if test="${not empty order.extras}">
-									<li><b>Wybrane dodatki:</b>	
-										<c:forEach items="${order.extras}" var="extra">
-											${extra.description},
-										</c:forEach>
-									</li>
-								</c:if>
-								
-			
-								<li>Dni wynajmu: ${order.rentLengthInDays}, Numer referencyjny: <b style="color: blue">${order.referenceNumber}</b>, <b style="color: red">Cena: ${order.orderPrice}</b></li>
-							</figure>
-		
-							<figure class="col-sm-2"> 
-								<a href="<%out.print(request.getContextPath());%>/editOrder/${order.id}">edytuj rezerwację</a>
-								<br>
-								<a href="<%out.print(request.getContextPath());%>/deleteOrderUser/${order.id}">usuń rezerwację</a>
-							</figure>
-						</ul>
-					</list>
-				</div>
-				<br>
-			</c:forEach>
-	
-			<br>
-			<br>
-			<br>
-			<br>
-			
-			<div class="row">
-				<figure class="col-sm-1"> </figure>
+							</tr>
+						
+						</div>  <!--  koniec div "row" -->
+
+					</c:forEach>
 				
-				<figure class="col-sm-2">
-					<a style="color: red" href="<%out.print(request.getContextPath());%>/userEditProfile/${loggedUser.id}"><h4>edytuj swoje dane osobowe</h4></a>
-				</figure>
-			</div>
+				</table>
+			</section>
 			
-			<div class="row">
-				<figure class="col-sm-1"> </figure>
-				
-				<figure class="col-sm-2"> 
-					<a href="<%out.print(request.getContextPath());%>/"> powrót do	strony głównej</a>
-				</figure>
-			</div>
+
+			
+
+			<a style="color: red" href="<%out.print(request.getContextPath());%>/userEditProfile/${loggedUser.id}"><h4>edytuj swoje dane osobowe</h4></a>
+			<a href="<%out.print(request.getContextPath());%>/"> powrót do	strony głównej</a>
+
 		</c:if>
 	</body>
 </html>

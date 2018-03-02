@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Admin - edycja profilu użytkownika</title>
 </head>
-<body>
+<body class="margin">
 
 	<h3>To jest widok adminUserEditForm.jsp</h3>
 	

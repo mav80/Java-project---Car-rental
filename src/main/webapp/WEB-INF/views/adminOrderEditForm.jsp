@@ -10,7 +10,7 @@
 <title>Admin - edycja rezerwacji</title>
 </head>
 
-<body>
+<body class="margin">
 	<h3>WAŻNE! Jako admin masz możliwość dowolnego ustawienia dat w zamówieniu, np. data początkowa może być późniejsza niż końcowa - uważaj aby nie narobić błędów!</h3>
 
 	<c:if test="${empty loggedUser}">

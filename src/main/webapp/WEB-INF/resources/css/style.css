@@ -113,3 +113,12 @@ footer li img {
 .mytable table > tbody > tr:nth-of-type(odd) {
   background-color: #c9c9c9;
   }
+  
+  .mytable ul {
+   padding-left: 10px;
+  }
+  
+  .margin {
+  	margin: 15px;
+  }
+  

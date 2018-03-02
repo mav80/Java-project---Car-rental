@@ -10,8 +10,8 @@
 <title>Rejestrowanie nowego użytkownika</title>
 </head>
 
-<body>
-	<h1>To jest widok userRegistrationForm.jsp</h1>
+<body class="margin">
+	<h1>Rejestrowanie nowego użytkownika</h1>
 	
 	<h3>Wszystkie pola są konieczne. Do późniejszego logowania użyte będą email oraz hasło.</h3>
 
@@ -38,12 +38,8 @@ Hasło<br>
 	</form:form>
 	
 			<br>
-	<div class="row">
-		<figure class="col-sm-1"> </figure>
-		<figure class="col-sm-2"> <a
-			href="<%out.print(request.getContextPath());%>/"> powrót do
-			strony głównej</a> </figure>
-	</div>
+ <a href="<%out.print(request.getContextPath());%>/"> powrót do	strony głównej</a> </figure>
+
 
 
 

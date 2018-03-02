@@ -8,7 +8,7 @@
 		<script src="<%out.print(request.getContextPath());%>/static/js/summary.js"></script>
 	</head>
 
-	<body>
+	<body class="margin">
 		<h1>Oto Twoja rezerwacja</h1>
 				
 		<h3>Długość wynajmu w dniach: ${rentLengthInDays}</h3>

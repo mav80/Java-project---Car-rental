@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Sukces</title>
 </head>
-<body>
+<body class="margin">
 
 <h3>Operacja przebiegła pomyślnie.</h3>
 

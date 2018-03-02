@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body class="margin">
 
 <h1>Zamówienie pomyślnie dodano do bazy</h1>
 

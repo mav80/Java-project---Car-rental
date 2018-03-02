@@ -12,7 +12,7 @@
 	</head>
 
 
-	<body>
+	<body class="margin">
 	
 		<h3>Panel administracyjny</h3>
 		
@@ -220,78 +220,78 @@
 			
 			<c:if test="${searchResultMessage != 'Oto wyniki wyszukiwania użytkowników:'}">
 			
-			<section class="mytable">
-				<table>
-					<c:forEach items="${orders}" var="order">
-						
-						<div class="row">
-						
-							<tr>
+				<section class="mytable">
+					<table>
+						<c:forEach items="${orders}" var="order">
 							
-								<td>
-									<list>
-										<ul>
-											<li>ID rezerwacji: ${order.id}</li>
-											<li>ID użytkownika: ${order.user.id}</li>
-											<li>Imię użytkownika: ${order.user.username}</li>
-											<li>Dni wynajmu: ${order.rentLengthInDays}, <b style="color: red">Cena: ${order.orderPrice}</b></li>
-											<li>Numer referencyjny: <b style="color: blue">${order.referenceNumber}</b></li>
-										</ul>
-									</list>
-								</td>
+							<div class="row">
+							
+								<tr>
 								
-								<td>
-									<list>
-										<ul>
-											<li>Email użytkownika: ${order.user.email}</li>
-											<li>Data stworzenia rezerwacji: ${order.created}</li>
-											<li>Miejsce odbioru auta: ${order.address.name}, ${order.address.street}, ${order.address.zipCode}, ${order.address.city}</li>
-											<c:if test="${not empty order.extras}">
-											
-												<li>
-													<b>Wybrane dodatki:</b>
-													
-													<c:forEach items="${order.extras}" var="extra">
-														${extra.description},
-													</c:forEach>
+									<td>
+										<list>
+											<ul>
+												<li>ID rezerwacji: ${order.id}</li>
+												<li>ID użytkownika: ${order.user.id}</li>
+												<li>Imię użytkownika: ${order.user.username}</li>
+												<li>Dni wynajmu: ${order.rentLengthInDays}, <b style="color: red">Cena: ${order.orderPrice}</b></li>
+												<li>Numer referencyjny: <b style="color: blue">${order.referenceNumber}</b></li>
+											</ul>
+										</list>
+									</td>
+									
+									<td>
+										<list>
+											<ul>
+												<li>Email użytkownika: ${order.user.email}</li>
+												<li>Data stworzenia rezerwacji: ${order.created}</li>
+												<li>Miejsce odbioru auta: ${order.address.name}, ${order.address.street}, ${order.address.zipCode}, ${order.address.city}</li>
+												<c:if test="${not empty order.extras}">
 												
-												</li>
-											
-											</c:if>
-										</ul>
-									</list>
-								</td>
+													<li>
+														<b>Wybrane dodatki:</b>
+														
+														<c:forEach items="${order.extras}" var="extra">
+															${extra.description},
+														</c:forEach>
+													
+													</li>
+												
+												</c:if>
+											</ul>
+										</list>
+									</td>
+									
+									<td>
+										<list>
+											<ul>
+												<li>Data odbioru auta: ${order.pickupDate}</li>
+												<li>Data zwrotu auta: ${order.returnDate}</li>
+												<li>Klasa zarezerwowanego auta:	${order.carClass.carClassDescription}</li>
+											</ul>
+										</list>
+									</td>
+									
+									
+									<td>
+										<list>
+											<ul>				
+												<li><a href="<%out.print(request.getContextPath());%>/adminEditOrder/${order.id}">edytuj</a></li>
+												<li><a href="<%out.print(request.getContextPath());%>/deleteOrderAdmin/${order.id}">usuń</a></li>
+												<li><a href="<%out.print(request.getContextPath());%>/adminEditUser/${order.user.id}">edytuj użytkownika</a></li>
+											</ul>
+										</list>
+									</td>
 								
-								<td>
-									<list>
-										<ul>
-											<li>Data odbioru auta: ${order.pickupDate}</li>
-											<li>Data zwrotu auta: ${order.returnDate}</li>
-											<li>Klasa zarezerwowanego auta:	${order.carClass.carClassDescription}</li>
-										</ul>
-									</list>
-								</td>
-								
-								
-								<td>
-									<list>
-										<ul>				
-										<li><a href="<%out.print(request.getContextPath());%>/adminEditOrder/${order.id}">edytuj</a></li>
-										<li><a href="<%out.print(request.getContextPath());%>/deleteOrderAdmin/${order.id}">usuń</a></li>
-										<li><a href="<%out.print(request.getContextPath());%>/adminEditUser/${order.user.id}">edytuj użytkownika</a></li>
-										</ul>
-									</list>
-								</td>
+								</tr>
 							
-							</tr>
-						
-						</div>  <!--  koniec div "row" -->
-
-					</c:forEach>
-				
-				
-				</table>
-			</section>
+							</div>  <!--  koniec div "row" -->
+	
+						</c:forEach>
+					
+					
+					</table>
+				</section>
 			
 			</c:if>
 			
