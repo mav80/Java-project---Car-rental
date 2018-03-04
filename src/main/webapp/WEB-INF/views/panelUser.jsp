@@ -29,7 +29,7 @@
 				<b>${param.message}</b>
 			</p>
 		
-			Oto wszystkie twoje rezerwacje:<br><br>
+			${modelInfo}<br><br>
 			
 			
 			<section class="mytable">
@@ -98,8 +98,8 @@
 
 			
 
-			<a style="color: red" href="<%out.print(request.getContextPath());%>/userEditProfile/${loggedUser.id}"><h4>edytuj swoje dane osobowe</h4></a>
-			<a href="<%out.print(request.getContextPath());%>/"> powrót do	strony głównej</a>
+			<a style="color: red" href="<%out.print(request.getContextPath());%>/userEditProfile/${loggedUser.id}"><h4>Zmień swoje dane osobowe.</h4></a>
+			<a href="<%out.print(request.getContextPath());%>/">powrót do strony głównej</a>
 
 		</c:if>
 	</body>

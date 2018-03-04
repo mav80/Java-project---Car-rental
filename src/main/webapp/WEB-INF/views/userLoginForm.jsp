@@ -28,7 +28,7 @@
 	</form>
 	
 	<br>
- 	<a href="<%out.print(request.getContextPath());%>/"> powrót do strony głównej</a> </figure>
+ 	<a href="<%out.print(request.getContextPath());%>/">powrót do strony głównej</a> </figure>
 
 
 </body>

@@ -48,9 +48,18 @@ public class UserController {
 		if(user != null) {
 			//model.addAttribute("orders", orderRepository.findAllByIdOrderByCreated(user.getId()));
 			//model.addAttribute("orders", orderRepository.findByUserId(user.getId())); // tego używałem poprzednio
-			model.addAttribute("orders", orderRepository.findByUserIdOrderByCreatedDesc(user.getId()));
+			//List<Order> orders = orderRepository.findByUserIdOrderByCreatedDesc(user.getId());
+			List<Order> orders = orderRepository.show5LatestOrdersByUserId(user.getId());
+			model.addAttribute("orders", orders);
+			if(orders.isEmpty()) {
+				model.addAttribute("modelInfo","Nie masz jeszcze żadnych rezerwacji.");
+			} else {
+				model.addAttribute("modelInfo","Oto 5 Twoich ostatnich rezerwacji:");
+			}
 			//model.addAttribute("orders", orderRepository.findAllById(1));
 			//model.addAttribute("orders", orderRepository.findAll());
+			
+			
 		}
 
 		return "panelUser";
