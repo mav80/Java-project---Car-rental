@@ -147,7 +147,8 @@ public class UserController {
 			return "redirect:http://localhost:8080/EndProject-CarRental/";
 		}
 		model.addAttribute("user", userToEdit);
-		return "userRegistrationForm";
+		//return "userRegistrationForm";
+		return "userEditOwnProfile";
 	}
 	
 	
@@ -156,7 +157,8 @@ public class UserController {
 	{
 		if (result.hasErrors())
 		{
-			return "userRegistrationForm";
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+			return "userEditOwnProfile";
 		}
 		
 		user.setPassword(BCrypt.hashpw(user.getPassword(),  BCrypt.gensalt()));

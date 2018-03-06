@@ -12,8 +12,19 @@
 
 <body class="margin">
 
- 	<h1>Rejestrowanie nowego użytkownika.</h1>
-			
+	<h1>Edycja profilu.</h1>
+
+		<c:if test="${empty loggedUser}">
+			<p>Musisz się najpierw zalogować.</p>
+			<a href="<%out.print(request.getContextPath());%>/login">Przejdź na stronę logowania</a><br><br>
+		</c:if>
+
+		<c:if test="${loggedUser.id != user.id}">
+			<p>Nie możesz edytować profilu innego użytkownika!</p>
+		</c:if>	
+	
+	<c:if test="${loggedUser.id == user.id}">
+	
 	<h3>Wszystkie pola są konieczne. Do późniejszego logowania użyte będą email oraz hasło.</h3>
 
 	<form:form method="post" modelAttribute="user">
@@ -34,14 +45,13 @@ Hasło<br>
 		<form:password path="password" placeholder="hasło"/> <form:errors path="password"  style="font-weight: bold; font-style: italic; color: red"/><br><br>
 		
 		
-		<input type="submit" value="zarejestruj">
+		<input type="submit" value="Zmień">
 
 	</form:form>
 	
-			<br>
- <!-- <a href="<%out.print(request.getContextPath());%>/"> powrót do	strony głównej</a> </figure> -->
+	<br>
 
-
+</c:if>
 
 
 </body>
