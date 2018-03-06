@@ -28,8 +28,15 @@
 			<p style="color: red">
 				<b>${param.message}</b>
 			</p>
-		
-			${modelInfo}<br><br>
+			
+			
+			<c:if test="${not empty orders}">
+				${modelInfo}<br><br>
+			</c:if>
+			
+			<c:if test="${empty orders}">
+			 Nie masz jeszcze żadnych rezerwacji.<br><br>
+			</c:if>
 			
 			
 			<section class="mytable">
@@ -95,6 +102,11 @@
 				</table>
 			</section>
 			
+			
+			<form>
+				<input type="hidden" name="showAll" value="true">
+				<br><input type="submit" value="Pokaż wszystkie moje rezerwacje"><br><br>
+			</form>
 
 			
 

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import pl.coderslab.app.Cookies;
 import pl.coderslab.app.OrderChecker;
@@ -39,7 +40,7 @@ public class UserController {
 	UserRepository userRepository;
 	
 	@GetMapping("/panelUser")
-	public String login(Model model, HttpSession session, HttpServletRequest request) {
+	public String login(Model model, HttpSession session, HttpServletRequest request, @RequestParam(defaultValue="") String showAll) {
 
 		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
 		
@@ -58,6 +59,11 @@ public class UserController {
 			}
 			//model.addAttribute("orders", orderRepository.findAllById(1));
 			//model.addAttribute("orders", orderRepository.findAll());
+			
+			if(showAll.equals("true") ) {
+				model.addAttribute("orders", orderRepository.findByUserIdOrderByCreatedDesc(user.getId()));
+				model.addAttribute("modelInfo", "Oto wszystkie Twoje rezerwacje:");
+			}
 			
 			
 		}

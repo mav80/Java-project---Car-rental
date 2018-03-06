@@ -11,7 +11,11 @@
 </head>
 
 <body class="margin">
-	<h1>Rejestrowanie nowego użytkownika</h1>
+
+	<c:if test="${empty user.username}">
+	  	<h1>Rejestrowanie nowego użytkownika</h1>
+	</c:if>
+			
 	
 	<h3>Wszystkie pola są konieczne. Do późniejszego logowania użyte będą email oraz hasło.</h3>
 

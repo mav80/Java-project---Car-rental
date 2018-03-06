@@ -60,7 +60,8 @@
 							
 							<form>
 								<br>Pokaż wszystkie rezerwacje znajdujące się w bazie<br>
-								<input type="hidden" name="showAll" value="true"> <input type="submit" value="Pokaż"><br><br>
+								<input type="hidden" name="showAll" value="true">
+								<input type="submit" value="Pokaż"><br><br>
 							</form>
 							
 						</td>
@@ -200,12 +201,26 @@
 			<!-- tu wyświetlamy informację typu "oto wyniki wyszukiwania" lub "edycja powiodła się"  -->
 			
 			<br>
-			<p style="color: red">
-				<b>${searchResultMessage}</b>
-			</p>
+		
+			<c:if test="${not empty orders}">
+				<p style="color: red">
+					<b>${searchResultMessage}</b>
+				</p>
+			</c:if>
+			
+			<c:if test="${empty orders}">
+				<p style="color: red">
+			 		<b>Wyszukiwanie nie zwróciło żadnych wyników.</b><br><br>
+			 	</p>
+			</c:if>
+			
 			<p style="color: magenta">
 				<b>${param.searchResultMessage}</b>
 			</p>
+			
+			
+			
+
 			
 			
 			
