@@ -58,8 +58,12 @@ public class AdminController {
 			
 			@RequestParam(defaultValue="-1") long userUserId, @RequestParam(defaultValue="-1") int userUserUserAge, @RequestParam(defaultValue="-1") int userUserPhone, @RequestParam(defaultValue="") String userShowBannedUsers, @RequestParam(defaultValue="") String userShowAllUsers,
 			HttpServletRequest request, HttpSession session) {
-
+	
 		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
+		User user = (User) session.getAttribute("loggedUser");
+		if(user != null) {
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+		}
 		
 //		System.out.println("Param userId: " + userId);
 //		System.out.println("Param name: " + name);
@@ -189,8 +193,15 @@ public class AdminController {
 	
 	
 	@GetMapping("/adminEditOrder/{id}")
-	public String editId(Model model, @PathVariable Long id)
-	{
+	public String editId(Model model, @PathVariable Long id, HttpSession session, HttpServletRequest request)
+	{	
+		
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
+		User user = (User) session.getAttribute("loggedUser");
+		if(user != null) {
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+		}
+		
 		Order order = orderRepository.findOneById(id);
 		
 		if(order == null) {
@@ -243,15 +254,22 @@ public class AdminController {
 	
 	
 	@GetMapping("/adminEditUser/{id}")
-	public String adminEditUserProfile(Model model, @PathVariable Long id, HttpSession session)
+	public String adminEditUserProfile(Model model, @PathVariable Long id, HttpSession session, HttpServletRequest request)
 	{
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
+		User user = (User) session.getAttribute("loggedUser");
+		if(user != null) {
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+		}
+		
+		
 		User loggedUser = (User) session.getAttribute("loggedUser");
-		User user = userRepository.findFirstById(id);
+		User userToEdit = userRepository.findFirstById(id);
 		
 		if(user == null || !loggedUser.isisAdmin()) {
 			return "redirect:http://localhost:8080/EndProject-CarRental/";
 		}
-		model.addAttribute("user", user);
+		model.addAttribute("user", userToEdit);
 		return "adminUserEditForm";
 	}
 	

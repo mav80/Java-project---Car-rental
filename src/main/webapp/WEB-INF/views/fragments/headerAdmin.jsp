@@ -81,5 +81,53 @@
       </script>
    </head>
    <body>
+   
+   	<header class="container">
+	<div class="row">
+		<h1 class="col-sm-4">Movis - rent a car</h1>
+		<nav class="col-sm-8 text-right"> 
+		<c:if test="${not empty info}">
+			<p><b>${info}</b></p>
+			<p>
+				<a href="logout">wyloguj się</a>
+			</p>
+		</c:if> 
+		
+		<c:if test="${loggedUser.isAdmin == true}">
+			<p>
+				<a href="panelAdmin">panel administracyjny</a>
+			</p>
+		</c:if>
+		
+		
+		<c:if test="${loggedUser.isAdmin == false}">
+			<p>
+				<a href="panelUser">panel użytkownika</a>
+			</p>
+		</c:if>
+		
+		<c:if test="${empty info}">
+			<p>
+				<a href="login">logowanie</a>
+			</p>
+			<p>
+				<a href="register">rejestracja</a>
+			</p>
+		</c:if>
+		<p>nasze auta</p>
+		<p>kontakt</p>
+		</nav>
+	</div>
+	</header>
+	
+	<section class="jumbotron">
+	<div class="container">
+	<div class="row text-center">
+		<h2>Wypożyczalnia aut</h2>
+		<h3>najlepsza na świecie</h3>
+
+	</div>
+	</div>
+   </section>
    </body>
 </html>

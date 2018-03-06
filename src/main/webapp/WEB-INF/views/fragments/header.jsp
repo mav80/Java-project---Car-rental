@@ -92,5 +92,54 @@
       </script>
    </head>
    <body>
+
+	<header class="container">
+	<div class="row">
+		<h1 class="col-sm-4">Movis - rent a car</h1>
+		<nav class="col-sm-8 text-right"> 
+		<c:if test="${not empty info}">
+			<p><b>${info}</b></p>
+			<p>
+				<a href="<%out.print(request.getContextPath());%>/logout">wyloguj się</a>
+			</p>
+		</c:if> 
+		
+		<c:if test="${loggedUser.isAdmin == true}">
+			<p>
+				<a href="<%out.print(request.getContextPath());%>/panelAdmin">panel administracyjny</a>
+			</p>
+		</c:if>
+		
+		
+		<c:if test="${loggedUser.isAdmin == false}">
+			<p>
+				<a href="<%out.print(request.getContextPath());%>/panelUser">panel użytkownika</a>
+			</p>
+		</c:if>
+		
+		<c:if test="${empty info}">
+			<p>
+				<a href="<%out.print(request.getContextPath());%>/login">logowanie</a>
+			</p>
+			<p>
+				<a href="<%out.print(request.getContextPath());%>/register">rejestracja</a>
+			</p>
+		</c:if>
+		<p>nasze auta</p>
+		<p>kontakt</p>
+		</nav>
+	</div>
+	</header>
+	
+		<section class="jumbotron">
+	<div class="container">
+		<div class="row text-center">
+			<h2>Wypożyczalnia aut</h2>
+			<h3>najlepsza na świecie</h3>
+			<!--  <a class="btn btn-primary" href="#" role="button">See all</a> -->
+		</div>
+	</div>
+	</section>
+	
    </body>
 </html>

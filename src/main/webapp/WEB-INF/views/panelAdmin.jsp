@@ -14,20 +14,18 @@
 
 	<body class="margin">
 	
-		<h3>Panel administracyjny</h3>
+		<!-- <h3>Panel administracyjny</h3> -->
 		
 		<c:if test="${empty loggedUser}">
-			<p>Nie masz odpowiednich uprawnień</p>	
-			<a href="<%out.print(request.getContextPath());%>/">powrót do strony głównej</a>
+			<p>Nie masz odpowiednich uprawnień.</p>	
 		</c:if>
 		
 		<c:if test="${loggedUser.isAdmin == false}">
-			<p>Nie masz odpowiednich uprawnień</p>
-			<a href="<%out.print(request.getContextPath());%>/">powrót do strony głównej</a>
+			<p>Nie masz odpowiednich uprawnień.</p>
 		</c:if>
 		
 		<c:if test="${loggedUser.isAdmin == true}">
-			<p>Masz odpowiednie uprawnienia</p>
+			<!-- <p>Masz odpowiednie uprawnienia</p> -->
 			
 			<b>${userProfileChangedSuccessfully}</b><br>
 			

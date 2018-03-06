@@ -43,10 +43,11 @@ public class UserController {
 	public String login(Model model, HttpSession session, HttpServletRequest request, @RequestParam(defaultValue="") String showAll) {
 
 		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
-		
 		User user = (User) session.getAttribute("loggedUser");
 		
 		if(user != null) {
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+			
 			//model.addAttribute("orders", orderRepository.findAllByIdOrderByCreated(user.getId()));
 			//model.addAttribute("orders", orderRepository.findByUserId(user.getId())); // tego używałem poprzednio
 			//List<Order> orders = orderRepository.findByUserIdOrderByCreatedDesc(user.getId());
@@ -73,8 +74,14 @@ public class UserController {
 	
 
 	@GetMapping("/editOrder/{id}")
-	public String editId(Model model, @PathVariable Long id)
-	{
+	public String editId(Model model, @PathVariable Long id, HttpSession session, HttpServletRequest request)
+	{	
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
+		User user = (User) session.getAttribute("loggedUser");
+		if(user != null) {
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+		}
+		
 		Order order = orderRepository.findOneById(id);
 		
 		if(order == null) {
@@ -124,14 +131,22 @@ public class UserController {
 	
 	
 	@GetMapping("/userEditProfile/{id}")
-	public String editUserProfile(Model model, @PathVariable Long id)
-	{
-		User user = userRepository.findFirstById(id);
+	public String editUserProfile(Model model, @PathVariable Long id, HttpSession session, HttpServletRequest request)
+	{	
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
+		User user = (User) session.getAttribute("loggedUser");
+		if(user != null) {
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+		}
+		
+		
+		User userToEdit = userRepository.findFirstById(id);
+		
 		
 		if(user == null) {
 			return "redirect:http://localhost:8080/EndProject-CarRental/";
 		}
-		model.addAttribute("user", user);
+		model.addAttribute("user", userToEdit);
 		return "userRegistrationForm";
 	}
 	

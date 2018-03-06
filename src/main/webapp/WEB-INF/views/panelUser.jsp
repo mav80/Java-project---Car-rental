@@ -17,9 +17,8 @@
 		<h3>Panel użytkownika</h3>
 	
 		<c:if test="${empty loggedUser}">
-			<p>Musisz się najpierw zalogować</p>
-			<a href="<%out.print(request.getContextPath());%>/login">strona	logowania</a><br><br>
-			<a href="<%out.print(request.getContextPath());%>/">powrót do strony głównej</a>
+			<p>Musisz się najpierw zalogować.</p>
+			<a href="<%out.print(request.getContextPath());%>/login">Przejdź na stronę logowania</a><br><br>
 		</c:if>
 	
 	
