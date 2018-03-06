@@ -61,7 +61,7 @@ Hasło<br>
 		<form:input path="password" placeholder="hasło"/><br>
 		<form:errors path="password"/><br>
 		
-Czy użytkownik jest aktywny (brak ptaszka = zbanowany)? <form:checkbox path="enabled" /><br>
+Czy użytkownik jest aktywny (brak ptaszka = zbanowany) ? <form:checkbox path="enabled" /><br>
 		
 		<input type="submit" value="zarejestruj">
 
@@ -75,17 +75,13 @@ Czy użytkownik jest aktywny (brak ptaszka = zbanowany)? <form:checkbox path="en
 		
 		
 
-		<a href="<%out.print(request.getContextPath());%>/">powrót do
-			strony głównej</a>
+		<!-- <a href="<%out.print(request.getContextPath());%>/">powrót do strony głównej</a> -->
 </c:if>
 	
 	
-	
-	
-	
-	
-	
-	
 
-</body>
+
+	</body>
 </html>
+
+<%@ include file="fragments/footer.jsp"%>

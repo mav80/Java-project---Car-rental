@@ -21,3 +21,4 @@
 
 </body>
 </html>
+<%@ include file="fragments/footer.jsp"%>

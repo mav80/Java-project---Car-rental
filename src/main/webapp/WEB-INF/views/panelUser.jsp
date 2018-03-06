@@ -111,8 +111,9 @@
 			
 
 			<a style="color: red" href="<%out.print(request.getContextPath());%>/userEditProfile/${loggedUser.id}"><h4>Zmień swoje dane osobowe.</h4></a>
-			<a href="<%out.print(request.getContextPath());%>/">powrót do strony głównej</a>
+			<!--   <a href="<%out.print(request.getContextPath());%>/">powrót do strony głównej</a> -->
 
 		</c:if>
 	</body>
 </html>
+<%@ include file="fragments/footer.jsp"%>

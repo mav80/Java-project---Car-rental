@@ -391,7 +391,8 @@
 			
 			<br><b>Liczba zamówień w bazie: ${howManyOrdersInDatabase}</b></b><br><br>
 			
-			<a href="<%out.print(request.getContextPath());%>/">powrót do strony głównej</a>
+			<!--  <a href="<%out.print(request.getContextPath());%>/">powrót do strony głównej</a> -->
 		</c:if>
 	</body>
 </html>
+<%@ include file="fragments/footer.jsp"%>

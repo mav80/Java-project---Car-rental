@@ -42,10 +42,11 @@ Hasło<br>
 	</form:form>
 	
 			<br>
- <a href="<%out.print(request.getContextPath());%>/"> powrót do	strony głównej</a> </figure>
+ <!-- <a href="<%out.print(request.getContextPath());%>/"> powrót do	strony głównej</a> </figure> -->
 
 
 
 
 </body>
 </html>
+<%@ include file="fragments/footer.jsp"%>

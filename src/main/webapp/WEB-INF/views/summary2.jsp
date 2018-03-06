@@ -12,6 +12,9 @@
 <h1>Zamówienie pomyślnie dodano do bazy</h1>
 
 <h3 style="display:inline">Numer referencyjny Twojej rezerwacji:  </h3> <h3 style="display:inline"><b style="color: blue">${rentReferenceNumber}</b></h3><br>
+
+<br><a href="<%out.print(request.getContextPath());%>/panelUser">przejdź do panelu użytkownika</a>
 </body>
+
 <%@ include file="fragments/footer.jsp"%>
 </html>

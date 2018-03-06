@@ -11,7 +11,8 @@
 
 <h3>Operacja przebiegła pomyślnie.</h3>
 
-<a href="<%out.print(request.getContextPath());%>/">powrót do strony głównej</a>
+<!-- <a href="<%out.print(request.getContextPath());%>/">powrót do strony głównej</a> -->
 
 </body>
 </html>
+<%@ include file="fragments/footer.jsp"%>
