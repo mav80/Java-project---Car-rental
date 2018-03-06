@@ -114,11 +114,12 @@ public class UserController {
 	
 	
 	@GetMapping("/deleteOrderUser/{id}")
-	public String deleteId(@PathVariable Long id)
+	public String deleteId(@PathVariable Long id, Model model)
 	{
 		Order order = orderRepository.findFirstById(id);
 		if(order != null) {
 			orderRepository.delete(order);
+			model.addAttribute("message", "Rezerwację usunięto.");
 		}
 		return "redirect:/panelUser";
 	}

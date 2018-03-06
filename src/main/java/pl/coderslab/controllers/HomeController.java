@@ -121,7 +121,13 @@ public class HomeController {
 	
 	@PostMapping("/summary2")
 	//@ResponseBody
-	public String summary(@Valid Order order, BindingResult result, HttpSession session, Model model) {
+	public String summary(@Valid Order order, BindingResult result, HttpSession session, Model model, HttpServletRequest request) {
+		
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
+		User user = (User) session.getAttribute("loggedUser");
+		if(user != null) {
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+		}
 		
 		if(result.hasErrors()) {
 			model.addAttribute("errors", result.getAllErrors());

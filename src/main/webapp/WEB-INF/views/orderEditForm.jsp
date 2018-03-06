@@ -12,20 +12,18 @@
 </head>
 
 <body class="margin">
-	<h3>To jest widok orderEditForm</h3>
+	<h3>Edycja rezerwacji</h3>
 
 	<c:if test="${empty loggedUser}">
 		<p>Musisz się najpierw zalogować</p>
 
-		<a href="<%out.print(request.getContextPath());%>/">powrót do
-			strony głównej</a>
+		<a href="<%out.print(request.getContextPath());%>/">powrót do strony głównej</a>
 	</c:if>
 
 	<c:if test="${empty order}">
 		<p>Musisz się najpierw zalogować</p>
 
-		<a href="<%out.print(request.getContextPath());%>/">powrót do
-			strony głównej</a>
+		<a href="<%out.print(request.getContextPath());%>/">powrót do strony głównej</a>
 	</c:if>
 
 
@@ -34,8 +32,7 @@
 	<c:if test="${loggedUser.id != order.user.id}">
 		<p>Nie masz odpowiednich uprawnień do edycji tego zamówienia</p>
 
-		<a href="<%out.print(request.getContextPath());%>/">powrót do
-			strony głównej</a>
+		<a href="<%out.print(request.getContextPath());%>/">powrót do strony głównej</a>
 	</c:if>
 
 	<c:if test="${loggedUser.id == order.user.id}">
