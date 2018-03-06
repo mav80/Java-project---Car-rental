@@ -10,6 +10,7 @@
 <body>
 <footer>
 <a href="<%out.print(request.getContextPath());%>/">powrót do strony głównej</a>
+<button onclick="topFunction()" id="myBtn" title="Powrót na górę strony">Do góry</button>
 
 <div class="row">
 		<p class="col-sm-4">&copy; 2018 Mav</p>

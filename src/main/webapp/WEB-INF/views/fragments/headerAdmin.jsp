@@ -21,6 +21,8 @@
       <script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
       <script type="text/javascript" src="<%out.print(request.getContextPath());%>/static/js/bootstrap-material-datetimepicker.js"></script>
       
+            <script type="text/javascript" src="<%out.print(request.getContextPath());%>/static/js/site.js"></script>
+      
       <!-- datepicker -->
 		<script type="text/javascript">
 			$(document).ready(function() {

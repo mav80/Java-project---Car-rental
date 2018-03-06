@@ -393,6 +393,7 @@
 			
 			<!--  <a href="<%out.print(request.getContextPath());%>/">powrót do strony głównej</a> -->
 		</c:if>
+		
 	</body>
 </html>
 <%@ include file="fragments/footer.jsp"%>
