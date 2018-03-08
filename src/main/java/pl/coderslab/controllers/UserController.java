@@ -1,6 +1,9 @@
 package pl.coderslab.controllers;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -21,10 +24,12 @@ import pl.coderslab.app.Cookies;
 import pl.coderslab.app.OrderChecker;
 import pl.coderslab.entities.Address;
 import pl.coderslab.entities.CarClass;
+import pl.coderslab.entities.Extras;
 import pl.coderslab.entities.Order;
 import pl.coderslab.entities.User;
 import pl.coderslab.repositories.AddressRepository;
 import pl.coderslab.repositories.CarClassRepository;
+import pl.coderslab.repositories.ExtrasRepository;
 import pl.coderslab.repositories.OrderRepository;
 import pl.coderslab.repositories.UserRepository;
 
@@ -38,6 +43,8 @@ public class UserController {
 	OrderRepository orderRepository;
 	@Autowired
 	UserRepository userRepository;
+	@Autowired
+	ExtrasRepository extrasRepository;
 	
 	@GetMapping("/panelUser")
 	public String login(Model model, HttpSession session, HttpServletRequest request, @RequestParam(defaultValue="") String showAll) {
@@ -87,6 +94,16 @@ public class UserController {
 		if(order == null) {
 			return "redirect:http://localhost:8080/EndProject-CarRental/";
 		}
+		
+		//chcemy dodać do edycji wszystkie dodatki które są w bazie i nie są wyłączone oraz te które są w zamówieniu,
+		//nawet jeśli są wyłączone - robimy więc hashSet w którym pozycje nie mogą się powtarzać i który w efekcie da nam część
+		//wspólną obu wyszukiwań
+		
+		HashSet<Extras> extras = new HashSet<>();
+		extras.addAll(extrasRepository.findAllByActive(true));
+		extras.addAll(order.getExtras());
+		
+		model.addAttribute("extras", extras);
 		model.addAttribute("order", order);
 		return "orderEditForm";
 	}
@@ -96,16 +113,30 @@ public class UserController {
 	public String editId(@Valid Order order, BindingResult result, @PathVariable Long id, Model model)
 	{
 		if (result.hasErrors())
-		{
+		{	
+			
+			HashSet<Extras> extras = new HashSet<>();
+			extras.addAll(extrasRepository.findAllByActive(true));
+			extras.addAll(order.getExtras());
+			model.addAttribute("extras", extras);
+			
 			return "orderEditForm";
 		}
 		
 		 if(OrderChecker.checkOrderDates(order, result) != "ok") { 
+			
 			 model.addAttribute("dateError", OrderChecker.checkOrderDates(order, result));
+			 
+				HashSet<Extras> extras = new HashSet<>();
+				extras.addAll(extrasRepository.findAllByActive(true));
+				extras.addAll(order.getExtras());
+				model.addAttribute("extras", extras);
+				
 			 return "orderEditForm"; 
 		 }
 		 
 		order.calculateAndSetNumberOfDaysAndPrice(order, carClassRepository);
+		order.updatePriceWithSelectedExtras(order, order.getExtras()); //tu działamy
 		orderRepository.save(order);
 		
 		model.addAttribute("message", "Dane rezerwacji zmieniono pomyślnie.");
@@ -192,5 +223,6 @@ public class UserController {
 	public List<CarClass> getCars() {
 		return carClassRepository.findAll();
 	}
+	
 
 }

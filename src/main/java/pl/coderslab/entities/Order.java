@@ -243,6 +243,8 @@ public class Order {
 		
 		order.setOrderPrice(order.getOrderPrice() + extrasPrice);
 	}
+
+
 	
 	
 	
@@ -264,18 +266,24 @@ public class Order {
 
 
 
+//	@Override
+//	public String toString() {
+//		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate
+//				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass + ", rentLengthInDays="
+//				+ rentLengthInDays + ", orderPrice=" + orderPrice + "]";
+//	}
+
+
+
+
+	
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate
-				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass + ", rentLengthInDays="
-				+ rentLengthInDays + ", orderPrice=" + orderPrice + "]";
+				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass + ", extras=" + extras
+				+ ", rentLengthInDays=" + rentLengthInDays + ", orderPrice=" + orderPrice + ", referenceNumber="
+				+ referenceNumber + "]";
 	}
-
-
-
-
-	
-	
 	
 	
 	
