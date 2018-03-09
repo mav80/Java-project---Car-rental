@@ -132,12 +132,12 @@ public class UserController {
 		
 		 if(OrderChecker.checkOrderDates(order, result) != "ok") { 
 			
-			 model.addAttribute("dateError", OrderChecker.checkOrderDates(order, result));
+			model.addAttribute("dateError", OrderChecker.checkOrderDates(order, result));
 			 
-				HashSet<Extras> extras = new HashSet<>();
-				extras.addAll(extrasRepository.findAllByActive(true));
-				extras.addAll(order.getExtras());
-				model.addAttribute("extras", extras);
+			HashSet<Extras> extras = new HashSet<>();
+			extras.addAll(extrasRepository.findAllByActive(true));
+			extras.addAll(order.getExtras());
+			model.addAttribute("extras", extras);
 				
 			 return "orderEditForm"; 
 		 }

@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -33,10 +34,12 @@ import org.springframework.web.util.WebUtils;
 import pl.coderslab.app.Cookies;
 import pl.coderslab.entities.Address;
 import pl.coderslab.entities.CarClass;
+import pl.coderslab.entities.Extras;
 import pl.coderslab.entities.Order;
 import pl.coderslab.entities.User;
 import pl.coderslab.repositories.AddressRepository;
 import pl.coderslab.repositories.CarClassRepository;
+import pl.coderslab.repositories.ExtrasRepository;
 import pl.coderslab.repositories.OrderRepository;
 import pl.coderslab.repositories.UserRepository;
 
@@ -50,6 +53,8 @@ public class AdminController {
 	OrderRepository orderRepository;
 	@Autowired
 	UserRepository userRepository;
+	@Autowired
+	ExtrasRepository extrasRepository;
 	
 	@GetMapping("/panelAdmin")
 	public String panelAdmin(Model model, @RequestParam(defaultValue="-1") long userId, @RequestParam(defaultValue="") String name, 
@@ -208,19 +213,34 @@ public class AdminController {
 			return "redirect:http://localhost:8080/EndProject-CarRental/";
 		}
 		
+		HashSet<Extras> extras = new HashSet<>();
+		extras.addAll(extrasRepository.findAll());
+		
+		model.addAttribute("extras", extras);
 		model.addAttribute("order", order);
 		return "adminOrderEditForm";
 	}
 	
 	@PostMapping("/adminEditOrder/{id}")
-	public String editId(@Valid Order order, BindingResult result, @PathVariable Long id, Model model)
+	public String editId(@Valid Order order, BindingResult result, @PathVariable Long id, Model model, HttpSession session, HttpServletRequest request)
 	{
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
+		User user = (User) session.getAttribute("loggedUser");
+		if(user != null) {
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+		}
+		
+		
 		if (result.hasErrors())
 		{
+			HashSet<Extras> extras = new HashSet<>();
+			extras.addAll(extrasRepository.findAll());
+			model.addAttribute("extras", extras);
 			return "adminOrderEditForm";
 		}
 		
 		order.calculateAndSetNumberOfDaysAndPrice(order, carClassRepository);
+		order.updatePriceWithSelectedExtras(order, order.getExtras());
 		model.addAttribute("searchResultMessage", "Dane rezerwacji zmieniono pomyślnie.");
 		orderRepository.save(order);
 		return "redirect:/panelAdmin";

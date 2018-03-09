@@ -14,7 +14,7 @@
 				
 		<h3>Długość wynajmu w dniach: ${rentLengthInDays}</h3>
 		<!--  <h3>Długość wynajmu w godzinach: ${rentLengthInHours}</h3> -->
-		<h3 style="display:inline">Koszt wynajmu (cena auta * liczba dni): </h3> <h3 style="display:inline"><b style="color: red">${rentCost} złotych</b></h3>
+		<h3 style="display:inline">Koszt wynajmu bez dodatków (cena auta * liczba dni): </h3> <h3 style="display:inline"><b style="color: red">${rentCost} złotych</b></h3>
 		<br>
 		<br>
 			
