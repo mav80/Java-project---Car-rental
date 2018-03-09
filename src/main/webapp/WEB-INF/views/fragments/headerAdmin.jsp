@@ -84,7 +84,7 @@
    
    	<header class="container">
 	<div class="row">
-		<h1 class="col-sm-4">Movis - rent a car</h1>
+		<h1 class="col-sm-4"><a href="<%out.print(request.getContextPath());%>">Movis - rent a car</a></h1>
 		<nav class="col-sm-8 text-right"> 
 		<c:if test="${not empty info}">
 			<p><b>${info}</b></p>

@@ -46,6 +46,10 @@ public class Extras {
 	@ManyToMany(mappedBy = "extras", fetch=FetchType.EAGER)
 	List<Order> orders = new ArrayList<>();
 	
+
+	@Column(nullable = false)
+	private String image;
+	
 	
 
 	public long getId() {
@@ -96,11 +100,6 @@ public class Extras {
 		this.orders = orders;
 	}
 
-	@Override
-	public String toString() {
-		return "OrderExtras [id=" + id + ", name=" + name + ", description=" + description + ", pricePerDay="
-				+ pricePerDay + ", active=" + active + "]";
-	}
 
 	@Override
 	public int hashCode() {
@@ -123,8 +122,24 @@ public class Extras {
 			return false;
 		return true;
 	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	@Override
+	public String toString() {
+		return "Extras [id=" + id + ", name=" + name + ", description=" + description + ", pricePerDay=" + pricePerDay
+				+ ", active=" + active + ", orders=" + orders + ", image=" + image + "]";
+	}
 	
 	
+	
+
 	
 	
 	

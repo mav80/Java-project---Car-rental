@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function(){
 	
 
 	//alert('Działam');
-	console.log("Działam!\n\n");
+	//console.log("Działam!\n\n");
 	
 	var totalCost = document.getElementById("totalCost");
 	console.log(totalCost);
@@ -10,13 +10,10 @@ document.addEventListener("DOMContentLoaded", function(){
 	var allRowsWithCheckboxes = document.getElementsByClassName("extrasCheckboxRow");
 	console.log(allRowsWithCheckboxes);
 	
-	var checkboxes = document.getElementsByClassName("checkboxes");
-	console.log(checkboxes);
 	
-	
-	for (i = 0; i < checkboxes.length; i++) {
+	for (i = 0; i < allRowsWithCheckboxes.length; i++) {
         //console.log(i);
-		checkboxes[i].addEventListener("click",
+		allRowsWithCheckboxes[i].firstElementChild.firstElementChild.addEventListener("click",
             function () {
 
                 if (this.checked) {

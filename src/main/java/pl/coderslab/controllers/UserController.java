@@ -110,8 +110,15 @@ public class UserController {
 	
 	
 	@PostMapping("/editOrder/{id}")
-	public String editId(@Valid Order order, BindingResult result, @PathVariable Long id, Model model)
+	public String editId(@Valid Order order, BindingResult result, @PathVariable Long id, Model model, HttpSession session, HttpServletRequest request)
 	{
+		
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
+		User user = (User) session.getAttribute("loggedUser");
+		if(user != null) {
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+		}
+		
 		if (result.hasErrors())
 		{	
 			

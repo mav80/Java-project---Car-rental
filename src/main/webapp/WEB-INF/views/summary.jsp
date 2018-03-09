@@ -9,6 +9,7 @@
 	</head>
 
 	<body class="margin">
+	${errors}
 		<h1>Oto Twoja rezerwacja</h1>
 				
 		<h3>Długość wynajmu w dniach: ${rentLengthInDays}</h3>
@@ -44,6 +45,7 @@
 			<table>
 			
 				<tr>
+					<td></td>
 					<td>Nazwa dodatku</td>
 					<td>Cena (złotych/dzień)</td>
 					<td>Cena zamówienia zwiększy się o (złotych)</td>
@@ -51,7 +53,8 @@
 			
 				<c:forEach items="${extras}" var="extra">
 					<tr class="extrasCheckboxRow">
-						<td id="extrasNo${extra.id}"><form:checkbox path="extras" value="${extra.id}" itemLabel="description" itemValue="id"/> ${extra.description}<br></td>
+						<td><img src="${pageContext.request.contextPath}/static/images/extras/${extra.image}"></td>
+						<td id="extrasNo${extra.id}"><form:checkbox path="extras" value="${extra}" itemLabel="description" itemValue="id" class="checkboxes"/> ${extra.description}<br></td>
 						<td>${extra.pricePerDay} zł</td>
 						<td id="extrasNo${extra.id}TotalPrice"class="extrasTotalPrice">${extra.pricePerDay * order.rentLengthInDays}</td>
 					</tr>

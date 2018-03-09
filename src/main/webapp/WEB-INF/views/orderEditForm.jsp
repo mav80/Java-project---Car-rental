@@ -12,8 +12,7 @@
 	</head>
 	
 	<body class="margin">
-		<h3>Edycja rezerwacji</h3>
-	
+			
 		<c:if test="${empty loggedUser}">
 			<p>Musisz się najpierw zalogować</p>
 	
@@ -33,50 +32,57 @@
 	
 		<c:if test="${loggedUser.id == order.user.id}">
 	
-	
+			<h3>Edycja rezerwacji <b>${order.referenceNumber}</b>. Nowa cena końcowa będzie widoczna w panelu użytkownika.</h3>
 	
 	
 			<form:form modelAttribute="order" method="post">
 	
-				<p>Miejsce odbioru i zwrotu:</p>
-				<form:select path="address.id" items="${addresses}" itemLabel="name" itemValue="id" />
-				<form:errors path="address.id" />
-				<br>
+				<div style="display: inline-block">
+					<p>Miejsce odbioru i zwrotu:</p>
+					<form:select path="address.id" items="${addresses}" itemLabel="name" itemValue="id" />
+					<form:errors path="address.id" />
+				</div>
+				
+				<div style="display: inline-block; padding: 10px 100px">
+					<p>Klasa auta:</p>
+					<form:select path="carClass.id" items="${cars}" itemLabel="carClassDescription" itemValue="id" />
+					<form:errors path="carClass.id"/>
+				</div>
 	
 				<br>
 	
-				<p>Data i godzina wypożyczenia:</p>
-				<form:input path="pickupDate" id="date-format-begin" class="form-control floating-label" placeholder="Data wypożyczenia" />
-				<form:errors path="pickupDate"/><br>
-	
-				<p>Data i godzina zwrotu:</p>
-				<form:input path="returnDate" id="date-format-end" class="form-control floating-label" placeholder="Data zwrotu" />
-				<form:errors path="returnDate"/><br>
-				<b style="color: red">${dateError}</b>
-	
-				<p>Klasa auta:</p>
-				<form:select path="carClass.id" items="${cars}" itemLabel="carClassDescription" itemValue="id" />
-				<form:errors path="carClass.id" />
-				<br>
+				<div style="display: inline-block">
+					<p>Data i godzina wypożyczenia:</p>
+					<form:input path="pickupDate" id="date-format-begin" class="form-control floating-label" placeholder="Data wypożyczenia" />
+					<form:errors path="pickupDate"/><br>
+				</div>
+				
+				<div style="display: inline-block; padding: 10px 325px">
+					<p>Data i godzina zwrotu:</p>
+					<form:input path="returnDate" id="date-format-end" class="form-control floating-label" placeholder="Data zwrotu" />
+					<form:errors path="returnDate"/><br>
+					<b style="color: red">${dateError}</b>
+				</div>
+				
+				
 				<form:hidden path="user.id" />
 				<form:hidden path="referenceNumber" />
 	
-				<br>
-				<br>
+
 				
 				<table>
 					
 					<tr>
+						<td></td>
 						<td>Nazwa dodatku</td>
 						<td>Cena (złotych/dzień)</td>
-						<td>Cena zamówienia zwiększy się o (złotych)</td>
 					</tr>
 				
 					<c:forEach items="${extras}" var="extra">
 						<tr class="extrasCheckboxRow">
+							<td><img src="${pageContext.request.contextPath}/static/images/extras/${extra.image}"></td>
 							<td id="extrasNo${extra.id}"><form:checkbox path="extras" value="${extra}" itemLabel="description"/> ${extra.description}<br></td>
 							<td>${extra.pricePerDay} zł</td>
-							<td id="extrasNo${extra.id}TotalPrice"class="extrasTotalPrice">${extra.pricePerDay * order.rentLengthInDays}</td>
 						</tr>
 					</c:forEach>
 			
