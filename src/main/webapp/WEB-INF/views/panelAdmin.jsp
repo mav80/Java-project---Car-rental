@@ -359,7 +359,17 @@
 										<ul>
 											<li>Email: ${user.email}</li>
 											<li>Telefon: ${user.phone}</li>
-											<li>Czy aktywny: ${user.enabled}</li>								
+											<li>Czy aktywny:
+											
+											<c:if test="${user.enabled == true}">
+												<img src="<%out.print(request.getContextPath());%>/static/images/tick.png">
+											</c:if>
+
+											<c:if test="${user.enabled == false}">
+												<img src="<%out.print(request.getContextPath());%>/static/images/cross.png">
+											</c:if>
+											
+											</li>								
 										</ul>
 									</list>
 								</td>

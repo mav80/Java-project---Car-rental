@@ -80,7 +80,7 @@
 				
 					<c:forEach items="${extras}" var="extra">
 						<tr class="extrasCheckboxRow">
-							<td><img src="${pageContext.request.contextPath}/static/images/extras/${extra.image}"></td>
+							<td><img src="<%out.print(request.getContextPath());%>/static/images/extras/${extra.image}"></td>
 							<td id="extrasNo${extra.id}"><form:checkbox path="extras" value="${extra}" itemLabel="description"/> ${extra.description}<br></td>
 							<td>${extra.pricePerDay} zł</td>
 						</tr>
