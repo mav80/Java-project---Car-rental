@@ -62,7 +62,10 @@ public class AdminController {
 			@RequestParam(defaultValue="") String showAll, @RequestParam(defaultValue="") String referenceNumber,
 			
 			@RequestParam(defaultValue="-1") long userUserId, @RequestParam(defaultValue="-1") int userUserUserAge, @RequestParam(defaultValue="-1") int userUserPhone, @RequestParam(defaultValue="") String userShowBannedUsers, @RequestParam(defaultValue="") String userShowAllUsers,
-			HttpServletRequest request, HttpSession session) {
+			HttpServletRequest request, HttpSession session,
+			
+			@RequestParam(defaultValue="") String extrasShowAllExtras, @RequestParam(defaultValue="") String extrasShowActiveExtras, 
+			@RequestParam(defaultValue="") String extrasShowDisabledExtras, @RequestParam(defaultValue="-1") long extrasExtrasId) {
 	
 		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
 		User user = (User) session.getAttribute("loggedUser");
@@ -187,6 +190,32 @@ public class AdminController {
 		
 		
 		
+		
+		
+		
+		
+		
+		//extras
+		
+		if(extrasExtrasId > 0 ) {
+			model.addAttribute("extras", extrasRepository.findAllById(extrasExtrasId));
+			model.addAttribute("searchResultMessage", "Oto wyniki wyszukiwania dodatków:");
+		}
+		
+		if(extrasShowActiveExtras.equals("true") ) {
+			model.addAttribute("extras", extrasRepository.findAllByActive(true));
+			model.addAttribute("searchResultMessage", "Oto wyniki wyszukiwania dodatków:");
+		}
+		
+		if(extrasShowDisabledExtras.equals("true") ) {
+			model.addAttribute("extras", extrasRepository.findAllByActive(false));
+			model.addAttribute("searchResultMessage", "Oto wyniki wyszukiwania dodatków:");
+		}
+		
+		if(extrasShowAllExtras.equals("true") ) {
+			model.addAttribute("extras", extrasRepository.findAll());
+			model.addAttribute("searchResultMessage", "Oto wyniki wyszukiwania dodatków:");
+		}
 		
 		
 		

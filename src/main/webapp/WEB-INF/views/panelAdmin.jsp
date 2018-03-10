@@ -190,6 +190,80 @@
 			
 			
 			
+			<br>
+			<p>	
+				<b>Zarządzanie dodatkami do rezerwacji</b>
+			</p>
+			
+			
+			
+			<div class="row">
+			
+				<figure class="col-sm-1"><input id="extrasButton" type="submit" value="Pokaż/ukryj"> </figure>
+				
+				<div id="extrasDiv"  style="display: none">
+					<table style="color: blue">
+						<tr style="background-color: #e9e9e9">
+							<td>
+								<figure class="col-bg-4">
+								
+									<form>
+										Znajdź dodatek po ID<br> 
+										<input type="number" name="extrasExtrasId" min="1" placeholder="Podaj id"><br>
+										<input type="submit" value="Wyszukaj"> <br> <br>
+									</form>
+									
+									<form>
+										<a style="color: blue" href="<%out.print(request.getContextPath());%>/adminAddNewExtras">Utwórz nowy dodatek</a>
+									</form>
+								
+								</figure>
+							</td>
+							
+							<td>
+								<figure class="col-bg-4">
+								
+									<form>
+										Tu na razie nic nie ma.
+									</form>
+								
+								</figure>
+							</td>
+							
+							
+							<td>
+							
+								<figure class="col-bg-4">
+									<form>
+										Pokaż aktywne dodatki<br> 
+										<input type="hidden" name="extrasShowActiveExtras" value="true">
+										<input type="submit" value="Wyszukaj"> <br> <br>
+									</form>
+									
+									<form>
+										Pokaż wyłączone dodatki<br> 
+										<input type="hidden" name="extrasShowDisabledExtras" value="true">
+										<input type="submit" value="Wyszukaj"> <br> <br>
+									</form>
+									
+									<form>
+										Pokaż wszystkie dodatki<br> 
+										<input type="hidden" name="extrasShowAllExtras" value="true"> 
+										<input type="submit" value="Wyszukaj"> <br>		
+									</form>
+								</figure>
+							</td>
+						</tr>
+					</table>
+						
+				</div>
+				
+				
+				<figure class="col-sm-1"> </figure>
+			
+			</div>
+			
+			
 			
 			
 			
@@ -200,13 +274,15 @@
 			
 			<br>
 		
-			<c:if test="${not empty orders}">
+			<c:if test="${(searchResultMessage == 'Oto wyniki wyszukiwania:' || searchResultMessage == 'Oto wyniki wyszukiwania użytkowników:' || searchResultMessage == 'Oto wyniki wyszukiwania dodatków:' && not empty users )
+			|| 
+			(searchResultMessage == 'Oto wyniki wyszukiwania:' || searchResultMessage == 'Oto wyniki wyszukiwania użytkowników:' || searchResultMessage == 'Oto wyniki wyszukiwania dodatków:' && not empty extras)}">
 				<p style="color: red">
 					<b>${searchResultMessage}</b>
 				</p>
 			</c:if>
 			
-			<c:if test="${empty orders}">
+			<c:if test="${searchResultMessage == 'Oto wyniki wyszukiwania:' || searchResultMessage == 'Oto wyniki wyszukiwania użytkowników:' || searchResultMessage == 'Oto wyniki wyszukiwania dodatków:' && empty users && empty extras}">
 				<p style="color: red">
 			 		<b>Wyszukiwanie nie zwróciło żadnych wyników.</b><br><br>
 			 	</p>
@@ -231,7 +307,7 @@
 			<!-- REZERWACJE  -->
 			
 			
-			<c:if test="${searchResultMessage != 'Oto wyniki wyszukiwania użytkowników:'}">
+			<c:if test="${searchResultMessage != 'Oto wyniki wyszukiwania użytkowników:' && searchResultMessage != 'Oto wyniki wyszukiwania dodatków:'}">
 			
 				<section class="mytable">
 					<table>
@@ -385,6 +461,73 @@
 											<li><a href="<%out.print(request.getContextPath());%>/deleteUserAdmin/${user.id}">usuń użytkownika i wszystkie jego rezerwacje</a></li>
 										</ul>
 									</list>
+								</td>
+							
+							</tr>
+						
+						</div>
+					<!--  koniec div "row" -->
+				
+					</c:forEach>
+				
+				</table>
+			</section>
+			
+			
+			
+			
+			
+			
+			<!-- EXTRASY  -->
+			
+			<section class="mytable">
+				<table>
+					<c:forEach items="${extras}" var="extra">		
+						<div class="row">	
+							<tr>
+							
+								<td>
+									<list>
+										<ul>
+											<li>ID: ${extra.id}</li>
+											<li>Nazwa: ${extra.name}</li>
+											<li>Opis: ${extra.description}</li>
+										</ul>
+									</list>
+								</td>
+							
+							
+							
+								<td>
+									<list>
+										<ul>
+											<li>Cena za dzień: ${extra.pricePerDay}</li>
+											<li>Czy aktywny:
+											
+											<c:if test="${extra.active == true}">
+												<img src="<%out.print(request.getContextPath());%>/static/images/tick.png">
+											</c:if>
+
+											<c:if test="${extra.active == false}">
+												<img src="<%out.print(request.getContextPath());%>/static/images/cross.png">
+											</c:if>
+											
+											</li>								
+										</ul>
+									</list>
+								</td>
+								
+								
+								<td>
+									Obrazek: <img src="<%out.print(request.getContextPath());%>/static/images/extras/${extra.image}">							
+								</td>
+								
+								
+								
+								<td>
+
+									<a href="<%out.print(request.getContextPath());%>/adminEditExtras/${extra.id}">edytuj dodatek</a>								
+
 								</td>
 							
 							</tr>

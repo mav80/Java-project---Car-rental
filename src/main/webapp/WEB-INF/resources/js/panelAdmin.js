@@ -3,14 +3,21 @@ document.addEventListener("DOMContentLoaded", function(){
 
 	var ordersButton = document.getElementById("ordersButton");
 	var usersButton = document.getElementById("usersButton");
+	var extrasButton = document.getElementById("extrasButton");
 	
 	var ordersDiv = document.getElementById("ordersDiv");
 	var usersDiv = document.getElementById("usersDiv");
+	var extrasDiv = document.getElementById("extrasDiv");
+	
+	
 	
 	console.log(ordersButton);
 	console.log(usersButton);
+	console.log(extrasButton);
 	console.log(ordersDiv);
 	console.log(usersDiv);
+	console.log(extrasDiv);
+	
 	
 	
 	ordersButton.addEventListener("click",
@@ -36,6 +43,19 @@ document.addEventListener("DOMContentLoaded", function(){
 					usersDiv.style.display = "block";
 				} else {
 					usersDiv.style.display = "none";
+				}
+	            
+	}); //koniec event listenera
+	
+	extrasButton.addEventListener("click",
+	        function () {
+		
+			console.log(extrasDiv.style.display);
+			
+				if (extrasDiv.style.display == "none") {
+					extrasDiv.style.display = "block";
+				} else {
+					extrasDiv.style.display = "none";
 				}
 	            
 	}); //koniec event listenera

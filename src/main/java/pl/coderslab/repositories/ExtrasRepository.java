@@ -10,6 +10,7 @@ import pl.coderslab.entities.Extras;
 public interface ExtrasRepository extends JpaRepository<Extras, Long>{
 	Extras findFirstById(long id);
 	List<Extras> findAllByActive(boolean value);
+	List<Extras> findAllById(long id);
 	
 	@Query(value = "SELECT * FROM extras JOIN orders_extras ON id=extras_id WHERE orders_id = ?1", nativeQuery = true)
 	List<Extras> findAllByOrderId(long id);
