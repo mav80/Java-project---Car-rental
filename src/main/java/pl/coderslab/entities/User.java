@@ -62,7 +62,7 @@ public class User {
 	
 	@NotNull
 	@Column(nullable = false)
-	private boolean isAdmin; //admin może mieć specjalne uprawnienia
+	private boolean admin; //admin może mieć specjalne uprawnienia
 	
 	
 	//@OneToMany(mappedBy = "user", fetch=FetchType.EAGER, cascade = CascadeType.ALL) //oryginalna linia - kaskadę trzeba określić jak poniżej, określenie jej jako .ALL powoduje że zamówienia nie usuwają się
@@ -136,19 +136,20 @@ public class User {
 	public void setPhone(java.lang.Integer phone) {
 		this.phone = phone;
 	}
+	
 
-	public boolean isisAdmin() { //pierwsze is trzeba dopisać ręcznie, bez tego nie działa
-		return isAdmin;
+	public boolean isAdmin() {
+		return admin;
 	}
 
-	public void setAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", age=" + age + ", phone=" + phone + ", password="
-				+ password + ", enabled=" + enabled +  ", isAdmin=" + isAdmin +", email=" + email + "]";
+				+ password + ", enabled=" + enabled +  ", admin=" + admin +", email=" + email + "]";
 	}
 
 	

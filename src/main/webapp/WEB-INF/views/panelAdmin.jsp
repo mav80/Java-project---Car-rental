@@ -20,11 +20,11 @@
 			<p>Nie masz odpowiednich uprawnień.</p>	
 		</c:if>
 		
-		<c:if test="${loggedUser.isAdmin == false}">
+		<c:if test="${loggedUser.admin == false}">
 			<p>Nie masz odpowiednich uprawnień.</p>
 		</c:if>
 		
-		<c:if test="${loggedUser.isAdmin == true}">
+		<c:if test="${loggedUser.admin == true}">
 			<!-- <p>Masz odpowiednie uprawnienia</p> -->
 			
 			<b>${userProfileChangedSuccessfully}</b><br>

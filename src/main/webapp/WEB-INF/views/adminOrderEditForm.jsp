@@ -30,14 +30,14 @@
 
 
 
-	<c:if test="${loggedUser.isAdmin == false}">
+	<c:if test="${loggedUser.admin == false}">
 		<p>Nie masz odpowiednich uprawnień do edycji tego zamówienia</p>
 
 		<a href="<%out.print(request.getContextPath());%>/">powrót do
 			strony głównej</a>
 	</c:if>
 
-	<c:if test="${loggedUser.isAdmin == true}">
+	<c:if test="${loggedUser.admin == true}">
 
 
 

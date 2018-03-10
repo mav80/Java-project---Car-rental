@@ -26,7 +26,7 @@
 	</c:if>
 	
 	
-<c:if test="${loggedUser.isAdmin == false}">
+<c:if test="${loggedUser.admin == false}">
 		<p>Nie masz odpowiednich uprawnień</p>
 
 		<a href="<%out.print(request.getContextPath());%>/">powrót do
@@ -34,7 +34,7 @@
 </c:if>
 
 
-<c:if test="${loggedUser.isAdmin == true}">
+<c:if test="${loggedUser.admin == true}">
 		<p>Jesteś adminem, możesz działać</p>
 		
 		

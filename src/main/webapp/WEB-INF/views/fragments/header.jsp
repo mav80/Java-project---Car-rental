@@ -104,14 +104,14 @@
 			</p>
 		</c:if> 
 		
-		<c:if test="${loggedUser.isAdmin == true}">
+		<c:if test="${loggedUser.admin == true}">
 			<p>
 				<a href="<%out.print(request.getContextPath());%>/panelAdmin">panel administracyjny</a>
 			</p>
 		</c:if>
 		
 		
-		<c:if test="${loggedUser.isAdmin == false}">
+		<c:if test="${loggedUser.admin == false}">
 			<p>
 				<a href="<%out.print(request.getContextPath());%>/panelUser">panel użytkownika</a>
 			</p>

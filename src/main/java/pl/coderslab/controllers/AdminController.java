@@ -286,7 +286,7 @@ public class AdminController {
 		User loggedUser = (User) session.getAttribute("loggedUser");
 		User userToEdit = userRepository.findFirstById(id);
 		
-		if(user == null || !loggedUser.isisAdmin()) {
+		if(user == null || !loggedUser.isAdmin()) {
 			return "redirect:http://localhost:8080/EndProject-CarRental/";
 		}
 		model.addAttribute("user", userToEdit);
@@ -299,7 +299,7 @@ public class AdminController {
 	{
 		User loggedUser = (User) session.getAttribute("loggedUser");
 		
-		if(user == null || !loggedUser.isisAdmin()) {
+		if(user == null || !loggedUser.isAdmin()) {
 			return "redirect:http://localhost:8080/EndProject-CarRental/";
 		}
 		
