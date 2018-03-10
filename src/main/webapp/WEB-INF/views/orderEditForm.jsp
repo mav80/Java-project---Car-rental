@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -7,8 +6,8 @@
 <%@ include file="fragments/header.jsp"%>
 <html>
 	<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Edycja rezerwacji</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Edycja rezerwacji</title>
 	</head>
 	
 	<body class="margin">
@@ -94,5 +93,5 @@
 		</c:if>
 	
 	</body>
-<%@ include file="fragments/footer.jsp"%>
+	<%@ include file="fragments/footer.jsp"%>
 </html>

@@ -29,7 +29,7 @@ public class UserRegistrationController {
 	}
 	
 	@PostMapping("/register")
-	public String register(@Valid User user, BindingResult result, HttpServletRequest request, HttpServletResponse response) {
+	public String register(@Valid User user, BindingResult result, HttpServletRequest request, HttpServletResponse response, Model model) {
 		
 		//System.out.println("Odebrane z formy imię: " + user.getUsername());
 		
@@ -42,7 +42,7 @@ public class UserRegistrationController {
 		user.setEnabled(true);
 		userRepository.save(user);
 		
-		//return "success";
+		model.addAttribute("success","Rejestracja poprawna, możesz się teraz zalogować.");
 		
 		return "redirect:http://localhost:8080/EndProject-CarRental/login";
 		

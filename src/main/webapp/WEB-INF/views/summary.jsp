@@ -9,7 +9,7 @@
 	</head>
 
 	<body class="margin">
-	${errors}
+		${errors}
 		<h1>Oto Twoja rezerwacja</h1>
 				
 		<h3>Długość wynajmu w dniach: ${rentLengthInDays}</h3>
