@@ -25,11 +25,11 @@
 	
 	
 	
-		<c:if test="${loggedUser.id != order.user.id}">
-			<p>Nie masz odpowiednich uprawnień do edycji tego zamówienia.</p>
+		<c:if test="${loggedUser.id != order.user.id || order.active == false}">
+			<p>Nie masz odpowiednich uprawnień do edycji tej rezerwacji.</p>
 		</c:if>
 	
-		<c:if test="${loggedUser.id == order.user.id}">
+		<c:if test="${loggedUser.id == order.user.id && order.active == true}">
 	
 			<h3>Edycja rezerwacji <b>${order.referenceNumber}</b>. Nowa cena końcowa będzie widoczna w panelu użytkownika.</h3>
 	
@@ -66,6 +66,7 @@
 				
 				<form:hidden path="user.id" />
 				<form:hidden path="referenceNumber" />
+				<form:hidden path="active"/>
 	
 
 				

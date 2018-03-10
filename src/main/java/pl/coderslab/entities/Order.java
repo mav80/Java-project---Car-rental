@@ -79,6 +79,10 @@ public class Order {
 	@Column(nullable = false)
 	private String referenceNumber;
 	
+	@NotNull
+	@Column(nullable = false)
+	private boolean active;    // admin może ustawić dany order jako aktywny (do realziacji) lub nieaktywny (zarchiwizowany - zrealizowany)
+	
 	
 	
 	
@@ -243,6 +247,18 @@ public class Order {
 		
 		order.setOrderPrice(order.getOrderPrice() + extrasPrice);
 	}
+	
+	
+	
+	
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
 
 
 	
@@ -276,13 +292,25 @@ public class Order {
 
 
 
+
+
+//	@Override
+//	public String toString() {
+//		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate
+//				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass 	+ ", rentLengthInDays=" + rentLengthInDays + ", orderPrice=" + orderPrice + ", referenceNumber="
+//				+ referenceNumber + "]";
+//	}
+	
 	
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate
-				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass 	+ ", rentLengthInDays=" + rentLengthInDays + ", orderPrice=" + orderPrice + ", referenceNumber="
-				+ referenceNumber + "]";
+				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass + ", rentLengthInDays="
+				+ rentLengthInDays + ", orderPrice=" + orderPrice + ", referenceNumber=" + referenceNumber + ", active="
+				+ active + "]";
 	}
+	
+	
 	
 	
 	

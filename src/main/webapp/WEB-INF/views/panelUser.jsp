@@ -83,12 +83,19 @@
 								
 								
 								<td>
-									<list>
-										<ul>				
-											<li><a href="<%out.print(request.getContextPath());%>/editOrder/${order.id}">edytuj rezerwację</a></li>
-											<li><a href="<%out.print(request.getContextPath());%>/deleteOrderUser/${order.id}">usuń rezerwację</a></li>
-										</ul>
-									</list>
+									<c:if test="${order.active == true}">
+										<list>
+											<ul>				
+												<li><a href="<%out.print(request.getContextPath());%>/editOrder/${order.id}">edytuj rezerwację</a></li>
+												<li><a href="<%out.print(request.getContextPath());%>/deleteOrderUser/${order.id}">usuń rezerwację</a></li>
+											</ul>
+										</list>
+									</c:if>
+									
+									<c:if test="${order.active == false}">			
+										rezerwacja przeniesiona do archiwum
+									</c:if>
+									
 								</td>
 							
 							</tr>

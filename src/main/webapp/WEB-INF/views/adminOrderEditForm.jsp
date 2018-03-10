@@ -104,6 +104,7 @@
 					</table>
 	
 				<br>
+				Czy rezerwacja jest aktywna (brak ptaszka = zarchiwizowana) ? <form:checkbox path="active" /><br>
 				<br>
 				<input type="submit" value="Zmień rezerwację">
 			</form:form>

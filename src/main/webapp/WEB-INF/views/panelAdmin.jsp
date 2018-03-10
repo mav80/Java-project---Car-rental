@@ -30,7 +30,7 @@
 			<b>${userProfileChangedSuccessfully}</b><br>
 			
 			<p>
-				<b>Zarządzanie zamówieniami</b>
+				<b>Zarządzanie rezerwacjami</b>
 			</p>
 			
 			<div class="row">
@@ -273,24 +273,23 @@
 			<!-- tu wyświetlamy informację typu "oto wyniki wyszukiwania" lub "edycja powiodła się"  -->
 			
 			<br>
+			
+			<p style="color: magenta">
+				<b>${param.searchResultMessage}</b>
+			</p>
 		
-			<c:if test="${(searchResultMessage == 'Oto wyniki wyszukiwania:' || searchResultMessage == 'Oto wyniki wyszukiwania użytkowników:' || searchResultMessage == 'Oto wyniki wyszukiwania dodatków:' && not empty users )
-			|| 
-			(searchResultMessage == 'Oto wyniki wyszukiwania:' || searchResultMessage == 'Oto wyniki wyszukiwania użytkowników:' || searchResultMessage == 'Oto wyniki wyszukiwania dodatków:' && not empty extras)}">
+			<c:if test="${not empty orders}">
 				<p style="color: red">
 					<b>${searchResultMessage}</b>
 				</p>
 			</c:if>
 			
-			<c:if test="${searchResultMessage == 'Oto wyniki wyszukiwania:' || searchResultMessage == 'Oto wyniki wyszukiwania użytkowników:' || searchResultMessage == 'Oto wyniki wyszukiwania dodatków:' && empty users && empty extras}">
+			<c:if test="${empty orders}">
 				<p style="color: red">
 			 		<b>Wyszukiwanie nie zwróciło żadnych wyników.</b><br><br>
 			 	</p>
 			</c:if>
 			
-			<p style="color: magenta">
-				<b>${param.searchResultMessage}</b>
-			</p>
 			
 			
 			
@@ -357,6 +356,15 @@
 												<li>Data odbioru auta: ${order.pickupDate}</li>
 												<li>Data zwrotu auta: ${order.returnDate}</li>
 												<li>Klasa zarezerwowanego auta:	${order.carClass.carClassDescription}</li>
+												<li>Czy aktywne? 												
+													<c:if test="${order.active == true}">
+														<img src="<%out.print(request.getContextPath());%>/static/images/tick.png">
+													</c:if>
+		
+													<c:if test="${order.active == false}">
+														<img src="<%out.print(request.getContextPath());%>/static/images/cross.png">
+													</c:if>
+												</li>
 											</ul>
 										</list>
 									</td>
@@ -540,7 +548,7 @@
 				</table>
 			</section>
 			
-			<br><b>Liczba zamówień w bazie: ${howManyOrdersInDatabase}</b></b><br><br>
+			<br><b>Liczba zamówień w bazie: ${howManyOrdersInDatabase}, z czego aktywnych: ${howManyActiveOrdersInDatabase}</b></b><br><br>
 			
 			<!--  <a href="<%out.print(request.getContextPath());%>/">powrót do strony głównej</a> -->
 		</c:if>

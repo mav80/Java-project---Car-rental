@@ -41,5 +41,11 @@ public interface OrderRepository extends JpaRepository<Order, Long>{
 	
 	@Query(value = "SELECT * FROM `EndProject-CarRental`.orders WHERE users_id = ?1 ORDER BY created DESC LIMIT 5;", nativeQuery = true)
 	List<Order> show5LatestOrdersByUserId(long id);
+	
+	@Query(value = "SELECT * FROM `EndProject-CarRental`.orders WHERE users_id = ?1 AND active = TRUE ORDER BY created DESC;", nativeQuery = true)
+	List<Order> showActiveOrdersByUserId(long id);
+	
+	@Query(value = "SELECT COUNT(*) FROM orders WHERE active = TRUE;", nativeQuery = true)
+	int countActive();
 
 }

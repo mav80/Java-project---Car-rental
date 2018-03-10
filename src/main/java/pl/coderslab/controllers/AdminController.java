@@ -84,6 +84,7 @@ public class AdminController {
 		//orders
 		
 		model.addAttribute("howManyOrdersInDatabase", orderRepository.count());
+		model.addAttribute("howManyActiveOrdersInDatabase", orderRepository.countActive());
 		model.addAttribute("orders", orderRepository.show5LatestOrders());
 		model.addAttribute("searchResultMessage", "Oto ostatnich 5 rezerwacji:");
 		

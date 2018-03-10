@@ -139,6 +139,7 @@ public class HomeController {
 		order.updatePriceWithSelectedExtras(order, order.getExtras());
 		
 		order.generateAndSetUniqueReferenceNumber(orderRepository);
+		order.setActive(true);
 		orderRepository.save(order);
 		
 		model.addAttribute("rentReferenceNumber", order.getReferenceNumber());
