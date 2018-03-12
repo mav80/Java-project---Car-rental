@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", function(){
 			
 				if (ordersDiv.style.display == "none") {
 					ordersDiv.style.display = "block";
+					usersDiv.style.display = "none";
+					extrasDiv.style.display = "none";
 				} else {
 					ordersDiv.style.display = "none";
 				}
@@ -41,6 +43,8 @@ document.addEventListener("DOMContentLoaded", function(){
 			
 				if (usersDiv.style.display == "none") {
 					usersDiv.style.display = "block";
+					ordersDiv.style.display = "none";
+					extrasDiv.style.display = "none";
 				} else {
 					usersDiv.style.display = "none";
 				}
@@ -54,6 +58,8 @@ document.addEventListener("DOMContentLoaded", function(){
 			
 				if (extrasDiv.style.display == "none") {
 					extrasDiv.style.display = "block";
+					ordersDiv.style.display = "none";
+					usersDiv.style.display = "none";
 				} else {
 					extrasDiv.style.display = "none";
 				}

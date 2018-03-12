@@ -30,12 +30,12 @@
 			<b>${userProfileChangedSuccessfully}</b><br>
 			
 			<p>
-				<b>Zarządzanie rezerwacjami</b>
+				<input id="ordersButton" type="submit" value="Zarządzanie rezerwacjami"> <input id="usersButton" type="submit" value="Zarządzanie użytkownikami"> <input id="extrasButton" type="submit" value="Zarządzanie dodatkami">  
 			</p>
 			
 			<div class="row">
 			
-				<figure class="col-sm-1"><input id="ordersButton" type="submit" value="Pokaż/ukryj"> </figure>
+				<figure class="col-sm-1"></figure>
 				
 				<div id="ordersDiv" style="display: none">
 					<table style="color: blue">
@@ -112,18 +112,12 @@
 			
 			
 			
-			
-			
-			<br>
-			<p>	
-				<b>Zarządzanie użytkownikami</b>
-			</p>
-			
+
 			
 			
 			<div class="row">
 			
-				<figure class="col-sm-1"><input id="usersButton" type="submit" value="Pokaż/ukryj"> </figure>
+				<figure class="col-sm-1"> </figure>
 				
 				<div id="usersDiv"  style="display: none">
 					<table style="color: blue">
@@ -188,18 +182,12 @@
 			
 			
 			
-			
-			
-			<br>
-			<p>	
-				<b>Zarządzanie dodatkami do rezerwacji</b>
-			</p>
-			
+
 			
 			
 			<div class="row">
 			
-				<figure class="col-sm-1"><input id="extrasButton" type="submit" value="Pokaż/ukryj"> </figure>
+				<figure class="col-sm-1"><!-- <input id="extrasButton" type="submit" value="Pokaż/ukryj"> --> </figure>
 				
 				<div id="extrasDiv"  style="display: none">
 					<table style="color: blue">
