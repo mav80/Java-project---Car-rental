@@ -34,6 +34,7 @@ public class Extras {
 	@Column(nullable = false)
 	private String description;
 	
+	
 	@NotNull
 	@Column(nullable = false)
 	private int pricePerDay;
@@ -46,7 +47,8 @@ public class Extras {
 	@ManyToMany(mappedBy = "extras", fetch=FetchType.EAGER)
 	List<Order> orders = new ArrayList<>();
 	
-
+	@NotBlank
+	@NotNull
 	@Column(nullable = false)
 	private String image;
 	

@@ -366,6 +366,115 @@ public class AdminController {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//extrasy
+	
+	@GetMapping("/adminAddNewExtras")
+	public String adminAddNewExtras(Model model, HttpSession session, HttpServletRequest request)
+	{
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
+		User user = (User) session.getAttribute("loggedUser");
+		if(user != null) {
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+		}
+		
+		Extras extras = new Extras();
+		model.addAttribute("extras", extras);
+		model.addAttribute("buttonMessage", "Utwórz nowy");
+		
+		return "adminAddNewExtras";
+	}
+	
+	
+	@PostMapping("/adminAddNewExtras")
+	public String adminAddNewExtras(@Valid Extras extras, BindingResult result, Model model, HttpSession session, HttpServletRequest request)
+	{
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
+		User user = (User) session.getAttribute("loggedUser");
+		if(user != null) {
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+		}
+		
+		if(result.hasErrors()) {
+			model.addAttribute("buttonMessage", "Utwórz nowy");
+			return "adminAddNewExtras";
+		}
+		
+		extrasRepository.save(extras);
+		model.addAttribute("searchResultMessage", "Nowy dodatek pomyślnie dodano do bazy.");
+		
+		return "redirect:/panelAdmin";
+	}
+	
+	
+	
+	@GetMapping("/adminEditExtras/{id}")
+	public String adminEditExtras(@PathVariable Long id, Model model, HttpSession session, HttpServletRequest request)
+	{
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
+		User user = (User) session.getAttribute("loggedUser");
+		if(user != null) {
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+		}
+		
+		Extras extras = extrasRepository.findFirstById(id);
+		model.addAttribute("extras", extras);
+		model.addAttribute("buttonMessage", "Zmień");
+		
+		return "adminAddNewExtras";
+	}
+	
+	@PostMapping("/adminEditExtras/{id}")
+	public String adminEditExtras(@Valid Extras extras, BindingResult result, @PathVariable Long id, Model model, HttpSession session, HttpServletRequest request)
+	{
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
+		User user = (User) session.getAttribute("loggedUser");
+		if(user != null) {
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+		}
+		
+		if(result.hasErrors()) {
+			model.addAttribute("buttonMessage", "Zmień");
+			return "adminAddNewExtras";
+		}
+		
+		extrasRepository.save(extras);
+		model.addAttribute("searchResultMessage", "Dodatek pomyślnie zmieniono.");
+		
+		return "redirect:/panelAdmin";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@ModelAttribute("addresses")
 	public List<Address> getAddresses() {
 		return addressRepository.findAll();

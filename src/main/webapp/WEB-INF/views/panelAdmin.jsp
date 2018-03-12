@@ -220,16 +220,6 @@
 								</figure>
 							</td>
 							
-							<td>
-								<figure class="col-bg-4">
-								
-									<form>
-										Tu na razie nic nie ma.
-									</form>
-								
-								</figure>
-							</td>
-							
 							
 							<td>
 							
