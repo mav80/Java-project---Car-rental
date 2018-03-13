@@ -30,7 +30,7 @@
 			<b>${userProfileChangedSuccessfully}</b><br>
 			
 			<p>
-				<input id="ordersButton" type="submit" value="Zarządzanie rezerwacjami"> <input id="usersButton" type="submit" value="Zarządzanie użytkownikami"> <input id="extrasButton" type="submit" value="Zarządzanie dodatkami">  
+				<input id="ordersButton" type="submit" value="Zarządzanie rezerwacjami"> <input id="usersButton" type="submit" value="Zarządzanie użytkownikami"> <input id="extrasButton" type="submit" value="Zarządzanie dodatkami"> <input id="addressButton" type="submit" value="Zarządzanie adresami">  <input id="carClassButton" type="submit" value="Zarządzanie klasami aut">    
 			</p>
 			
 			<div class="row">
@@ -227,6 +227,91 @@
 									<form>
 										Pokaż wszystkie dodatki<br> 
 										<input type="hidden" name="extrasShowAllExtras" value="true"> 
+										<input type="submit" value="Wyszukaj"> <br>		
+									</form>
+								</figure>
+							</td>
+						</tr>
+					</table>
+						
+				</div>
+				
+				
+				<figure class="col-sm-1"> </figure>
+			
+			</div>
+			
+			
+			
+			
+			
+			
+						
+			<div class="row">
+			
+				<figure class="col-sm-1"><!-- <input id="extrasButton" type="submit" value="Pokaż/ukryj"> --> </figure>
+				
+				<div id="addressDiv"  style="display: none">
+					<table style="color: blue">
+						<tr style="background-color: #e9e9e9">
+							<td>
+								<figure class="col-bg-4">
+									
+									<form>
+										<a style="color: blue" href="<%out.print(request.getContextPath());%>/adminAddNewAddress">Utwórz nowy adres</a>
+									</form>
+								
+								</figure>
+							</td>
+							
+							
+							<td>
+							
+								<figure class="col-bg-4">								
+									<form>
+										Pokaż wszystkie dodatki<br> 
+										<input type="hidden" name="addressShowAllAddresses" value="true"> 
+										<input type="submit" value="Wyszukaj"> <br>		
+									</form>
+								</figure>
+							</td>
+						</tr>
+					</table>
+						
+				</div>
+				
+				
+				<figure class="col-sm-1"> </figure>
+			
+			</div>
+			
+			
+			
+			
+						
+			<div class="row">
+			
+				<figure class="col-sm-1"><!-- <input id="extrasButton" type="submit" value="Pokaż/ukryj"> --> </figure>
+				
+				<div id="carClassDiv"  style="display: none">
+					<table style="color: blue">
+						<tr style="background-color: #e9e9e9">
+							<td>
+								<figure class="col-bg-4">
+									<form>
+										<a style="color: blue" href="<%out.print(request.getContextPath());%>/adminAddNewCarClass">Utwórz nową klasę auta</a>
+									</form>
+								
+								</figure>
+							</td>
+							
+							
+							<td>
+							
+								<figure class="col-bg-4">									
+									<form>
+										Pokaż wszystkie klasy aut<br> 
+										<input type="hidden" name="carClassShowAllCarClasses" value="true"> 
 										<input type="submit" value="Wyszukaj"> <br>		
 									</form>
 								</figure>

@@ -4,10 +4,14 @@ document.addEventListener("DOMContentLoaded", function(){
 	var ordersButton = document.getElementById("ordersButton");
 	var usersButton = document.getElementById("usersButton");
 	var extrasButton = document.getElementById("extrasButton");
+	var addressButton = document.getElementById("addressButton");
+	var carClassButton = document.getElementById("carClassButton");
 	
 	var ordersDiv = document.getElementById("ordersDiv");
 	var usersDiv = document.getElementById("usersDiv");
 	var extrasDiv = document.getElementById("extrasDiv");
+	var addressDiv = document.getElementById("addressDiv");
+	var carClassDiv = document.getElementById("carClassDiv");
 	
 	
 	
@@ -29,6 +33,8 @@ document.addEventListener("DOMContentLoaded", function(){
 					ordersDiv.style.display = "block";
 					usersDiv.style.display = "none";
 					extrasDiv.style.display = "none";
+					addressDiv.style.display = "none";
+					carClassDiv.style.display = "none";
 				} else {
 					ordersDiv.style.display = "none";
 				}
@@ -45,6 +51,8 @@ document.addEventListener("DOMContentLoaded", function(){
 					usersDiv.style.display = "block";
 					ordersDiv.style.display = "none";
 					extrasDiv.style.display = "none";
+					addressDiv.style.display = "none";
+					carClassDiv.style.display = "none";
 				} else {
 					usersDiv.style.display = "none";
 				}
@@ -60,8 +68,44 @@ document.addEventListener("DOMContentLoaded", function(){
 					extrasDiv.style.display = "block";
 					ordersDiv.style.display = "none";
 					usersDiv.style.display = "none";
+					addressDiv.style.display = "none";
+					carClassDiv.style.display = "none";
 				} else {
 					extrasDiv.style.display = "none";
+				}
+	            
+	}); //koniec event listenera
+	
+	addressButton.addEventListener("click",
+	        function () {
+		
+			console.log(addressDiv.style.display);
+			
+				if (addressDiv.style.display == "none") {
+					addressDiv.style.display = "block";
+					ordersDiv.style.display = "none";
+					usersDiv.style.display = "none";
+					extrasDiv.style.display = "none";
+					carClassDiv.style.display = "none";
+				} else {
+					addressDiv.style.display = "none";
+				}
+	            
+	}); //koniec event listenera
+	
+	carClassButton.addEventListener("click",
+	        function () {
+		
+			console.log(carClassDiv.style.display);
+			
+				if (carClassDiv.style.display == "none") {
+					carClassDiv.style.display = "block";
+					ordersDiv.style.display = "none";
+					usersDiv.style.display = "none";
+					addressDiv.style.display = "none";
+					extrasDiv.style.display = "none";
+				} else {
+					carClassDiv.style.display = "none";
 				}
 	            
 	}); //koniec event listenera
