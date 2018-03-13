@@ -46,7 +46,9 @@ public class CarClass {
 
 	
 	
-	
+	@NotNull
+	@Column(nullable = false)
+	private boolean active;    // możemy włączyć lub wyłączyć pokazywanie danej klasy aut
 	
 	
 	
@@ -97,6 +99,18 @@ public class CarClass {
 		this.pricePerDay = pricePerDay;
 	}
 
+	
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+
+
+	
 
 	
 
@@ -106,12 +120,19 @@ public class CarClass {
 //				+ "]";
 //	}
 
+
+//	@Override
+//	public String toString() {
+//		return "CarClass [id=" + id + ", carClass=" + carClass + ", carClassDescription=" + carClassDescription
+//				+ ", pricePerDay=" + pricePerDay + "]";
+//	}
+	
+	
 	@Override
 	public String toString() {
 		return "CarClass [id=" + id + ", carClass=" + carClass + ", carClassDescription=" + carClassDescription
-				+ ", pricePerDay=" + pricePerDay + "]";
+				+ ", pricePerDay=" + pricePerDay + ", active=" + active + "]";
 	}
-	
 	
 	
 	

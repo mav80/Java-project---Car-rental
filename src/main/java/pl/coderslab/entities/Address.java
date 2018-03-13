@@ -46,6 +46,12 @@ public class Address {
 	@OneToMany(mappedBy = "address",fetch=FetchType.EAGER)
 	private List<Order> orders = new ArrayList<>();
 	
+	@NotNull
+	@Column(nullable = false)
+	private boolean active;    // możemy włączyć lub wyłączyć pokazywanie danego adresu
+	
+	
+	
 	
 	
 
@@ -97,11 +103,29 @@ public class Address {
 		this.orders = orders;
 	}
 
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+//	@Override
+//	public String toString() {
+//		return "Address [id=" + id + ", name=" + name + ", street=" + street + ", city=" + city + ", zipCode=" + zipCode
+//				+ "]";
+//	}
+	
+	
 	@Override
 	public String toString() {
 		return "Address [id=" + id + ", name=" + name + ", street=" + street + ", city=" + city + ", zipCode=" + zipCode
-				+ "]";
+				+ ",  active=" + active + "]";
 	}
+	
+	
+
 	
 	
 	
