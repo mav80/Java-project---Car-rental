@@ -269,7 +269,7 @@
 							
 								<figure class="col-bg-4">								
 									<form>
-										Pokaż wszystkie dodatki<br> 
+										Pokaż wszystkie adresy<br> 
 										<input type="hidden" name="addressShowAllAddresses" value="true"> 
 										<input type="submit" value="Wyszukaj"> <br>		
 									</form>
@@ -369,7 +369,7 @@
 			<!-- REZERWACJE  -->
 			
 			
-			<c:if test="${searchResultMessage != 'Oto wyniki wyszukiwania użytkowników:' && searchResultMessage != 'Oto wyniki wyszukiwania dodatków:'}">
+			<c:if test="${searchResultMessage != 'Oto wyniki wyszukiwania użytkowników:' && searchResultMessage != 'Oto wyniki wyszukiwania dodatków:' && searchResultMessage != 'Oto wyniki wyszukiwania adresów:' && searchResultMessage != 'Oto wyniki wyszukiwania klas samochodów:'}">
 			
 				<section class="mytable">
 					<table>
@@ -508,13 +508,13 @@
 											<li>Telefon: ${user.phone}</li>
 											<li>Czy aktywny:
 											
-											<c:if test="${user.enabled == true}">
-												<img src="<%out.print(request.getContextPath());%>/static/images/tick.png">
-											</c:if>
-
-											<c:if test="${user.enabled == false}">
-												<img src="<%out.print(request.getContextPath());%>/static/images/cross.png">
-											</c:if>
+												<c:if test="${user.enabled == true}">
+													<img src="<%out.print(request.getContextPath());%>/static/images/tick.png">
+												</c:if>
+	
+												<c:if test="${user.enabled == false}">
+													<img src="<%out.print(request.getContextPath());%>/static/images/cross.png">
+												</c:if>
 											
 											</li>								
 										</ul>
@@ -575,13 +575,13 @@
 											<li>Cena za dzień: ${extra.pricePerDay}</li>
 											<li>Czy aktywny:
 											
-											<c:if test="${extra.active == true}">
-												<img src="<%out.print(request.getContextPath());%>/static/images/tick.png">
-											</c:if>
-
-											<c:if test="${extra.active == false}">
-												<img src="<%out.print(request.getContextPath());%>/static/images/cross.png">
-											</c:if>
+												<c:if test="${extra.active == true}">
+													<img src="<%out.print(request.getContextPath());%>/static/images/tick.png">
+												</c:if>
+	
+												<c:if test="${extra.active == false}">
+													<img src="<%out.print(request.getContextPath());%>/static/images/cross.png">
+												</c:if>
 											
 											</li>								
 										</ul>
@@ -610,6 +610,139 @@
 				
 				</table>
 			</section>
+			
+			
+			
+			
+			
+			
+			<!-- ADRESY  -->
+			
+			<section class="mytable">
+				<table>
+					<c:forEach items="${addressesAdmin}" var="address">		
+						<div class="row">	
+							<tr>
+							
+								<td>
+									<list>
+										<ul>
+											<li>ID: ${address.id}</li>
+											<li>Aktywny?
+											
+												<c:if test="${address.active == true}">
+													<img src="<%out.print(request.getContextPath());%>/static/images/tick.png">
+												</c:if>
+	
+												<c:if test="${address.active == false}">
+													<img src="<%out.print(request.getContextPath());%>/static/images/cross.png">
+												</c:if>
+											
+											</li>		
+										</ul>
+									</list>
+								</td>
+							
+							
+							
+								<td>
+									<list>
+										<ul>
+											<li>Nazwa: ${address.name}</li>
+											<li>Ulica: ${address.street}</li>
+											<li>Kod pocztowy: ${address.zipCode}</li>
+											<li>Miasto: ${address.city}</li>
+																	
+										</ul>
+									</list>
+								</td>
+								
+								
+								<td>
+									<a href="<%out.print(request.getContextPath());%>/adminEditAddress/${address.id}">edytuj adres</a>								
+
+								</td>
+							
+							</tr>
+						
+						</div>
+					<!--  koniec div "row" -->
+				
+					</c:forEach>
+				
+				</table>
+			</section>
+			
+			
+			
+			
+			
+						<!-- klasy samochodów  -->
+			
+			<section class="mytable">
+				<table>
+					<c:forEach items="${carClasses}" var="carClass">		
+						<div class="row">	
+							<tr>
+							
+								<td>
+									<list>
+										<ul>
+											<li>ID: ${carClass.id}</li>
+											<li>Czy aktywny:
+											
+												<c:if test="${carClass.active == true}">
+													<img src="<%out.print(request.getContextPath());%>/static/images/tick.png">
+												</c:if>
+	
+												<c:if test="${carClass.active == false}">
+													<img src="<%out.print(request.getContextPath());%>/static/images/cross.png">
+												</c:if>
+											
+											</li>		
+										</ul>
+									</list>
+								</td>
+							
+							
+							
+								<td>
+									<list>
+										<ul>
+											<li>Klasa: ${carClass.carClass}</li>
+											<li>Cena za dzień: ${carClass.pricePerDay}</li>
+																	
+										</ul>
+									</list>
+								</td>
+								
+								<td>
+									<list>
+										<ul>
+											<li>Opis (widoczny dla użytkownika): ${carClass.carClassDescription}</li>																	
+										</ul>
+									</list>
+								</td>
+								
+								
+								<td>
+									<a href="<%out.print(request.getContextPath());%>/adminEditCarClass/${carClass.id}">edytuj klasę auta</a>								
+
+								</td>
+							
+							</tr>
+						
+						</div>
+					<!--  koniec div "row" -->
+				
+					</c:forEach>
+				
+				</table>
+			</section>
+			
+			
+			
+			
 			
 			<br><b>Liczba zamówień w bazie: ${howManyOrdersInDatabase}, z czego aktywnych: ${howManyActiveOrdersInDatabase}</b></b><br><br>
 			

@@ -10,11 +10,10 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Panel administracyjny</title>
 	</head>
-
-
+	
 	<body class="margin">
 	
-		<!-- <h3>Dodawanie nowego dodatku</h3> -->
+		<!-- <h3>Dodawanie nowej klasy auta</h3> -->
 		
 		<c:if test="${empty loggedUser}">
 			<p>Nie masz odpowiednich uprawnień.</p>	
@@ -27,31 +26,23 @@
 		<c:if test="${loggedUser.admin == true}">
 			<!--   <p>Masz odpowiednie uprawnienia</p> -->
 			
-			<form:form method="post" modelAttribute="extras">
+			<form:form method="post" modelAttribute="carClass">
 		
-				Nazwa (niewidoczne dla użytkownika)<br>
-				<form:input path="name" placeholder="nazwa"/> 			<form:errors path="name" style="font-weight: bold; font-style: italic; color: red"/><br><br>
+				Klasa auta<br>
+				<form:input path="carClass" placeholder="klasa auta"/> 		<form:errors path="carClass" style="font-weight: bold; font-style: italic; color: red"/><br><br>
 				
-				Opis (widoczne dla użytkownika)<br>		
-				<form:input path="description" placeholder="opis"/>		<form:errors path="description" style="font-weight: bold; font-style: italic; color: red"/><br><br>
+				Opis (widoczny przy tworzeniu nowego zamówienia)<br>		
+				<form:input path="carClassDescription" placeholder="opis"/>				<form:errors path="carClassDescription" style="font-weight: bold; font-style: italic; color: red"/><br><br>
 				
-				Cena (zł) za dzień<br>	
-				<form:input type="number" path="pricePerDay"/>			<form:errors path="pricePerDay" style="font-weight: bold; font-style: italic; color: red"/><br><br>
-				
-				Nazwa obrazka z katalogu images/extras (widoczne dla użytkownika - np. test01.png)<br>		
-				<form:input path="image" placeholder="nazwa obrazka"/> <form:errors path="image" style="font-weight: bold; font-style: italic; color: red"/><br><br>
-				
+				Cena za dzień<br>	
+				<form:input type="number" path="pricePerDay"/>							<form:errors path="pricePerDay" style="font-weight: bold; font-style: italic; color: red"/><br><br>
 						
-				Czy dodatek jest aktywny (brak ptaszka = niewidoczny dla użytkowników) ? <form:checkbox path="active" /><br>
+				Czy klasa jest aktywna (brak ptaszka = niewidoczna dla użytkowników) ?  <form:checkbox path="active" /><br>
 				
 				<br><input type="submit" value="${buttonMessage}">
 		
 			</form:form>
-			
-			
-			
-			
-			
+	
 		</c:if>
 		
 	</body>

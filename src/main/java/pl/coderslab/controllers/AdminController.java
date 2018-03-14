@@ -65,7 +65,13 @@ public class AdminController {
 			HttpServletRequest request, HttpSession session,
 			
 			@RequestParam(defaultValue="") String extrasShowAllExtras, @RequestParam(defaultValue="") String extrasShowActiveExtras, 
-			@RequestParam(defaultValue="") String extrasShowDisabledExtras, @RequestParam(defaultValue="-1") long extrasExtrasId) {
+			@RequestParam(defaultValue="") String extrasShowDisabledExtras, @RequestParam(defaultValue="-1") long extrasExtrasId,
+			
+			@RequestParam(defaultValue="") String addressShowAllAddresses,
+			
+			@RequestParam(defaultValue="") String carClassShowAllCarClasses
+			
+			) {
 	
 		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
 		User user = (User) session.getAttribute("loggedUser");
@@ -216,6 +222,23 @@ public class AdminController {
 		if(extrasShowAllExtras.equals("true") ) {
 			model.addAttribute("extras", extrasRepository.findAll());
 			model.addAttribute("searchResultMessage", "Oto wyniki wyszukiwania dodatków:");
+		}
+		
+		
+		
+		//adresy
+		
+		if(addressShowAllAddresses.equals("true") ) {
+			model.addAttribute("addressesAdmin", addressRepository.findAll());
+			model.addAttribute("searchResultMessage", "Oto wyniki wyszukiwania adresów:");
+		}
+		
+		
+		
+		//klasy aut
+		if(carClassShowAllCarClasses.equals("true") ) {
+			model.addAttribute("carClasses", carClassRepository.findAll());
+			model.addAttribute("searchResultMessage", "Oto wyniki wyszukiwania klas samochodów:");
 		}
 		
 		
@@ -463,6 +486,172 @@ public class AdminController {
 	
 	
 	
+	
+	
+	
+	
+	//adresy
+	
+	@GetMapping("/adminAddNewAddress")
+	public String adminAddNewAddress(Model model, HttpSession session, HttpServletRequest request)
+	{
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
+		User user = (User) session.getAttribute("loggedUser");
+		if(user != null) {
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+		}
+		
+		Address address = new Address();
+		model.addAttribute("address", address);
+		model.addAttribute("buttonMessage", "Utwórz nowy");
+		
+		return "adminAddNewAddress";
+	}
+	
+	
+	@PostMapping("/adminAddNewAddress")
+	public String adminAddNewAddress(@Valid Address address, BindingResult result, Model model, HttpSession session, HttpServletRequest request)
+	{
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
+		User user = (User) session.getAttribute("loggedUser");
+		if(user != null) {
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+		}
+		
+		if(result.hasErrors()) {
+			model.addAttribute("buttonMessage", "Utwórz nowy");
+			return "adminAddNewAddress";
+		}
+		
+		addressRepository.save(address);
+		model.addAttribute("searchResultMessage", "Nowy adres pomyślnie dodano do bazy.");
+		
+		return "redirect:/panelAdmin";
+	}
+	
+	
+	
+	@GetMapping("/adminEditAddress/{id}")
+	public String adminEditAddress(@PathVariable Long id, Model model, HttpSession session, HttpServletRequest request)
+	{
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
+		User user = (User) session.getAttribute("loggedUser");
+		if(user != null) {
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+		}
+		
+		Address address = addressRepository.findFirstById(id);
+		model.addAttribute("address", address);
+		model.addAttribute("buttonMessage", "Zmień");
+		
+		return "adminAddNewAddress";
+	}
+	
+	@PostMapping("/adminEditAddress/{id}")
+	public String adminEditAddress(@Valid Address address, BindingResult result, @PathVariable Long id, Model model, HttpSession session, HttpServletRequest request)
+	{
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
+		User user = (User) session.getAttribute("loggedUser");
+		if(user != null) {
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+		}
+		
+		if(result.hasErrors()) {
+			model.addAttribute("buttonMessage", "Zmień");
+			return "adminAddNewAddress";
+		}
+		
+		addressRepository.save(address);
+		model.addAttribute("searchResultMessage", "Adres pomyślnie zmieniono.");
+		
+		return "redirect:/panelAdmin";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//klasy aut
+	
+	@GetMapping("/adminAddNewCarClass")
+	public String adminAddNewCarClass(Model model, HttpSession session, HttpServletRequest request)
+	{
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
+		User user = (User) session.getAttribute("loggedUser");
+		if(user != null) {
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+		}
+		
+		CarClass carClass = new CarClass();
+		model.addAttribute("carClass", carClass);
+		model.addAttribute("buttonMessage", "Utwórz nową");
+		
+		return "adminAddNewCarClass";
+	}
+	
+	
+	@PostMapping("/adminAddNewCarClass")
+	public String adminAddNewCarClass(@Valid CarClass carClass, BindingResult result, Model model, HttpSession session, HttpServletRequest request)
+	{
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
+		User user = (User) session.getAttribute("loggedUser");
+		if(user != null) {
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+		}
+		
+		if(result.hasErrors()) {
+			model.addAttribute("buttonMessage", "Utwórz nową");
+			return "adminAddNewCarClass";
+		}
+		
+		carClassRepository.save(carClass);
+		model.addAttribute("searchResultMessage", "Nową klasę pomyślnie dodano do bazy.");
+		
+		return "redirect:/panelAdmin";
+	}
+	
+	
+	
+	@GetMapping("/adminEditCarClass/{id}")
+	public String adminEditCarClass(@PathVariable Long id, Model model, HttpSession session, HttpServletRequest request)
+	{
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
+		User user = (User) session.getAttribute("loggedUser");
+		if(user != null) {
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+		}
+		
+		CarClass carClass = carClassRepository.findFirstById(id);
+		model.addAttribute("carClass", carClass);
+		model.addAttribute("buttonMessage", "Zmień");
+		
+		return "adminAddNewCarClass";
+	}
+	
+	@PostMapping("/adminEditCarClass/{id}")
+	public String adminEditCarClass(@Valid CarClass carClass, BindingResult result, @PathVariable Long id, Model model, HttpSession session, HttpServletRequest request)
+	{
+		Cookies.CheckCookiesAndSetLoggedUserAttribute(request, userRepository, session); //static method to check user cookie and set session attribute accordingly to avoid repeating code
+		User user = (User) session.getAttribute("loggedUser");
+		if(user != null) {
+			model.addAttribute("info", "Jesteś zalogowany jako " + user.getUsername());
+		}
+		
+		if(result.hasErrors()) {
+			model.addAttribute("buttonMessage", "Zmień");
+			return "adminAddNewCarClass";
+		}
+		
+		carClassRepository.save(carClass);
+		model.addAttribute("searchResultMessage", "Klasę pomyślnie zmieniono.");
+		
+		return "redirect:/panelAdmin";
+	}
 	
 	
 	
