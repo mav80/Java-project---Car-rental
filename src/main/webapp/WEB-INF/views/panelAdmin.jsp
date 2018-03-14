@@ -709,7 +709,7 @@
 								<td>
 									<list>
 										<ul>
-											<li>Klasa: ${carClass.carClass}</li>
+											<li>Klasa: ${carClass.carClassa}</li>
 											<li>Cena za dzień: ${carClass.pricePerDay}</li>
 																	
 										</ul>

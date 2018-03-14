@@ -29,13 +29,13 @@
 			<form:form method="post" modelAttribute="carClass">
 		
 				Klasa auta<br>
-				<form:input path="carClass" placeholder="klasa auta"/> 		<form:errors path="carClass" style="font-weight: bold; font-style: italic; color: red"/><br><br>
+				<form:input path="carClassa" placeholder="klasa auta"/> 			<form:errors path="carClassa" style="font-weight: bold; font-style: italic; color: red"/><br><br>
 				
 				Opis (widoczny przy tworzeniu nowego zamówienia)<br>		
-				<form:input path="carClassDescription" placeholder="opis"/>				<form:errors path="carClassDescription" style="font-weight: bold; font-style: italic; color: red"/><br><br>
+				<form:input path="carClassDescription" placeholder="opis"/>			<form:errors path="carClassDescription" style="font-weight: bold; font-style: italic; color: red"/><br><br>
 				
 				Cena za dzień<br>	
-				<form:input type="number" path="pricePerDay"/>							<form:errors path="pricePerDay" style="font-weight: bold; font-style: italic; color: red"/><br><br>
+				<form:input type="number" path="pricePerDay"/>						<form:errors path="pricePerDay" style="font-weight: bold; font-style: italic; color: red"/><br><br>
 						
 				Czy klasa jest aktywna (brak ptaszka = niewidoczna dla użytkowników) ?  <form:checkbox path="active" /><br>
 				

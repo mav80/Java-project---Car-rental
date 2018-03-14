@@ -25,7 +25,7 @@ public class CarClass {
 	@NotBlank
 	@NotNull
 	@Column(nullable = false)
-	private String carClass;
+	private String carClassa;
 	
 	
 	@NotBlank
@@ -64,14 +64,13 @@ public class CarClass {
 		this.id = id;
 	}
 
-	public String getCarClass() {
-		return carClass;
+	public String getCarClassa() {
+		return carClassa;
 	}
 
-	public void setCarClass(String carClass) {
-		this.carClass = carClass;
+	public void setCarClassa(String carClassa) {
+		this.carClassa = carClassa;
 	}
-
 
 	public List<Order> getOrders() {
 		return orders;
@@ -130,7 +129,7 @@ public class CarClass {
 	
 	@Override
 	public String toString() {
-		return "CarClass [id=" + id + ", carClass=" + carClass + ", carClassDescription=" + carClassDescription
+		return "CarClass [id=" + id + ", carClassa=" + carClassa + ", carClassDescription=" + carClassDescription
 				+ ", pricePerDay=" + pricePerDay + ", active=" + active + "]";
 	}
 	
