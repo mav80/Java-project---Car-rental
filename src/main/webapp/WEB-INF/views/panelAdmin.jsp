@@ -403,7 +403,7 @@
 											<list>
 												<ul>				
 													<li><a href="<%out.print(request.getContextPath());%>/adminEditOrder/${order.id}">edytuj</a></li>
-													<li><a href="<%out.print(request.getContextPath());%>/deleteOrderAdmin/${order.id}">usuń</a></li>
+													<li><a class="confirm" href="<%out.print(request.getContextPath());%>/deleteOrderAdmin/${order.id}">usuń</a></li>
 													<li><a href="<%out.print(request.getContextPath());%>/adminEditUser/${order.user.id}">edytuj użytkownika</a></li>
 												</ul>
 											</list>
@@ -495,7 +495,7 @@
 											<ul>
 												<li> <a href="<%out.print(request.getContextPath());%>/panelAdmin?userId=${user.id}">pokaż wszystkie rezerwacje tego użytkownika</a></li>
 												<li><a href="<%out.print(request.getContextPath());%>/adminEditUser/${user.id}">edytuj użytkownika</a></li>
-												<li><a href="<%out.print(request.getContextPath());%>/deleteUserAdmin/${user.id}">usuń użytkownika i wszystkie jego rezerwacje</a></li>
+												<li><a class="confirm" href="<%out.print(request.getContextPath());%>/deleteUserAdmin/${user.id}">usuń użytkownika i wszystkie jego rezerwacje</a></li>
 											</ul>
 										</list>
 									</td>

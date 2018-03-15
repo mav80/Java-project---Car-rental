@@ -87,7 +87,7 @@
 										<list>
 											<ul>				
 												<li><a href="<%out.print(request.getContextPath());%>/editOrder/${order.id}">edytuj rezerwację</a></li>
-												<li><a href="<%out.print(request.getContextPath());%>/deleteOrderUser/${order.id}">usuń rezerwację</a></li>
+												<li><a class="confirm" href="<%out.print(request.getContextPath());%>/deleteOrderUser/${order.id}">usuń rezerwację</a></li>
 											</ul>
 										</list>
 									</c:if>
