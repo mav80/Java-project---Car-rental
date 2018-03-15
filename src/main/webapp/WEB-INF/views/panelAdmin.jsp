@@ -29,81 +29,74 @@
 			
 			<b>${userProfileChangedSuccessfully}</b><br>
 			
-			<p>
+			<p align="center" style="font-weight: bold">
 				<input id="ordersButton" type="submit" value="Zarządzanie rezerwacjami"> <input id="usersButton" type="submit" value="Zarządzanie użytkownikami"> <input id="extrasButton" type="submit" value="Zarządzanie dodatkami"> <input id="addressButton" type="submit" value="Zarządzanie adresami">  <input id="carClassButton" type="submit" value="Zarządzanie klasami aut">    
 			</p>
 			
-			<div class="row">
-			
-				<figure class="col-sm-1"></figure>
+			<div class="row" align="center">
 				
 				<div id="ordersDiv" style="display: none">
 					<table style="color: blue">
 						<tr style="background-color: #e9e9e9">
 						
-						<td>
-						
-						
-							<form>
-								Podaj id użytkownika którego rezerwacje chcesz odnaleźć:<br>
-								<input type="number" name="userId" min="1" placeholder="Podaj id"><br>
-								<input type="submit" value="Wyszukaj"> <br> <br>
-							</form>
-							
-							<form>
-								Podaj numer referencyjny rezerwacji którą chcesz odnaleźć:<br>
-								<input type="text" name="referenceNumber" placeholder="Podaj kod rezerwacji"><br>
-								<input type="submit" value="Wyszukaj"> <br> <br>
-							</form>
-							
-							<form>
-								<input type="hidden" name="showAll" value="true">
-								<input type="submit" value="Pokaż wszystkie rezerwacje znajdujące się w bazie"><br><br>
-							</form>
-							
-						</td>
-						
-						
-						<td>
-						
-							<form>
-								Podaj email użytkownika którego rezerwacje chcesz odnaleźć:<br>
-								<input type="text" name="email" placeholder="Podaj email"><br>
-								<input type="submit" value="Wyszukaj"> <br> <br>
-							</form>
+							<td>
 							
 							
-							<form>
-								Podaj imię użytkownika którego rezerwacje chcesz odnaleźć:<br>
-								<input type="text" name="name" placeholder="Podaj imię"><br>
-								<input type="submit" value="Wyszukaj"> <br> <br>
-							</form>
+								<form>
+									Podaj id użytkownika którego rezerwacje chcesz odnaleźć:<br>
+									<input type="number" name="userId" min="1" placeholder="Podaj id"><br>
+									<input type="submit" value="Wyszukaj"> <br> <br>
+								</form>
+								
+								<form>
+									Podaj numer referencyjny rezerwacji którą chcesz odnaleźć:<br>
+									<input type="text" name="referenceNumber" placeholder="Podaj kod rezerwacji"><br>
+									<input type="submit" value="Wyszukaj"> <br> <br>
+								</form>
+								
+								<form>
+									<input type="hidden" name="showAll" value="true">
+									<input type="submit" value="Pokaż wszystkie rezerwacje znajdujące się w bazie"><br><br>
+								</form>
+								
+							</td>
 							
-						</td>
-						
-						
-						
-						<td>
-						
-						<form>
-							Wyszukaj rezerwacje utworzone pomiędzy określonymi datami:<br>
-							<input type="text" name="startDate" id="date-format-begin" class="form-control floating-label" placeholder="Data początkowa" /> 
-							<input type="text" name="endDate" id="date-format-end" class="form-control floating-label" placeholder="Data końcowa" />
-							<input type="submit" value="Wyszukaj"><br>
-						</form>
-						
-						</td>
-						
+							
+							<td>
+							
+								<form>
+									Podaj email użytkownika którego rezerwacje chcesz odnaleźć:<br>
+									<input type="text" name="email" placeholder="Podaj email"><br>
+									<input type="submit" value="Wyszukaj"> <br> <br>
+								</form>
+								
+								
+								<form>
+									Podaj imię użytkownika którego rezerwacje chcesz odnaleźć:<br>
+									<input type="text" name="name" placeholder="Podaj imię"><br>
+									<input type="submit" value="Wyszukaj"> <br> <br>
+								</form>
+								
+							</td>
+							
+							
+							
+							<td>
+							
+								<form>
+									Wyszukaj rezerwacje utworzone pomiędzy określonymi datami:<br>
+									<input type="text" name="startDate" id="date-format-begin" class="form-control floating-label" placeholder="Data początkowa" /> 
+									<input type="text" name="endDate" id="date-format-end" class="form-control floating-label" placeholder="Data końcowa" />
+									<input type="submit" value="Wyszukaj"><br>
+								</form>
+							
+							</td>
+							
 						</tr>
-						
-						
-					
+									
 					</table>
 						
 				</div>
-				
-				
-				<figure class="col-sm-1"> </figure>
 			
 			</div>
 			
@@ -114,9 +107,8 @@
 
 			
 			
-			<div class="row">
+			<div class="row" align="center">
 			
-				<figure class="col-sm-1"> </figure>
 				
 				<div id="usersDiv"  style="display: none">
 					<table style="color: blue">
@@ -167,7 +159,6 @@
 				</div>
 				
 				
-				<figure class="col-sm-1"> </figure>
 			
 			</div>
 			
@@ -177,10 +168,8 @@
 
 			
 			
-			<div class="row">
+			<div class="row" align="center">
 			
-				<figure class="col-sm-1"><!-- <input id="extrasButton" type="submit" value="Pokaż/ukryj"> --> </figure>
-				
 				<div id="extrasDiv"  style="display: none">
 					<table style="color: blue">
 						<tr style="background-color: #e9e9e9">
@@ -203,7 +192,7 @@
 							
 							<td>
 							
-								<figure class="col-bg-4">
+								<figure class="col-bg-4" align="center">
 									<form>
 										<input type="hidden" name="extrasShowActiveExtras" value="true">
 										<input type="submit" value="Pokaż aktywne dodatki"> <br> <br>
@@ -224,9 +213,6 @@
 					</table>
 						
 				</div>
-				
-				
-				<figure class="col-sm-1"> </figure>
 			
 			</div>
 			
@@ -236,10 +222,8 @@
 			
 			
 						
-			<div class="row">
+			<div class="row" align="center">
 			
-				<figure class="col-sm-1"><!-- <input id="extrasButton" type="submit" value="Pokaż/ukryj"> --> </figure>
-				
 				<div id="addressDiv"  style="display: none">
 					<table style="color: blue">
 						<tr style="background-color: #e9e9e9">
@@ -267,9 +251,6 @@
 					</table>
 						
 				</div>
-				
-				
-				<figure class="col-sm-1"> </figure>
 			
 			</div>
 			
@@ -277,10 +258,8 @@
 			
 			
 						
-			<div class="row">
-			
-				<figure class="col-sm-1"><!-- <input id="extrasButton" type="submit" value="Pokaż/ukryj"> --> </figure>
-				
+			<div class="row" align="center">
+	
 				<div id="carClassDiv"  style="display: none">
 					<table style="color: blue">
 						<tr style="background-color: #e9e9e9">
@@ -307,9 +286,6 @@
 					</table>
 						
 				</div>
-				
-				
-				<figure class="col-sm-1"> </figure>
 			
 			</div>
 			
@@ -320,415 +296,417 @@
 			
 			
 			
-			<!-- tu wyświetlamy informację typu "oto wyniki wyszukiwania" lub "edycja powiodła się"  -->
 			
-			<br>
+			<center>
 			
-			<p style="color: magenta">
-				<b>${param.searchResultMessage}</b>
-			</p>
-		
-			<c:if test="${not empty orders}">
-				<p style="color: red">
-					<b>${searchResultMessage}</b>
+				<!-- tu wyświetlamy informację typu "oto wyniki wyszukiwania" lub "edycja powiodła się"  -->
+				
+				<br>
+				
+				<p style="color: magenta">
+					<b>${param.searchResultMessage}</b>
 				</p>
-			</c:if>
 			
-			<c:if test="${empty orders}">
-				<p style="color: red">
-			 		<b>Wyszukiwanie nie zwróciło żadnych wyników.</b><br><br>
-			 	</p>
-			</c:if>
+				<c:if test="${not empty orders}">
+					<p style="color: red">
+						<b>${searchResultMessage}</b>
+					</p>
+				</c:if>
+				
+				<c:if test="${empty orders}">
+					<p style="color: red">
+				 		<b>Wyszukiwanie nie zwróciło żadnych wyników.</b><br><br>
+				 	</p>
+				</c:if>
+				
+				
+				
+				
+	
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				<!-- REZERWACJE  -->
+				
+				
+				<c:if test="${searchResultMessage != 'Oto wyniki wyszukiwania użytkowników:' && searchResultMessage != 'Oto wyniki wyszukiwania dodatków:' && searchResultMessage != 'Oto wyniki wyszukiwania adresów:' && searchResultMessage != 'Oto wyniki wyszukiwania klas samochodów:'}">
+				
+					<section class="mytable">
+						<table>
+							<c:forEach items="${orders}" var="order">
+								
+								<div class="row">
+								
+									<tr>
+									
+										<td>
+											<list>
+												<ul>
+													<li>ID rezerwacji: ${order.id}</li>
+													<li>ID użytkownika: ${order.user.id}</li>
+													<li>Imię użytkownika: ${order.user.username}</li>
+													<li>Dni wynajmu: ${order.rentLengthInDays}, <b style="color: red">Cena: ${order.orderPrice}</b></li>
+													<li>Numer referencyjny: <b style="color: blue">${order.referenceNumber}</b></li>
+												</ul>
+											</list>
+										</td>
+										
+										<td>
+											<list>
+												<ul>
+													<li>Email użytkownika: ${order.user.email}</li>
+													<li>Data stworzenia rezerwacji: ${order.created}</li>
+													<li>Miejsce odbioru auta: ${order.address.name}, ${order.address.street}, ${order.address.zipCode}, ${order.address.city}</li>
+													<c:if test="${not empty order.extras}">
+													
+														<li>
+															<b>Wybrane dodatki:</b>
+															
+															<c:forEach items="${order.extras}" var="extra">
+																${extra.description},
+															</c:forEach>
+														
+														</li>
+													
+													</c:if>
+												</ul>
+											</list>
+										</td>
+										
+										<td>
+											<list>
+												<ul>
+													<li>Data odbioru auta: ${order.pickupDate}</li>
+													<li>Data zwrotu auta: ${order.returnDate}</li>
+													<li>Klasa zarezerwowanego auta:	${order.carClass.carClassDescription}</li>
+													<li>Czy aktywne? 												
+														<c:if test="${order.active == true}">
+															<img src="<%out.print(request.getContextPath());%>/static/images/tick.png">
+														</c:if>
 			
-			
-			
-			
-
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			<!-- REZERWACJE  -->
-			
-			
-			<c:if test="${searchResultMessage != 'Oto wyniki wyszukiwania użytkowników:' && searchResultMessage != 'Oto wyniki wyszukiwania dodatków:' && searchResultMessage != 'Oto wyniki wyszukiwania adresów:' && searchResultMessage != 'Oto wyniki wyszukiwania klas samochodów:'}">
-			
+														<c:if test="${order.active == false}">
+															<img src="<%out.print(request.getContextPath());%>/static/images/cross.png">
+														</c:if>
+													</li>
+												</ul>
+											</list>
+										</td>
+										
+										
+										<td>
+											<list>
+												<ul>				
+													<li><a href="<%out.print(request.getContextPath());%>/adminEditOrder/${order.id}">edytuj</a></li>
+													<li><a href="<%out.print(request.getContextPath());%>/deleteOrderAdmin/${order.id}">usuń</a></li>
+													<li><a href="<%out.print(request.getContextPath());%>/adminEditUser/${order.user.id}">edytuj użytkownika</a></li>
+												</ul>
+											</list>
+										</td>
+									
+									</tr>
+								
+								</div>  <!--  koniec div "row" -->
+		
+							</c:forEach>
+						
+						
+						</table>
+					</section>
+				
+				</c:if>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				<!-- UŻYTKOWNICY  -->
+				
 				<section class="mytable">
 					<table>
-						<c:forEach items="${orders}" var="order">
-							
-							<div class="row">
-							
+						<c:forEach items="${users}" var="user">		
+							<div class="row">	
 								<tr>
 								
 									<td>
 										<list>
 											<ul>
-												<li>ID rezerwacji: ${order.id}</li>
-												<li>ID użytkownika: ${order.user.id}</li>
-												<li>Imię użytkownika: ${order.user.username}</li>
-												<li>Dni wynajmu: ${order.rentLengthInDays}, <b style="color: red">Cena: ${order.orderPrice}</b></li>
-												<li>Numer referencyjny: <b style="color: blue">${order.referenceNumber}</b></li>
+												<li>ID: ${user.id}</li>
+												<li>Imię: ${user.username}</li>
+												<li>Wiek: ${user.age}</li>
 											</ul>
 										</list>
 									</td>
-									
+								
+								
+								
 									<td>
 										<list>
 											<ul>
-												<li>Email użytkownika: ${order.user.email}</li>
-												<li>Data stworzenia rezerwacji: ${order.created}</li>
-												<li>Miejsce odbioru auta: ${order.address.name}, ${order.address.street}, ${order.address.zipCode}, ${order.address.city}</li>
-												<c:if test="${not empty order.extras}">
+												<li>Email: ${user.email}</li>
+												<li>Telefon: ${user.phone}</li>
+												<li>Czy aktywny:
 												
-													<li>
-														<b>Wybrane dodatki:</b>
-														
-														<c:forEach items="${order.extras}" var="extra">
-															${extra.description},
-														</c:forEach>
-													
-													</li>
-												
-												</c:if>
-											</ul>
-										</list>
-									</td>
-									
-									<td>
-										<list>
-											<ul>
-												<li>Data odbioru auta: ${order.pickupDate}</li>
-												<li>Data zwrotu auta: ${order.returnDate}</li>
-												<li>Klasa zarezerwowanego auta:	${order.carClass.carClassDescription}</li>
-												<li>Czy aktywne? 												
-													<c:if test="${order.active == true}">
+													<c:if test="${user.enabled == true}">
 														<img src="<%out.print(request.getContextPath());%>/static/images/tick.png">
 													</c:if>
 		
-													<c:if test="${order.active == false}">
+													<c:if test="${user.enabled == false}">
 														<img src="<%out.print(request.getContextPath());%>/static/images/cross.png">
 													</c:if>
-												</li>
+												
+												</li>								
 											</ul>
 										</list>
 									</td>
 									
 									
+									
+									
 									<td>
 										<list>
-											<ul>				
-												<li><a href="<%out.print(request.getContextPath());%>/adminEditOrder/${order.id}">edytuj</a></li>
-												<li><a href="<%out.print(request.getContextPath());%>/deleteOrderAdmin/${order.id}">usuń</a></li>
-												<li><a href="<%out.print(request.getContextPath());%>/adminEditUser/${order.user.id}">edytuj użytkownika</a></li>
+											<ul>
+												<li> <a href="<%out.print(request.getContextPath());%>/panelAdmin?userId=${user.id}">pokaż wszystkie rezerwacje tego użytkownika</a></li>
+												<li><a href="<%out.print(request.getContextPath());%>/adminEditUser/${user.id}">edytuj użytkownika</a></li>
+												<li><a href="<%out.print(request.getContextPath());%>/deleteUserAdmin/${user.id}">usuń użytkownika i wszystkie jego rezerwacje</a></li>
 											</ul>
 										</list>
 									</td>
 								
 								</tr>
 							
-							</div>  <!--  koniec div "row" -->
-	
+							</div>
+						<!--  koniec div "row" -->
+					
 						</c:forEach>
 					
+					</table>
+				</section>
+				
+				
+				
+				
+				
+				
+				<!-- EXTRASY  -->
+				
+				<section class="mytable">
+					<table>
+						<c:forEach items="${extras}" var="extra">		
+							<div class="row">	
+								<tr>
+								
+									<td>
+										<list>
+											<ul>
+												<li>ID: ${extra.id}</li>
+												<li>Nazwa: ${extra.name}</li>
+												<li>Opis: ${extra.description}</li>
+											</ul>
+										</list>
+									</td>
+								
+								
+								
+									<td>
+										<list>
+											<ul>
+												<li>Cena za dzień: ${extra.pricePerDay}</li>
+												<li>Czy aktywny:
+												
+													<c:if test="${extra.active == true}">
+														<img src="<%out.print(request.getContextPath());%>/static/images/tick.png">
+													</c:if>
+		
+													<c:if test="${extra.active == false}">
+														<img src="<%out.print(request.getContextPath());%>/static/images/cross.png">
+													</c:if>
+												
+												</li>								
+											</ul>
+										</list>
+									</td>
+									
+									
+									<td>
+										Obrazek: <img src="<%out.print(request.getContextPath());%>/static/images/extras/${extra.image}">							
+									</td>
+									
+									
+									
+									<td>
+	
+										<a href="<%out.print(request.getContextPath());%>/adminEditExtras/${extra.id}">edytuj dodatek</a>								
+	
+									</td>
+								
+								</tr>
+							
+							</div>
+						<!--  koniec div "row" -->
+					
+						</c:forEach>
+					
+					</table>
+				</section>
+				
+				
+				
+				
+				
+				
+				<!-- ADRESY  -->
+				
+				<section class="mytable">
+					<table>
+						<c:forEach items="${addressesAdmin}" var="address">		
+							<div class="row">	
+								<tr>
+								
+									<td>
+										<list>
+											<ul>
+												<li>ID: ${address.id}</li>
+												<li>Aktywny?
+												
+													<c:if test="${address.active == true}">
+														<img src="<%out.print(request.getContextPath());%>/static/images/tick.png">
+													</c:if>
+		
+													<c:if test="${address.active == false}">
+														<img src="<%out.print(request.getContextPath());%>/static/images/cross.png">
+													</c:if>
+												
+												</li>		
+											</ul>
+										</list>
+									</td>
+								
+								
+								
+									<td>
+										<list>
+											<ul>
+												<li>Nazwa: ${address.name}</li>
+												<li>Ulica: ${address.street}</li>
+												<li>Kod pocztowy: ${address.zipCode}</li>
+												<li>Miasto: ${address.city}</li>
+																		
+											</ul>
+										</list>
+									</td>
+									
+									
+									<td>
+										<a href="<%out.print(request.getContextPath());%>/adminEditAddress/${address.id}">edytuj adres</a>								
+	
+									</td>
+								
+								</tr>
+							
+							</div>
+						<!--  koniec div "row" -->
+					
+						</c:forEach>
+					
+					</table>
+				</section>
+				
+				
+				
+				
+				
+							<!-- klasy samochodów  -->
+				
+				<section class="mytable">
+					<table>
+						<c:forEach items="${carClasses}" var="carClass">		
+							<div class="row">	
+								<tr>
+								
+									<td>
+										<list>
+											<ul>
+												<li>ID: ${carClass.id}</li>
+												<li>Czy aktywny:
+												
+													<c:if test="${carClass.active == true}">
+														<img src="<%out.print(request.getContextPath());%>/static/images/tick.png">
+													</c:if>
+		
+													<c:if test="${carClass.active == false}">
+														<img src="<%out.print(request.getContextPath());%>/static/images/cross.png">
+													</c:if>
+												
+												</li>		
+											</ul>
+										</list>
+									</td>
+								
+								
+								
+									<td>
+										<list>
+											<ul>
+												<li>Klasa: ${carClass.carClassa}</li>
+												<li>Cena za dzień: ${carClass.pricePerDay}</li>
+																		
+											</ul>
+										</list>
+									</td>
+									
+									<td>
+										<list>
+											<ul>
+												<li>Opis (widoczny dla użytkownika): ${carClass.carClassDescription}</li>																	
+											</ul>
+										</list>
+									</td>
+									
+									
+									<td>
+										<a href="<%out.print(request.getContextPath());%>/adminEditCarClass/${carClass.id}">edytuj klasę auta</a>								
+	
+									</td>
+								
+								</tr>
+							
+							</div>
+						<!--  koniec div "row" -->
+					
+						</c:forEach>
 					
 					</table>
 				</section>
 			
-			</c:if>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			<!-- UŻYTKOWNICY  -->
-			
-			<section class="mytable">
-				<table>
-					<c:forEach items="${users}" var="user">		
-						<div class="row">	
-							<tr>
-							
-								<td>
-									<list>
-										<ul>
-											<li>ID: ${user.id}</li>
-											<li>Imię: ${user.username}</li>
-											<li>Wiek: ${user.age}</li>
-										</ul>
-									</list>
-								</td>
-							
-							
-							
-								<td>
-									<list>
-										<ul>
-											<li>Email: ${user.email}</li>
-											<li>Telefon: ${user.phone}</li>
-											<li>Czy aktywny:
-											
-												<c:if test="${user.enabled == true}">
-													<img src="<%out.print(request.getContextPath());%>/static/images/tick.png">
-												</c:if>
-	
-												<c:if test="${user.enabled == false}">
-													<img src="<%out.print(request.getContextPath());%>/static/images/cross.png">
-												</c:if>
-											
-											</li>								
-										</ul>
-									</list>
-								</td>
-								
-								
-								
-								
-								<td>
-									<list>
-										<ul>
-											<li> <a href="<%out.print(request.getContextPath());%>/panelAdmin?userId=${user.id}">pokaż wszystkie rezerwacje tego użytkownika</a></li>
-											<li><a href="<%out.print(request.getContextPath());%>/adminEditUser/${user.id}">edytuj użytkownika</a></li>
-											<li><a href="<%out.print(request.getContextPath());%>/deleteUserAdmin/${user.id}">usuń użytkownika i wszystkie jego rezerwacje</a></li>
-										</ul>
-									</list>
-								</td>
-							
-							</tr>
-						
-						</div>
-					<!--  koniec div "row" -->
-				
-					</c:forEach>
-				
-				</table>
-			</section>
-			
-			
-			
-			
-			
-			
-			<!-- EXTRASY  -->
-			
-			<section class="mytable">
-				<table>
-					<c:forEach items="${extras}" var="extra">		
-						<div class="row">	
-							<tr>
-							
-								<td>
-									<list>
-										<ul>
-											<li>ID: ${extra.id}</li>
-											<li>Nazwa: ${extra.name}</li>
-											<li>Opis: ${extra.description}</li>
-										</ul>
-									</list>
-								</td>
-							
-							
-							
-								<td>
-									<list>
-										<ul>
-											<li>Cena za dzień: ${extra.pricePerDay}</li>
-											<li>Czy aktywny:
-											
-												<c:if test="${extra.active == true}">
-													<img src="<%out.print(request.getContextPath());%>/static/images/tick.png">
-												</c:if>
-	
-												<c:if test="${extra.active == false}">
-													<img src="<%out.print(request.getContextPath());%>/static/images/cross.png">
-												</c:if>
-											
-											</li>								
-										</ul>
-									</list>
-								</td>
-								
-								
-								<td>
-									Obrazek: <img src="<%out.print(request.getContextPath());%>/static/images/extras/${extra.image}">							
-								</td>
-								
-								
-								
-								<td>
-
-									<a href="<%out.print(request.getContextPath());%>/adminEditExtras/${extra.id}">edytuj dodatek</a>								
-
-								</td>
-							
-							</tr>
-						
-						</div>
-					<!--  koniec div "row" -->
-				
-					</c:forEach>
-				
-				</table>
-			</section>
-			
-			
-			
-			
-			
-			
-			<!-- ADRESY  -->
-			
-			<section class="mytable">
-				<table>
-					<c:forEach items="${addressesAdmin}" var="address">		
-						<div class="row">	
-							<tr>
-							
-								<td>
-									<list>
-										<ul>
-											<li>ID: ${address.id}</li>
-											<li>Aktywny?
-											
-												<c:if test="${address.active == true}">
-													<img src="<%out.print(request.getContextPath());%>/static/images/tick.png">
-												</c:if>
-	
-												<c:if test="${address.active == false}">
-													<img src="<%out.print(request.getContextPath());%>/static/images/cross.png">
-												</c:if>
-											
-											</li>		
-										</ul>
-									</list>
-								</td>
-							
-							
-							
-								<td>
-									<list>
-										<ul>
-											<li>Nazwa: ${address.name}</li>
-											<li>Ulica: ${address.street}</li>
-											<li>Kod pocztowy: ${address.zipCode}</li>
-											<li>Miasto: ${address.city}</li>
-																	
-										</ul>
-									</list>
-								</td>
-								
-								
-								<td>
-									<a href="<%out.print(request.getContextPath());%>/adminEditAddress/${address.id}">edytuj adres</a>								
-
-								</td>
-							
-							</tr>
-						
-						</div>
-					<!--  koniec div "row" -->
-				
-					</c:forEach>
-				
-				</table>
-			</section>
-			
-			
-			
-			
-			
-						<!-- klasy samochodów  -->
-			
-			<section class="mytable">
-				<table>
-					<c:forEach items="${carClasses}" var="carClass">		
-						<div class="row">	
-							<tr>
-							
-								<td>
-									<list>
-										<ul>
-											<li>ID: ${carClass.id}</li>
-											<li>Czy aktywny:
-											
-												<c:if test="${carClass.active == true}">
-													<img src="<%out.print(request.getContextPath());%>/static/images/tick.png">
-												</c:if>
-	
-												<c:if test="${carClass.active == false}">
-													<img src="<%out.print(request.getContextPath());%>/static/images/cross.png">
-												</c:if>
-											
-											</li>		
-										</ul>
-									</list>
-								</td>
-							
-							
-							
-								<td>
-									<list>
-										<ul>
-											<li>Klasa: ${carClass.carClassa}</li>
-											<li>Cena za dzień: ${carClass.pricePerDay}</li>
-																	
-										</ul>
-									</list>
-								</td>
-								
-								<td>
-									<list>
-										<ul>
-											<li>Opis (widoczny dla użytkownika): ${carClass.carClassDescription}</li>																	
-										</ul>
-									</list>
-								</td>
-								
-								
-								<td>
-									<a href="<%out.print(request.getContextPath());%>/adminEditCarClass/${carClass.id}">edytuj klasę auta</a>								
-
-								</td>
-							
-							</tr>
-						
-						</div>
-					<!--  koniec div "row" -->
-				
-					</c:forEach>
-				
-				</table>
-			</section>
-			
-			
-			
+			</center>
 			
 			
 			<br><b>Liczba zamówień w bazie: ${howManyOrdersInDatabase}, z czego aktywnych: ${howManyActiveOrdersInDatabase}</b></b><br><br>

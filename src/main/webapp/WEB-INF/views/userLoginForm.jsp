@@ -17,12 +17,12 @@
 		<form method="post">
 		
 			Email<br> 
-			<input type="text" name="email" placeholder="email"><br>
+			<input type="text" name="email" placeholder="email"><br><br>
 			
 			Hasło<br>
-			<input type="password" name="password" placeholder="hasło"><br>
+			<input type="password" name="password" placeholder="hasło"><br><br>
 			
-			<input type="submit" value="zaloguj">
+			<input type="submit" value="Zaloguj">
 	
 		</form>
 		
