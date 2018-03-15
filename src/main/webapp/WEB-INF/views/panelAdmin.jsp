@@ -53,13 +53,12 @@
 							<form>
 								Podaj numer referencyjny rezerwacji którą chcesz odnaleźć:<br>
 								<input type="text" name="referenceNumber" placeholder="Podaj kod rezerwacji"><br>
-								<input type="submit" value="Wyszukaj"> <br>
+								<input type="submit" value="Wyszukaj"> <br> <br>
 							</form>
 							
 							<form>
-								<br>Pokaż wszystkie rezerwacje znajdujące się w bazie<br>
 								<input type="hidden" name="showAll" value="true">
-								<input type="submit" value="Pokaż"><br><br>
+								<input type="submit" value="Pokaż wszystkie rezerwacje znajdujące się w bazie"><br><br>
 							</form>
 							
 						</td>
@@ -148,27 +147,20 @@
 										<input type="number" name="userUserPhone" placeholder="Podaj numer"><br>
 										<input type="submit" value="Wyszukaj"> <br> <br>
 									</form>
-								
-								</figure>
-							</td>
-							
-							
-							<td>
-							
-								<figure class="col-bg-4">
+									
 									<form>
-										Pokaż użytkowników zbanowanych<br> 
 										<input type="hidden" name="userShowBannedUsers" value="true">
-										<input type="submit" value="Wyszukaj"> <br> <br>
+										<input type="submit" value="Pokaż użytkowników zbanowanych"> <br> <br>
 									</form>
 									
 									<form>
-										Pokaż wszystkich użytkowników<br> 
 										<input type="hidden" name="userShowAllUsers" value="true"> 
-										<input type="submit" value="Wyszukaj"> <br>		
+										<input type="submit" value="Pokaż wszystkich użytkowników"> <br>		
 									</form>
+								
 								</figure>
 							</td>
+
 						</tr>
 					</table>
 						
@@ -213,21 +205,18 @@
 							
 								<figure class="col-bg-4">
 									<form>
-										Pokaż aktywne dodatki<br> 
 										<input type="hidden" name="extrasShowActiveExtras" value="true">
-										<input type="submit" value="Wyszukaj"> <br> <br>
+										<input type="submit" value="Pokaż aktywne dodatki"> <br> <br>
 									</form>
 									
-									<form>
-										Pokaż wyłączone dodatki<br> 
+									<form> 
 										<input type="hidden" name="extrasShowDisabledExtras" value="true">
-										<input type="submit" value="Wyszukaj"> <br> <br>
+										<input type="submit" value="Pokaż wyłączone dodatki"> <br> <br>
 									</form>
 									
 									<form>
-										Pokaż wszystkie dodatki<br> 
 										<input type="hidden" name="extrasShowAllExtras" value="true"> 
-										<input type="submit" value="Wyszukaj"> <br>		
+										<input type="submit" value="Pokaż wszystkie dodatki"> <br>		
 									</form>
 								</figure>
 							</td>
@@ -269,9 +258,8 @@
 							
 								<figure class="col-bg-4">								
 									<form>
-										Pokaż wszystkie adresy<br> 
 										<input type="hidden" name="addressShowAllAddresses" value="true"> 
-										<input type="submit" value="Wyszukaj"> <br>		
+										<input type="submit" value="Pokaż wszystkie adresy"> <br>		
 									</form>
 								</figure>
 							</td>
@@ -310,9 +298,8 @@
 							
 								<figure class="col-bg-4">									
 									<form>
-										Pokaż wszystkie klasy aut<br> 
 										<input type="hidden" name="carClassShowAllCarClasses" value="true"> 
-										<input type="submit" value="Wyszukaj"> <br>		
+										<input type="submit" value="Pokaż wszystkie klasy aut"> <br>		
 									</form>
 								</figure>
 							</td>

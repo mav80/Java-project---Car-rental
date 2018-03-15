@@ -224,12 +224,12 @@ public class UserController {
 	
 	@ModelAttribute("addresses")
 	public List<Address> getAddresses() {
-		return addressRepository.findAll();
+		return addressRepository.findAllByActive(true);
 	}
 	
 	@ModelAttribute("cars")
 	public List<CarClass> getCars() {
-		return carClassRepository.findAll();
+		return carClassRepository.findAllByActive(true);
 	}
 	
 

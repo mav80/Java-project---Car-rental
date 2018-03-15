@@ -11,7 +11,7 @@
 	</head>
 	
 	<body class="margin">
-		<h3>WAŻNE! Jako admin masz możliwość dowolnego ustawienia dat w zamówieniu, np. data początkowa może być późniejsza niż końcowa, możesz też dodawać do rezerwacji dodatki które są wyłączone w bazie - uważaj aby nie popełnić błędów!</h3>
+		<h3><b style="color: red">WAŻNE!</b> Jako admin masz możliwość dowolnego ustawienia dat w zamówieniu, np. data początkowa może być późniejsza niż końcowa, możesz też dodawać do rezerwacji dodatki, auta i adresy które są wyłączone w bazie - uważaj aby nie popełnić błędów!</h3>
 	
 		<c:if test="${empty loggedUser}">
 			<p>Musisz się najpierw zalogować</p>
