@@ -122,9 +122,31 @@ public class TestOrderController {
 		orderRepository.deleteById((long) 28);
 		System.out.println("Wykonano próbę kasowania.");
 
-		
-
 		return "Skasowano";
+		
+	}
+	
+	
+	@GetMapping("/generateMissingReferenceNumbers")
+	@ResponseBody
+	String generateMissingReferenceNumbers(Model model) {
+		
+		List<Order> orders = orderRepository.findAll();
+		
+		int licznik = 0;
+		
+		for(Order order : orders) {
+			licznik++;
+			if(order.getReferenceNumber() == null) {
+				order.generateAndSetUniqueReferenceNumber(orderRepository);
+				orderRepository.save(order);
+				System.out.println(licznik + " Brak numeru referencyjnego, nowy to: " + order.getReferenceNumber());
+			} else {
+				System.out.println(licznik + " Order już ma numer referencyjny: " + order.getReferenceNumber());
+			}
+		}
+
+		return "Numery referencyjne uzupelniono.";
 		
 	}
 

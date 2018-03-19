@@ -62,18 +62,8 @@ public class AppConfig  implements WebMvcConfigurer {
 	registry.addConverter(addressConverter());
 	registry.addConverter(carClassConverter());
 	registry.addConverter(extrasConverter());
-//	registry.addConverter(getBookAuthorConverter());
 	}
-//	
-//	@Bean
-//	public PublisherConverter getPublisherConverter() {
-//		return new PublisherConverter();
-//	}
-//	
-//	@Bean
-//	public	BookAuthorConverter	getBookAuthorConverter()	{
-//					return	new	BookAuthorConverter();
-//	}
+
 	
 	@Bean
 	public DateTimeConverter dateTimeConverter() {
@@ -100,8 +90,6 @@ public class AppConfig  implements WebMvcConfigurer {
 		return new ExtrasConverter();
 	}
 	
-	
-	//beany do dzien 3 walidacja
 	
 	@Bean(name="localeResolver")
 	public LocaleContextResolver getLocaleContextResolver() {
