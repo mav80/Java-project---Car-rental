@@ -194,6 +194,63 @@ import pl.coderslab.repositories.OrderRepository;
 //		this.active = active;
 //	}
 	
+
+
+
+
+	
+	
+	
+	
+	
+//	@Override
+//	public String toString() {
+//		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate+"]";
+//	}
+	
+	
+
+//	@Override
+//	public String toString() {
+//		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate
+//				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass + "]";
+//	}
+
+
+
+
+//	@Override
+//	public String toString() {
+//		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate
+//				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass + ", rentLengthInDays="
+//				+ rentLengthInDays + ", orderPrice=" + orderPrice + "]";
+//	}
+
+
+
+
+
+
+//	@Override
+//	public String toString() {
+//		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate
+//				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass 	+ ", rentLengthInDays=" + rentLengthInDays + ", orderPrice=" + orderPrice + ", referenceNumber="
+//				+ referenceNumber + "]";
+//	}
+	
+	
+	//poniższego używaliśmy przed lombokiem
+//	@Override
+//	public String toString() {
+//		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate
+//				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass + ", rentLengthInDays="
+//				+ rentLengthInDays + ", orderPrice=" + orderPrice + ", referenceNumber=" + referenceNumber + ", active="
+//				+ active + "]";
+//	}
+	
+	
+	
+	
 	
 	
 	
@@ -267,58 +324,6 @@ import pl.coderslab.repositories.OrderRepository;
 	
 	
 
-
-
-
-	
-	
-	
-	
-	
-//	@Override
-//	public String toString() {
-//		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate+"]";
-//	}
-	
-	
-
-//	@Override
-//	public String toString() {
-//		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate
-//				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass + "]";
-//	}
-
-
-
-
-//	@Override
-//	public String toString() {
-//		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate
-//				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass + ", rentLengthInDays="
-//				+ rentLengthInDays + ", orderPrice=" + orderPrice + "]";
-//	}
-
-
-
-
-
-
-//	@Override
-//	public String toString() {
-//		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate
-//				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass 	+ ", rentLengthInDays=" + rentLengthInDays + ", orderPrice=" + orderPrice + ", referenceNumber="
-//				+ referenceNumber + "]";
-//	}
-	
-	
-	//poniższego używaliśmy przed lombokiem
-//	@Override
-//	public String toString() {
-//		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate
-//				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass + ", rentLengthInDays="
-//				+ rentLengthInDays + ", orderPrice=" + orderPrice + ", referenceNumber=" + referenceNumber + ", active="
-//				+ active + "]";
-//	}
 	
 	
 	

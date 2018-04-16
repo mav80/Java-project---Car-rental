@@ -19,9 +19,13 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
+import lombok.Data;
+import lombok.ToString;
+
 @Entity
 @Table(name = "users")
-public class User {
+@ToString(exclude="orders") //prevents stack overflow
+@Data public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -73,84 +77,84 @@ public class User {
 	
 	
 
-	public List<Order> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public java.lang.Integer getAge() {
-		return age;
-	}
-
-	public void setAge(java.lang.Integer age) {
-		this.age = age;
-	}
-
-	public java.lang.Integer getPhone() { 
-		return phone;
-	}
-
-	public void setPhone(java.lang.Integer phone) {
-		this.phone = phone;
-	}
-	
-
-	public boolean isAdmin() {
-		return admin;
-	}
-
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
-	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", age=" + age + ", phone=" + phone + ", password="
-				+ password + ", enabled=" + enabled +  ", admin=" + admin +", email=" + email + "]";
-	}
+//	public List<Order> getOrders() {
+//		return orders;
+//	}
+//
+//	public void setOrders(List<Order> orders) {
+//		this.orders = orders;
+//	}
+//
+//	public long getId() {
+//		return id;
+//	}
+//
+//	public void setId(long id) {
+//		this.id = id;
+//	}
+//
+//	public String getUsername() {
+//		return username;
+//	}
+//
+//	public void setUsername(String username) {
+//		this.username = username;
+//	}
+//
+//	public String getPassword() {
+//		return password;
+//	}
+//
+//	public void setPassword(String password) {
+//		this.password = password;
+//	}
+//
+//	public boolean isEnabled() {
+//		return enabled;
+//	}
+//
+//	public void setEnabled(boolean enabled) {
+//		this.enabled = enabled;
+//	}
+//
+//	public String getEmail() {
+//		return email;
+//	}
+//
+//	public void setEmail(String email) {
+//		this.email = email;
+//	}
+//
+//	public java.lang.Integer getAge() {
+//		return age;
+//	}
+//
+//	public void setAge(java.lang.Integer age) {
+//		this.age = age;
+//	}
+//
+//	public java.lang.Integer getPhone() { 
+//		return phone;
+//	}
+//
+//	public void setPhone(java.lang.Integer phone) {
+//		this.phone = phone;
+//	}
+//	
+//
+//	public boolean isAdmin() {
+//		return admin;
+//	}
+//
+//	public void setAdmin(boolean admin) {
+//		this.admin = admin;
+//	}
+//
+//	@Override
+//	public String toString() {
+//		return "User [id=" + id + ", username=" + username + ", age=" + age + ", phone=" + phone + ", password="
+//				+ password + ", enabled=" + enabled +  ", admin=" + admin +", email=" + email + "]";
+//	}
 
 	
 	
