@@ -25,12 +25,15 @@ import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.joda.time.Hours;
 
+import lombok.Data;
+import lombok.ToString;
 import pl.coderslab.repositories.CarClassRepository;
 import pl.coderslab.repositories.OrderRepository;
 
 @Entity
 @Table(name = "orders")
-public class Order {
+@ToString(exclude="extras") //without it there will be stack overflow upon listing orders
+@Data public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -89,90 +92,110 @@ public class Order {
 	
 	
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public Timestamp getCreated() {
-		return created;
-	}
-
-	public void setCreated(Timestamp created) {
-		this.created = created;
-	}
-
-
-	public Timestamp getPickupDate() {
-		return pickupDate;
-	}
-
-	public void setPickupDate(Timestamp pickupDate) {
-		this.pickupDate = pickupDate;
-	}
-
-	public Timestamp getReturnDate() {
-		return returnDate;
-	}
-
-	public void setReturnDate(Timestamp returnDate) {
-		this.returnDate = returnDate;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
-	public CarClass getCarClass() {
-		return carClass;
-	}
-
-	public void setCarClass(CarClass carClass) {
-		this.carClass = carClass;
-	}
+//	public long getId() {
+//		return id;
+//	}
+//
+//	public void setId(long id) {
+//		this.id = id;
+//	}
+//
+//	public Timestamp getCreated() {
+//		return created;
+//	}
+//
+//	public void setCreated(Timestamp created) {
+//		this.created = created;
+//	}
+//
+//
+//	public Timestamp getPickupDate() {
+//		return pickupDate;
+//	}
+//
+//	public void setPickupDate(Timestamp pickupDate) {
+//		this.pickupDate = pickupDate;
+//	}
+//
+//	public Timestamp getReturnDate() {
+//		return returnDate;
+//	}
+//
+//	public void setReturnDate(Timestamp returnDate) {
+//		this.returnDate = returnDate;
+//	}
+//
+//	public User getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
+//
+//	public Address getAddress() {
+//		return address;
+//	}
+//
+//	public void setAddress(Address address) {
+//		this.address = address;
+//	}
+//
+//	public CarClass getCarClass() {
+//		return carClass;
+//	}
+//
+//	public void setCarClass(CarClass carClass) {
+//		this.carClass = carClass;
+//	}
+//	
+//	public int getRentLengthInDays() {
+//		return rentLengthInDays;
+//	}
+//
+//	public void setRentLengthInDays(int rentLengthInDays) {
+//		this.rentLengthInDays = rentLengthInDays;
+//	}
+//
+//	public int getOrderPrice() {
+//		return orderPrice;
+//	}
+//
+//	public void setOrderPrice(int orderPrice) {
+//		this.orderPrice = orderPrice;
+//	}
+//	
+//	
+//	
+//	
+//	
+//	public String getReferenceNumber() {
+//		return referenceNumber;
+//	}
+//
+//	public void setReferenceNumber(String referenceNumber) {
+//		this.referenceNumber = referenceNumber;
+//	}
 	
-	public int getRentLengthInDays() {
-		return rentLengthInDays;
-	}
-
-	public void setRentLengthInDays(int rentLengthInDays) {
-		this.rentLengthInDays = rentLengthInDays;
-	}
-
-	public int getOrderPrice() {
-		return orderPrice;
-	}
-
-	public void setOrderPrice(int orderPrice) {
-		this.orderPrice = orderPrice;
-	}
+//	public List<Extras> getExtras() {
+//		return extras;
+//	}
+//
+//	public void setExtras(List<Extras> extras) {
+//		this.extras = extras;
+//	}
+//	
+//	
+//	public boolean isActive() {
+//		return active;
+//	}
+//
+//	public void setActive(boolean active) {
+//		this.active = active;
+//	}
 	
 	
 	
-	
-	
-	public String getReferenceNumber() {
-		return referenceNumber;
-	}
-
-	public void setReferenceNumber(String referenceNumber) {
-		this.referenceNumber = referenceNumber;
-	}
 	
 	public void generateAndSetUniqueReferenceNumber(OrderRepository orderRepository) {
 		
@@ -227,13 +250,6 @@ public class Order {
 	
 	
 	
-	public List<Extras> getExtras() {
-		return extras;
-	}
-
-	public void setExtras(List<Extras> extras) {
-		this.extras = extras;
-	}
 
 	
 	
@@ -250,14 +266,7 @@ public class Order {
 	
 	
 	
-	
-	public boolean isActive() {
-		return active;
-	}
 
-	public void setActive(boolean active) {
-		this.active = active;
-	}
 
 
 
@@ -302,13 +311,14 @@ public class Order {
 //	}
 	
 	
-	@Override
-	public String toString() {
-		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate
-				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass + ", rentLengthInDays="
-				+ rentLengthInDays + ", orderPrice=" + orderPrice + ", referenceNumber=" + referenceNumber + ", active="
-				+ active + "]";
-	}
+	//poniższego używaliśmy przed lombokiem
+//	@Override
+//	public String toString() {
+//		return "Order [id=" + id + ", created=" + created + ", pickupDate=" + pickupDate + ", returnDate=" + returnDate
+//				+ ", user=" + user + ", address=" + address + ", carClass=" + carClass + ", rentLengthInDays="
+//				+ rentLengthInDays + ", orderPrice=" + orderPrice + ", referenceNumber=" + referenceNumber + ", active="
+//				+ active + "]";
+//	}
 	
 	
 	
