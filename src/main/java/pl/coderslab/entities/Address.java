@@ -15,9 +15,13 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import lombok.Data;
+import lombok.ToString;
+
 @Entity
 @Table(name = "addresses")
-public class Address {
+@ToString(exclude="orders")
+@Data public class Address { //@Data - projekt lombok - automatycznie generuje gettery, settery, toString, eguals/hascode oraz konstruktory
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,74 +59,85 @@ public class Address {
 	
 	
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getStreet() {
-		return street;
-	}
-
-	public void setStreet(String street) {
-		this.street = street;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getZipCode() {
-		return zipCode;
-	}
-
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
-	}
-
-	public List<Order> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
-	}
-
-	public boolean isActive() {
-		return active;
-	}
-
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-
+//	public long getId() {
+//		return id;
+//	}
+//
+//	public void setId(long id) {
+//		this.id = id;
+//	}
+//
+//	public String getName() {
+//		return name;
+//	}
+//
+//	public void setName(String name) {
+//		this.name = name;
+//	}
+//
+//	public String getStreet() {
+//		return street;
+//	}
+//
+//	public void setStreet(String street) {
+//		this.street = street;
+//	}
+//
+//	public String getCity() {
+//		return city;
+//	}
+//
+//	public void setCity(String city) {
+//		this.city = city;
+//	}
+//
+//	public String getZipCode() {
+//		return zipCode;
+//	}
+//
+//	public void setZipCode(String zipCode) {
+//		this.zipCode = zipCode;
+//	}
+//
+//	public List<Order> getOrders() {
+//		return orders;
+//	}
+//
+//	public void setOrders(List<Order> orders) {
+//		this.orders = orders;
+//	}
+//
+//	public boolean isActive() {
+//		return active;
+//	}
+//
+//	public void setActive(boolean active) {
+//		this.active = active;
+//	}
+//
+//
+//
+////	@Override
+////	public String toString() {
+////		return "Address [id=" + id + ", name=" + name + ", street=" + street + ", city=" + city + ", zipCode=" + zipCode
+////				+ "]";
+////	}
+//	
+//	//tego poniżej używamy - nie zawiera "orders" aby nie wpaść w pętlę i nie przepełnić bufora
 //	@Override
 //	public String toString() {
 //		return "Address [id=" + id + ", name=" + name + ", street=" + street + ", city=" + city + ", zipCode=" + zipCode
-//				+ "]";
+//				+ ",  active=" + active + "]";
 //	}
+//	
+//	
+////	@Override
+////	public String toString() {
+////		return "Address [id=" + id + ", name=" + name + ", street=" + street + ", city=" + city + ", zipCode=" + zipCode
+////				+ ", orders=" + orders + ", active=" + active + "]";
+////	}
 	
 	
-	@Override
-	public String toString() {
-		return "Address [id=" + id + ", name=" + name + ", street=" + street + ", city=" + city + ", zipCode=" + zipCode
-				+ ",  active=" + active + "]";
-	}
 	
 	
 
