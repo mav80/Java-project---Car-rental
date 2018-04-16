@@ -14,9 +14,13 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import lombok.Data;
+import lombok.ToString;
+
 @Entity
 @Table(name = "carClasses")
-public class CarClass {
+@ToString(exclude="orders")
+@Data public class CarClass {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,82 +60,82 @@ public class CarClass {
 	
 	
 	
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getCarClassa() {
-		return carClassa;
-	}
-
-	public void setCarClassa(String carClassa) {
-		this.carClassa = carClassa;
-	}
-
-	public List<Order> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
-	}
-
-	public String getCarClassDescription() {
-		return carClassDescription;
-	}
-
-	public void setCarClassDescription(String carClassDescription) {
-		this.carClassDescription = carClassDescription;
-	}
-	
-	
-
-	public int getPricePerDay() {
-		return pricePerDay;
-	}
-
-	public void setPricePerDay(int pricePerDay) {
-		this.pricePerDay = pricePerDay;
-	}
-
-	
-	public boolean isActive() {
-		return active;
-	}
-
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-
-
-
-	
-
-	
-
+//	public long getId() {
+//		return id;
+//	}
+//
+//	public void setId(long id) {
+//		this.id = id;
+//	}
+//
+//	public String getCarClassa() {
+//		return carClassa;
+//	}
+//
+//	public void setCarClassa(String carClassa) {
+//		this.carClassa = carClassa;
+//	}
+//
+//	public List<Order> getOrders() {
+//		return orders;
+//	}
+//
+//	public void setOrders(List<Order> orders) {
+//		this.orders = orders;
+//	}
+//
+//	public String getCarClassDescription() {
+//		return carClassDescription;
+//	}
+//
+//	public void setCarClassDescription(String carClassDescription) {
+//		this.carClassDescription = carClassDescription;
+//	}
+//	
+//	
+//
+//	public int getPricePerDay() {
+//		return pricePerDay;
+//	}
+//
+//	public void setPricePerDay(int pricePerDay) {
+//		this.pricePerDay = pricePerDay;
+//	}
+//
+//	
+//	public boolean isActive() {
+//		return active;
+//	}
+//
+//	public void setActive(boolean active) {
+//		this.active = active;
+//	}
+//
+//
+//
+//	
+//
+//	
+//
+////	@Override
+////	public String toString() {
+////		return "CarClass [id=" + id + ", carClass=" + carClass + ", carClassDescription=" + carClassDescription
+////				+ "]";
+////	}
+//
+//
+////	@Override
+////	public String toString() {
+////		return "CarClass [id=" + id + ", carClass=" + carClass + ", carClassDescription=" + carClassDescription
+////				+ ", pricePerDay=" + pricePerDay + "]";
+////	}
+//	
+//	
 //	@Override
 //	public String toString() {
-//		return "CarClass [id=" + id + ", carClass=" + carClass + ", carClassDescription=" + carClassDescription
-//				+ "]";
+//		return "CarClass [id=" + id + ", carClassa=" + carClassa + ", carClassDescription=" + carClassDescription
+//				+ ", pricePerDay=" + pricePerDay + ", active=" + active + "]";
 //	}
-
-
-//	@Override
-//	public String toString() {
-//		return "CarClass [id=" + id + ", carClass=" + carClass + ", carClassDescription=" + carClassDescription
-//				+ ", pricePerDay=" + pricePerDay + "]";
-//	}
-	
-	
-	@Override
-	public String toString() {
-		return "CarClass [id=" + id + ", carClassa=" + carClassa + ", carClassDescription=" + carClassDescription
-				+ ", pricePerDay=" + pricePerDay + ", active=" + active + "]";
-	}
 	
 	
 	
